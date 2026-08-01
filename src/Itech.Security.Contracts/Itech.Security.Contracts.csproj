@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Itech.Security.Contracts</PackageId>
+    <Description>Product-neutral security and authorization contracts for Itech applications.</Description>
+    <PackageTags>itech;security;authorization;contracts</PackageTags>
+  </PropertyGroup>
+</Project>

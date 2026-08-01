@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Itech.Application.Contracts</PackageId>
+    <Description>Shared application-level contracts for Itech APIs.</Description>
+    <PackageTags>itech;application;contracts;pagination;errors</PackageTags>
+  </PropertyGroup>
+
+</Project>
