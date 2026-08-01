@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Restore dependencies
+        run: dotnet restore Itech.Common.slnx
+
+      - name: Build solution
+        run: >-
+          dotnet build Itech.Common.slnx
+          --configuration Release
+          --no-restore
+
+      - name: Run tests
+        run: >-
+          dotnet test Itech.Common.slnx
+          --configuration Release
+          --no-build
+          --no-restore
+          --verbosity normal

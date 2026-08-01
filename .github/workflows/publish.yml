@@ -1,0 +1,140 @@
+name: Publish NuGet packages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "Directory.Build.props"
+      - "Directory.Packages.props"
+      - "Itech.Common.slnx"
+      - ".github/workflows/publish.yml"
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: nuget-publish-main
+  cancel-in-progress: false
+
+env:
+  # ✅ Seule valeur à modifier avant chaque nouvelle publication
+  PACKAGE_VERSION: "1.0.0"
+
+  DOTNET_VERSION: "9.0.x"
+  SOLUTION_FILE: "Itech.Common.slnx"
+  NUGET_SOURCE: "https://api.nuget.org/v3/index.json"
+  NUGET_USER: "samEva-Dev"
+  ARTIFACTS_DIRECTORY: "artifacts"
+
+jobs:
+  publish:
+    name: Build, test and publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Validate package version
+        shell: bash
+        run: |
+          if [[ ! "${PACKAGE_VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Version NuGet invalide : ${PACKAGE_VERSION}"
+            echo "Formats attendus : 1.0.0 ou 1.0.0-preview.1"
+            exit 1
+          fi
+
+          echo "Version à publier : ${PACKAGE_VERSION}"
+
+      - name: Restore dependencies
+        run: dotnet restore "${{ env.SOLUTION_FILE }}"
+
+      - name: Build solution
+        run: >-
+          dotnet build "${{ env.SOLUTION_FILE }}"
+          --configuration Release
+          --no-restore
+          /p:Version=${{ env.PACKAGE_VERSION }}
+          /p:PackageVersion=${{ env.PACKAGE_VERSION }}
+
+      - name: Run tests
+        run: >-
+          dotnet test "${{ env.SOLUTION_FILE }}"
+          --configuration Release
+          --no-build
+          --no-restore
+          --verbosity normal
+
+      - name: Create NuGet packages
+        run: >-
+          dotnet pack "${{ env.SOLUTION_FILE }}"
+          --configuration Release
+          --no-build
+          --no-restore
+          --output "${{ env.ARTIFACTS_DIRECTORY }}"
+          /p:Version=${{ env.PACKAGE_VERSION }}
+          /p:PackageVersion=${{ env.PACKAGE_VERSION }}
+
+      - name: Verify generated packages
+        shell: bash
+        run: |
+          shopt -s nullglob
+          packages=("${ARTIFACTS_DIRECTORY}"/*.nupkg)
+
+          if (( ${#packages[@]} == 0 )); then
+            echo "Aucun package NuGet n'a été généré."
+            exit 1
+          fi
+
+          echo "Packages générés :"
+          printf '%s\n' "${packages[@]}"
+
+      # Cette étape doit rester proche de la publication :
+      # la clé temporaire NuGet est obtenue grâce à Trusted Publishing.
+      - name: Authenticate with NuGet.org
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ env.NUGET_USER }}
+
+      - name: Publish packages to NuGet.org
+        shell: bash
+        env:
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
+        run: |
+          shopt -s nullglob
+
+          for package in "${ARTIFACTS_DIRECTORY}"/*.nupkg; do
+            # Les fichiers .snupkg sont envoyés automatiquement
+            # avec leur package .nupkg principal.
+            if [[ "$package" == *.snupkg ]]; then
+              continue
+            fi
+
+            echo "Publication de $package"
+
+            dotnet nuget push "$package" \
+              --api-key "${NUGET_API_KEY}" \
+              --source "${NUGET_SOURCE}" \
+              --skip-duplicate
+          done
+
+      - name: Upload generated packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: Itech.Common-${{ env.PACKAGE_VERSION }}
+          path: |
+            artifacts/*.nupkg
+            artifacts/*.snupkg
+          if-no-files-found: error
+          retention-days: 30
