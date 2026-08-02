@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>LocaGuest.Security.Contracts</PackageId>
+    <Description>LocaGuest application role, permission and policy contracts.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Itech.Security.Contracts" />
+  </ItemGroup>
+</Project>
+

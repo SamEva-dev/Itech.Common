@@ -1,0 +1,177 @@
+namespace DriveOS.Security.Contracts;
+
+/// <summary>
+/// Permission codes used by DriveOS.
+///
+/// The values are public contracts shared by AuthGate, DriveOS APIs and
+/// DriveOS frontends. Existing values must never be renamed after release.
+/// Add new permissions instead of reusing an existing code for another
+/// business operation.
+/// </summary>
+public static class DriveOsPermissionCodes
+{
+    /// <summary>
+    /// ORG-001 and ORG-002: organization creation, consultation and lifecycle.
+    /// </summary>
+    public static class Organizations
+    {
+        public const string Read = "Organizations.Read";
+        public const string Create = "Organizations.Create";
+
+        public const string StatusHistoryRead =
+            "Organizations.StatusHistory.Read";
+
+        public const string SubmitForActivation =
+            "Organizations.SubmitForActivation";
+
+        public const string Activate = "Organizations.Activate";
+        public const string Restrict = "Organizations.Restrict";
+        public const string Suspend = "Organizations.Suspend";
+        public const string Reactivate = "Organizations.Reactivate";
+        public const string Close = "Organizations.Close";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Create,
+            StatusHistoryRead,
+            SubmitForActivation,
+            Activate,
+            Restrict,
+            Suspend,
+            Reactivate,
+            Close
+        ];
+    }
+
+    /// <summary>
+    /// ORG-003 and ORG-004: branch CRUD, primary branch and lifecycle.
+    /// </summary>
+    public static class Branches
+    {
+        public const string Read = "Branches.Read";
+        public const string Create = "Branches.Create";
+        public const string Update = "Branches.Update";
+        public const string SetPrimary = "Branches.SetPrimary";
+
+        public const string StatusHistoryRead =
+            "Branches.StatusHistory.Read";
+
+        public const string Activate = "Branches.Activate";
+        public const string Restrict = "Branches.Restrict";
+        public const string Suspend = "Branches.Suspend";
+        public const string Reactivate = "Branches.Reactivate";
+        public const string Close = "Branches.Close";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Create,
+            Update,
+            SetPrimary,
+            StatusHistoryRead,
+            Activate,
+            Restrict,
+            Suspend,
+            Reactivate,
+            Close
+        ];
+    }
+
+    /// <summary>
+    /// ORG-005: current branch manager and manager assignment history.
+    /// </summary>
+    public static class BranchManagers
+    {
+        public const string Read = "BranchManagers.Read";
+        public const string Assign = "BranchManagers.Assign";
+
+        public const string HistoryRead =
+            "BranchManagers.History.Read";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Assign,
+            HistoryRead
+        ];
+    }
+
+    /// <summary>
+    /// ORG-006: operational user assignments to branches.
+    /// </summary>
+    public static class BranchAssignments
+    {
+        public const string Read = "BranchAssignments.Read";
+        public const string Create = "BranchAssignments.Create";
+        public const string Suspend = "BranchAssignments.Suspend";
+        public const string Reactivate = "BranchAssignments.Reactivate";
+        public const string End = "BranchAssignments.End";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Create,
+            Suspend,
+            Reactivate,
+            End
+        ];
+    }
+
+
+    /// <summary>
+    /// ORG-007: organization profile, regional and operational settings.
+    /// </summary>
+    public static class OrganizationSettings
+    {
+        public const string Read = "OrganizationSettings.Read";
+        public const string Create = "OrganizationSettings.Create";
+        public const string Update = "OrganizationSettings.Update";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Create,
+            Update
+        ];
+    }
+
+    /// <summary>
+    /// Every DriveOS permission delivered from ORG-001 through ORG-007.
+    /// </summary>
+    public static readonly string[] All =
+    [
+        .. Organizations.All,
+        .. Branches.All,
+        .. BranchManagers.All,
+        .. BranchAssignments.All,
+        .. OrganizationSettings.All
+    ];
+
+    /// <summary>
+    /// Permissions that only expose data and do not mutate state.
+    /// </summary>
+    public static readonly string[] ReadOnly =
+    [
+        Organizations.Read,
+        Organizations.StatusHistoryRead,
+        Branches.Read,
+        Branches.StatusHistoryRead,
+        BranchManagers.Read,
+        BranchManagers.HistoryRead,
+        BranchAssignments.Read,
+        OrganizationSettings.Read
+    ];
+
+    /// <summary>
+    /// Platform-level organization lifecycle permissions. These should not be
+    /// assigned automatically to ordinary tenant roles.
+    /// </summary>
+    public static readonly string[] PlatformOrganizationGovernance =
+    [
+        Organizations.Activate,
+        Organizations.Restrict,
+        Organizations.Suspend,
+        Organizations.Reactivate
+    ];
+}

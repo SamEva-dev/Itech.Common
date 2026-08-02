@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>DriveOS.Security.Contracts</PackageId>
+    <Description>DriveOS application role and permission contracts.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Itech.Security.Contracts" />
+  </ItemGroup>
+</Project>
+

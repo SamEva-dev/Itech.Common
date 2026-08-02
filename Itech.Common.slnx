@@ -1,12 +1,16 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/DriveOS.Security.Contracts/DriveOS.Security.Contracts.csproj" />
     <Project Path="src/Itech.Application.Contracts/Itech.Application.Contracts.csproj" />
     <Project Path="src/Itech.Querying/Itech.Querying.csproj" />
     <Project Path="src/Itech.Security.Contracts/Itech.Security.Contracts.csproj" />
+    <Project Path="src/LocaGuest.Security.Contracts/LocaGuest.Security.Contracts.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/DriveOS.Security.Contracts.Tests/DriveOS.Security.Contracts.Tests.csproj" />
     <Project Path="tests/Itech.Application.Contracts.Tests/Itech.Application.Contracts.Tests.csproj" />
     <Project Path="tests/Itech.Querying.Tests/Itech.Querying.Tests.csproj" />
     <Project Path="tests/Itech.Security.Contracts.Tests/Itech.Security.Contracts.Tests.csproj" />
+    <Project Path="tests/LocaGuest.Security.Contracts.Tests/LocaGuest.Security.Contracts.Tests.csproj" />
   </Folder>
 </Solution>

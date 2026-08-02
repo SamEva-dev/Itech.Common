@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsPackable)' == 'true'">
-    <Authors>Itech</Authors>
+    <Authors>samEva-Dev</Authors>
     <Company>Itech</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
@@ -19,4 +19,9 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageVersion Include="Itech.Security.Contracts"
+                    Version="1.0.0" />
+  </ItemGroup>
 </Project>

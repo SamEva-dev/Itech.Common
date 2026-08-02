@@ -22,7 +22,7 @@ concurrency:
 
 env:
   # ✅ Seule valeur à modifier avant chaque nouvelle publication
-  PACKAGE_VERSION: "1.0.0"
+  PACKAGE_VERSION: "2.0.0"
 
   DOTNET_VERSION: "9.0.x"
   SOLUTION_FILE: "Itech.Common.slnx"
