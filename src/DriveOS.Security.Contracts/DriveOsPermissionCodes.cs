@@ -136,8 +136,34 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+
     /// <summary>
-    /// Every DriveOS permission delivered from ORG-001 through ORG-007.
+    /// ORG-008: organization SaaS subscription, lifecycle, entitlements and limits.
+    /// </summary>
+    public static class OrganizationSubscriptions
+    {
+        public const string Read = "OrganizationSubscriptions.Read";
+        public const string Create = "OrganizationSubscriptions.Create";
+        public const string ChangePlan = "OrganizationSubscriptions.ChangePlan";
+        public const string Activate = "OrganizationSubscriptions.Activate";
+        public const string MarkPastDue = "OrganizationSubscriptions.MarkPastDue";
+        public const string Restrict = "OrganizationSubscriptions.Restrict";
+        public const string Suspend = "OrganizationSubscriptions.Suspend";
+        public const string Cancel = "OrganizationSubscriptions.Cancel";
+        public const string Expire = "OrganizationSubscriptions.Expire";
+        public const string ReadEntitlements = "OrganizationSubscriptions.Entitlements.Read";
+        public const string ReadLimits = "OrganizationSubscriptions.Limits.Read";
+
+        public static readonly string[] All =
+        [
+            Read, Create, ChangePlan, Activate, MarkPastDue,
+            Restrict, Suspend, Cancel, Expire,
+            ReadEntitlements, ReadLimits
+        ];
+    }
+
+    /// <summary>
+    /// Every DriveOS permission delivered from ORG-001 through ORG-008.
     /// </summary>
     public static readonly string[] All =
     [
@@ -145,7 +171,8 @@ public static class DriveOsPermissionCodes
         .. Branches.All,
         .. BranchManagers.All,
         .. BranchAssignments.All,
-        .. OrganizationSettings.All
+        .. OrganizationSettings.All,
+        .. OrganizationSubscriptions.All
     ];
 
     /// <summary>
@@ -160,7 +187,10 @@ public static class DriveOsPermissionCodes
         BranchManagers.Read,
         BranchManagers.HistoryRead,
         BranchAssignments.Read,
-        OrganizationSettings.Read
+        OrganizationSettings.Read,
+        OrganizationSubscriptions.Read,
+        OrganizationSubscriptions.ReadEntitlements,
+        OrganizationSubscriptions.ReadLimits
     ];
 
     /// <summary>
