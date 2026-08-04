@@ -162,8 +162,30 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+
     /// <summary>
-    /// Every DriveOS permission delivered from ORG-001 through ORG-008.
+    /// ORG-009: versioned organization configurations.
+    /// </summary>
+    public static class OrganizationConfigurations
+    {
+        public const string Read = "OrganizationConfigurations.Read";
+        public const string Create = "OrganizationConfigurations.Create";
+        public const string Update = "OrganizationConfigurations.Update";
+        public const string Publish = "OrganizationConfigurations.Publish";
+        public const string Archive = "OrganizationConfigurations.Archive";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Create,
+            Update,
+            Publish,
+            Archive
+        ];
+    }
+
+    /// <summary>
+    /// Every DriveOS permission delivered from ORG-001 through ORG-009.
     /// </summary>
     public static readonly string[] All =
     [
@@ -172,7 +194,8 @@ public static class DriveOsPermissionCodes
         .. BranchManagers.All,
         .. BranchAssignments.All,
         .. OrganizationSettings.All,
-        .. OrganizationSubscriptions.All
+        .. OrganizationSubscriptions.All,
+        .. OrganizationConfigurations.All
     ];
 
     /// <summary>
@@ -190,7 +213,8 @@ public static class DriveOsPermissionCodes
         OrganizationSettings.Read,
         OrganizationSubscriptions.Read,
         OrganizationSubscriptions.ReadEntitlements,
-        OrganizationSubscriptions.ReadLimits
+        OrganizationSubscriptions.ReadLimits,
+        OrganizationConfigurations.Read
     ];
 
     /// <summary>
