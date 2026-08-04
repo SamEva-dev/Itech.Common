@@ -208,6 +208,24 @@ public static class DriveOsPermissionCodes
     }
 
     /// <summary>
+    /// ORG-011: organization and branch business-number sequences.
+    /// </summary>
+    public static class OrganizationSequences
+    {
+        public const string Read = "OrganizationSequences.Read";
+        public const string Create = "OrganizationSequences.Create";
+        public const string Reserve = "OrganizationSequences.Reserve";
+        public const string Suspend = "OrganizationSequences.Suspend";
+        public const string Reactivate = "OrganizationSequences.Reactivate";
+        public const string Archive = "OrganizationSequences.Archive";
+
+        public static readonly string[] All =
+        [
+            Read, Create, Reserve, Suspend, Reactivate, Archive
+        ];
+    }
+
+    /// <summary>
     /// Every DriveOS permission delivered from ORG-001 through ORG-010.
     /// </summary>
     public static readonly string[] All =
@@ -219,7 +237,8 @@ public static class DriveOsPermissionCodes
         .. OrganizationSettings.All,
         .. OrganizationSubscriptions.All,
         .. OrganizationConfigurations.All,
-        .. BranchConfigurationOverrides.All
+        .. BranchConfigurationOverrides.All,
+        .. OrganizationSequences.All
     ];
 
     /// <summary>
@@ -239,7 +258,8 @@ public static class DriveOsPermissionCodes
         OrganizationSubscriptions.ReadEntitlements,
         OrganizationSubscriptions.ReadLimits,
         OrganizationConfigurations.Read,
-        BranchConfigurationOverrides.Read
+        BranchConfigurationOverrides.Read,
+        OrganizationSequences.Read
     ];
 
     /// <summary>

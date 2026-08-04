@@ -116,7 +116,9 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.Branches.Read,
                 DriveOsPermissionCodes.BranchManagers.Read,
                 DriveOsPermissionCodes.BranchAssignments.Read,
-                DriveOsPermissionCodes.BranchAssignments.Create
+                DriveOsPermissionCodes.BranchAssignments.Create,
+                DriveOsPermissionCodes.OrganizationSequences.Read,
+                DriveOsPermissionCodes.OrganizationSequences.Reserve
             ],
 
             [DriveOsRoleCodes.Accountant] =
@@ -148,7 +150,9 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.Branches.Read,
                 DriveOsPermissionCodes.BranchManagers.Read,
                 DriveOsPermissionCodes.BranchAssignments.Read,
-                DriveOsPermissionCodes.BranchAssignments.Create
+                DriveOsPermissionCodes.BranchAssignments.Create,
+                DriveOsPermissionCodes.OrganizationSequences.Read,
+                DriveOsPermissionCodes.OrganizationSequences.Reserve
             ],
 
             [DriveOsRoleCodes.Receptionist] =
