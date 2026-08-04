@@ -184,8 +184,31 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+
+
     /// <summary>
-    /// Every DriveOS permission delivered from ORG-001 through ORG-009.
+    /// ORG-010: versioned branch configuration overrides.
+    /// </summary>
+    public static class BranchConfigurationOverrides
+    {
+        public const string Read = "BranchConfigurationOverrides.Read";
+        public const string Create = "BranchConfigurationOverrides.Create";
+        public const string Update = "BranchConfigurationOverrides.Update";
+        public const string Publish = "BranchConfigurationOverrides.Publish";
+        public const string Archive = "BranchConfigurationOverrides.Archive";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Create,
+            Update,
+            Publish,
+            Archive
+        ];
+    }
+
+    /// <summary>
+    /// Every DriveOS permission delivered from ORG-001 through ORG-010.
     /// </summary>
     public static readonly string[] All =
     [
@@ -195,7 +218,8 @@ public static class DriveOsPermissionCodes
         .. BranchAssignments.All,
         .. OrganizationSettings.All,
         .. OrganizationSubscriptions.All,
-        .. OrganizationConfigurations.All
+        .. OrganizationConfigurations.All,
+        .. BranchConfigurationOverrides.All
     ];
 
     /// <summary>
@@ -214,7 +238,8 @@ public static class DriveOsPermissionCodes
         OrganizationSubscriptions.Read,
         OrganizationSubscriptions.ReadEntitlements,
         OrganizationSubscriptions.ReadLimits,
-        OrganizationConfigurations.Read
+        OrganizationConfigurations.Read,
+        BranchConfigurationOverrides.Read
     ];
 
     /// <summary>

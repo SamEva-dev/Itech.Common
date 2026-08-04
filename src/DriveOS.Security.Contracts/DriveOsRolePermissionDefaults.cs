@@ -30,7 +30,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.BranchAssignments.All,
                 .. DriveOsPermissionCodes.OrganizationSettings.All,
                 .. DriveOsPermissionCodes.OrganizationSubscriptions.All,
-                .. DriveOsPermissionCodes.OrganizationConfigurations.All
+                .. DriveOsPermissionCodes.OrganizationConfigurations.All,
+                .. DriveOsPermissionCodes.BranchConfigurationOverrides.All
             ],
 
             [DriveOsRoleCodes.OrganizationAdministrator] =
@@ -44,7 +45,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.BranchAssignments.All,
                 .. DriveOsPermissionCodes.OrganizationSettings.All,
                 .. DriveOsPermissionCodes.OrganizationSubscriptions.All,
-                .. DriveOsPermissionCodes.OrganizationConfigurations.All
+                .. DriveOsPermissionCodes.OrganizationConfigurations.All,
+                .. DriveOsPermissionCodes.BranchConfigurationOverrides.All
             ],
 
             [DriveOsRoleCodes.Director] =
@@ -58,7 +60,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.BranchAssignments.All,
                 .. DriveOsPermissionCodes.OrganizationSettings.All,
                 .. DriveOsPermissionCodes.OrganizationSubscriptions.All,
-                .. DriveOsPermissionCodes.OrganizationConfigurations.All
+                .. DriveOsPermissionCodes.OrganizationConfigurations.All,
+                .. DriveOsPermissionCodes.BranchConfigurationOverrides.All
             ],
 
             [DriveOsRoleCodes.BranchManager] =
@@ -81,6 +84,7 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.OrganizationSubscriptions.ReadEntitlements,
                 DriveOsPermissionCodes.OrganizationSubscriptions.ReadLimits,
                 DriveOsPermissionCodes.OrganizationConfigurations.Read,
+                .. DriveOsPermissionCodes.BranchConfigurationOverrides.All,
 
                 .. DriveOsPermissionCodes.BranchAssignments.All
             ],
