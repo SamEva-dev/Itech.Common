@@ -264,6 +264,20 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+    public static class OrganizationClosures
+    {
+        public const string Read = "OrganizationClosures.Read";
+        public const string Create = "OrganizationClosures.Create";
+        public const string Submit = "OrganizationClosures.Submit";
+        public const string Approve = "OrganizationClosures.Approve";
+        public const string Reject = "OrganizationClosures.Reject";
+        public const string Schedule = "OrganizationClosures.Schedule";
+        public const string Cancel = "OrganizationClosures.Cancel";
+        public const string Complete = "OrganizationClosures.Complete";
+        public const string Reopen = "OrganizationClosures.Reopen";
+    }
+
+
     /// <summary>
     /// Every DriveOS permission delivered from ORG-001 through ORG-013.
     /// </summary>

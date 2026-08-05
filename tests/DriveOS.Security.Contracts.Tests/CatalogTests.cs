@@ -24,5 +24,17 @@ public sealed class CatalogTests
             Assert.All(permissions, permission => Assert.Contains(permission, known));
         }
     }
-}
 
+    [Fact]
+    public void Organization_sequence_permission_codes_are_stable() =>
+        Assert.Equal(
+            [
+                "OrganizationSequences.Read",
+                "OrganizationSequences.Create",
+                "OrganizationSequences.Reserve",
+                "OrganizationSequences.Suspend",
+                "OrganizationSequences.Reactivate",
+                "OrganizationSequences.Archive"
+            ],
+            DriveOsPermissionCodes.OrganizationSequences.All);
+}
