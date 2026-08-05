@@ -246,8 +246,26 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+
     /// <summary>
-    /// Every DriveOS permission delivered from ORG-001 through ORG-010.
+    /// ORG-013: legal, registration and tax profile of an organization.
+    /// </summary>
+    public static class OrganizationLegalProfiles
+    {
+        public const string Read = "OrganizationLegalProfiles.Read";
+        public const string Create = "OrganizationLegalProfiles.Create";
+        public const string Update = "OrganizationLegalProfiles.Update";
+        public const string Activate = "OrganizationLegalProfiles.Activate";
+        public const string Archive = "OrganizationLegalProfiles.Archive";
+
+        public static readonly string[] All =
+        [
+            Read, Create, Update, Activate, Archive
+        ];
+    }
+
+    /// <summary>
+    /// Every DriveOS permission delivered from ORG-001 through ORG-013.
     /// </summary>
     public static readonly string[] All =
     [
@@ -260,7 +278,8 @@ public static class DriveOsPermissionCodes
         .. OrganizationConfigurations.All,
         .. BranchConfigurationOverrides.All,
         .. OrganizationSequences.All,
-        .. OrganizationRepresentatives.All
+        .. OrganizationRepresentatives.All,
+        .. OrganizationLegalProfiles.All
     ];
 
     /// <summary>
@@ -281,7 +300,9 @@ public static class DriveOsPermissionCodes
         OrganizationSubscriptions.ReadLimits,
         OrganizationConfigurations.Read,
         BranchConfigurationOverrides.Read,
-        OrganizationSequences.Read
+        OrganizationSequences.Read,
+        OrganizationRepresentatives.Read,
+        OrganizationLegalProfiles.Read
     ];
 
     /// <summary>
