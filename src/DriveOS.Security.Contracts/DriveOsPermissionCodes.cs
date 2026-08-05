@@ -225,6 +225,27 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+
+    /// <summary>
+    /// ORG-012: owners, legal representatives and delegated organization authorities.
+    /// </summary>
+    public static class OrganizationRepresentatives
+    {
+        public const string Read = "OrganizationRepresentatives.Read";
+        public const string Create = "OrganizationRepresentatives.Create";
+        public const string Update = "OrganizationRepresentatives.Update";
+        public const string Activate = "OrganizationRepresentatives.Activate";
+        public const string Suspend = "OrganizationRepresentatives.Suspend";
+        public const string Reactivate = "OrganizationRepresentatives.Reactivate";
+        public const string End = "OrganizationRepresentatives.End";
+        public const string SetPrimaryOwner = "OrganizationRepresentatives.SetPrimaryOwner";
+
+        public static readonly string[] All =
+        [
+            Read, Create, Update, Activate, Suspend, Reactivate, End, SetPrimaryOwner
+        ];
+    }
+
     /// <summary>
     /// Every DriveOS permission delivered from ORG-001 through ORG-010.
     /// </summary>
@@ -238,7 +259,8 @@ public static class DriveOsPermissionCodes
         .. OrganizationSubscriptions.All,
         .. OrganizationConfigurations.All,
         .. BranchConfigurationOverrides.All,
-        .. OrganizationSequences.All
+        .. OrganizationSequences.All,
+        .. OrganizationRepresentatives.All
     ];
 
     /// <summary>
