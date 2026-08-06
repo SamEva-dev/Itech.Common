@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace DriveOS.Security.Contracts;
 
 /// <summary>
@@ -275,6 +277,12 @@ public static class DriveOsPermissionCodes
         public const string Cancel = "OrganizationClosures.Cancel";
         public const string Complete = "OrganizationClosures.Complete";
         public const string Reopen = "OrganizationClosures.Reopen";
+
+        public static readonly string[] All =
+        [
+            Read, Create, Submit, Approve, Reject, Schedule, 
+            Cancel, Complete, Reopen
+        ];
     }
 
 
@@ -293,7 +301,8 @@ public static class DriveOsPermissionCodes
         .. BranchConfigurationOverrides.All,
         .. OrganizationSequences.All,
         .. OrganizationRepresentatives.All,
-        .. OrganizationLegalProfiles.All
+        .. OrganizationLegalProfiles.All,
+        .. OrganizationClosures.All
     ];
 
     /// <summary>
