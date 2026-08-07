@@ -35,7 +35,8 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.OrganizationRepresentatives.Read,
                 .. DriveOsPermissionCodes.OrganizationSequences.All,
                 .. DriveOsPermissionCodes.OrganizationRepresentatives.All,
-                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All
+                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All,
+                .. DriveOsPermissionCodes.OrganizationClosures.All
             ],
 
             [DriveOsRoleCodes.OrganizationAdministrator] =
@@ -72,7 +73,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.BranchConfigurationOverrides.All,
                 .. DriveOsPermissionCodes.OrganizationSequences.All,
                 .. DriveOsPermissionCodes.OrganizationRepresentatives.All,
-                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All
+                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All,
+                .. DriveOsPermissionCodes.OrganizationClosures.All
             ],
 
             [DriveOsRoleCodes.BranchManager] =

@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace DriveOS.Security.Contracts;
 
 /// <summary>
@@ -280,8 +278,7 @@ public static class DriveOsPermissionCodes
 
         public static readonly string[] All =
         [
-            Read, Create, Submit, Approve, Reject, Schedule, 
-            Cancel, Complete, Reopen
+            Read, Create, Submit, Approve, Reject, Schedule, Cancel, Complete, Reopen
         ];
     }
 
@@ -325,7 +322,8 @@ public static class DriveOsPermissionCodes
         BranchConfigurationOverrides.Read,
         OrganizationSequences.Read,
         OrganizationRepresentatives.Read,
-        OrganizationLegalProfiles.Read
+        OrganizationLegalProfiles.Read,
+        OrganizationClosures.Read
     ];
 
     /// <summary>
