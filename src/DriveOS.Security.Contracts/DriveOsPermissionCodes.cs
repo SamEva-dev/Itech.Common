@@ -284,6 +284,81 @@ public static class DriveOsPermissionCodes
 
 
     /// <summary>
+    /// CRM & Admissions: prospects/leads, qualification and ownership.
+    /// </summary>
+    public static class CrmLeads
+    {
+        public const string Read = "Crm.Leads.Read";
+        public const string Create = "Crm.Leads.Create";
+        public const string Update = "Crm.Leads.Update";
+        public const string Assign = "Crm.Leads.Assign";
+        public const string Qualify = "Crm.Leads.Qualify";
+        public const string ChangeStatus = "Crm.Leads.ChangeStatus";
+
+        public static readonly string[] All =
+        [
+            Read, Create, Update, Assign, Qualify, ChangeStatus
+        ];
+    }
+
+    /// <summary>
+    /// CRM & Admissions: traceable interactions and activities around a lead.
+    /// </summary>
+    public static class CrmActivities
+    {
+        public const string Read = "Crm.Activities.Read";
+        public const string Create = "Crm.Activities.Create";
+
+        public static readonly string[] All = [Read, Create];
+    }
+
+    /// <summary>
+    /// CRM & Admissions: initial assessment appointments and assessments.
+    /// </summary>
+    public static class CrmAssessments
+    {
+        public const string Read = "Crm.Assessments.Read";
+        public const string Create = "Crm.Assessments.Create";
+        public const string Schedule = "Crm.Assessments.Schedule";
+        public const string Complete = "Crm.Assessments.Complete";
+        public const string Cancel = "Crm.Assessments.Cancel";
+
+        public static readonly string[] All =
+        [
+            Read, Create, Schedule, Complete, Cancel
+        ];
+    }
+
+    /// <summary>
+    /// CRM & Admissions: versioned training offers and commercial decisions.
+    /// </summary>
+    public static class CrmOffers
+    {
+        public const string Read = "Crm.Offers.Read";
+        public const string Create = "Crm.Offers.Create";
+        public const string Update = "Crm.Offers.Update";
+        public const string Send = "Crm.Offers.Send";
+        public const string Accept = "Crm.Offers.Accept";
+        public const string Reject = "Crm.Offers.Reject";
+
+        public static readonly string[] All =
+        [
+            Read, Create, Update, Send, Accept, Reject
+        ];
+    }
+
+    /// <summary>
+    /// CRM & Admissions: controlled conversion from an accepted lead into Student Administration.
+    /// </summary>
+    public static class CrmConversions
+    {
+        public const string ConvertToStudent = "Crm.Conversions.ConvertToStudent";
+
+        public static readonly string[] All = [ConvertToStudent];
+    }
+
+
+    /// <summary>
     /// Every DriveOS permission delivered from ORG-001 through ORG-013.
     /// </summary>
     public static readonly string[] All =
@@ -299,7 +374,12 @@ public static class DriveOsPermissionCodes
         .. OrganizationSequences.All,
         .. OrganizationRepresentatives.All,
         .. OrganizationLegalProfiles.All,
-        .. OrganizationClosures.All
+        .. OrganizationClosures.All,
+        .. CrmLeads.All,
+        .. CrmActivities.All,
+        .. CrmAssessments.All,
+        .. CrmOffers.All,
+        .. CrmConversions.All
     ];
 
     /// <summary>
@@ -323,7 +403,11 @@ public static class DriveOsPermissionCodes
         OrganizationSequences.Read,
         OrganizationRepresentatives.Read,
         OrganizationLegalProfiles.Read,
-        OrganizationClosures.Read
+        OrganizationClosures.Read,
+        CrmLeads.Read,
+        CrmActivities.Read,
+        CrmAssessments.Read,
+        CrmOffers.Read
     ];
 
     /// <summary>

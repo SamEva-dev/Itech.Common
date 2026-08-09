@@ -34,7 +34,12 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.BranchConfigurationOverrides.All,
                 .. DriveOsPermissionCodes.OrganizationSequences.All,
                 .. DriveOsPermissionCodes.OrganizationRepresentatives.All,
-                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All
+                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All,
+                .. DriveOsPermissionCodes.CrmLeads.All,
+                .. DriveOsPermissionCodes.CrmActivities.All,
+                .. DriveOsPermissionCodes.CrmAssessments.All,
+                .. DriveOsPermissionCodes.CrmOffers.All,
+                .. DriveOsPermissionCodes.CrmConversions.All
             ],
 
             [DriveOsRoleCodes.OrganizationAdministrator] =
@@ -52,7 +57,12 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.BranchConfigurationOverrides.All,
                 .. DriveOsPermissionCodes.OrganizationSequences.All,
                 .. DriveOsPermissionCodes.OrganizationRepresentatives.All,
-                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All
+                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All,
+                .. DriveOsPermissionCodes.CrmLeads.All,
+                .. DriveOsPermissionCodes.CrmActivities.All,
+                .. DriveOsPermissionCodes.CrmAssessments.All,
+                .. DriveOsPermissionCodes.CrmOffers.All,
+                .. DriveOsPermissionCodes.CrmConversions.All
             ],
 
             [DriveOsRoleCodes.Director] =
@@ -70,7 +80,12 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.BranchConfigurationOverrides.All,
                 .. DriveOsPermissionCodes.OrganizationSequences.All,
                 .. DriveOsPermissionCodes.OrganizationRepresentatives.All,
-                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All
+                .. DriveOsPermissionCodes.OrganizationLegalProfiles.All,
+                .. DriveOsPermissionCodes.CrmLeads.All,
+                .. DriveOsPermissionCodes.CrmActivities.All,
+                .. DriveOsPermissionCodes.CrmAssessments.All,
+                .. DriveOsPermissionCodes.CrmOffers.All,
+                .. DriveOsPermissionCodes.CrmConversions.All
             ],
 
             [DriveOsRoleCodes.BranchManager] =
@@ -97,7 +112,12 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.OrganizationSequences.All,
                 .. DriveOsPermissionCodes.OrganizationRepresentatives.All,
 
-                .. DriveOsPermissionCodes.BranchAssignments.All
+                .. DriveOsPermissionCodes.BranchAssignments.All,
+                .. DriveOsPermissionCodes.CrmLeads.All,
+                .. DriveOsPermissionCodes.CrmActivities.All,
+                .. DriveOsPermissionCodes.CrmAssessments.All,
+                .. DriveOsPermissionCodes.CrmOffers.All,
+                .. DriveOsPermissionCodes.CrmConversions.All
             ],
 
             [DriveOsRoleCodes.PedagogicalManager] =
@@ -107,7 +127,11 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.Branches.StatusHistoryRead,
                 DriveOsPermissionCodes.BranchManagers.Read,
                 DriveOsPermissionCodes.BranchManagers.HistoryRead,
-                .. DriveOsPermissionCodes.BranchAssignments.All
+                .. DriveOsPermissionCodes.BranchAssignments.All,
+                DriveOsPermissionCodes.CrmLeads.Read,
+                DriveOsPermissionCodes.CrmActivities.Read,
+                .. DriveOsPermissionCodes.CrmAssessments.All,
+                DriveOsPermissionCodes.CrmOffers.Read
             ],
 
             [DriveOsRoleCodes.AdministrativeManager] =
@@ -119,7 +143,12 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.BranchManagers.Read,
                 DriveOsPermissionCodes.BranchManagers.HistoryRead,
                 .. DriveOsPermissionCodes.BranchAssignments.All,
-                DriveOsPermissionCodes.OrganizationRepresentatives.Read
+                DriveOsPermissionCodes.OrganizationRepresentatives.Read,
+                .. DriveOsPermissionCodes.CrmLeads.All,
+                .. DriveOsPermissionCodes.CrmActivities.All,
+                .. DriveOsPermissionCodes.CrmAssessments.All,
+                .. DriveOsPermissionCodes.CrmOffers.All,
+                .. DriveOsPermissionCodes.CrmConversions.All
             ],
 
             [DriveOsRoleCodes.Secretary] =
@@ -130,7 +159,15 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.BranchAssignments.Read,
                 DriveOsPermissionCodes.BranchAssignments.Create,
                 DriveOsPermissionCodes.OrganizationSequences.Read,
-                DriveOsPermissionCodes.OrganizationSequences.Reserve
+                DriveOsPermissionCodes.OrganizationSequences.Reserve,
+                DriveOsPermissionCodes.CrmLeads.Read,
+                DriveOsPermissionCodes.CrmLeads.Create,
+                DriveOsPermissionCodes.CrmLeads.Update,
+                DriveOsPermissionCodes.CrmActivities.Read,
+                DriveOsPermissionCodes.CrmActivities.Create,
+                DriveOsPermissionCodes.CrmAssessments.Read,
+                DriveOsPermissionCodes.CrmAssessments.Schedule,
+                DriveOsPermissionCodes.CrmOffers.Read
             ],
 
             [DriveOsRoleCodes.Accountant] =
@@ -151,7 +188,15 @@ public static class DriveOsRolePermissionDefaults
             ],
 
             [DriveOsRoleCodes.SalesAdvisor] =
-                DriveOsPermissionCodes.ReadOnly,
+            [
+                DriveOsPermissionCodes.Organizations.Read,
+                DriveOsPermissionCodes.Branches.Read,
+                .. DriveOsPermissionCodes.CrmLeads.All,
+                .. DriveOsPermissionCodes.CrmActivities.All,
+                .. DriveOsPermissionCodes.CrmAssessments.All,
+                .. DriveOsPermissionCodes.CrmOffers.All,
+                .. DriveOsPermissionCodes.CrmConversions.All
+            ],
 
             [DriveOsRoleCodes.ComplianceOfficer] =
                 DriveOsPermissionCodes.ReadOnly,
@@ -172,7 +217,14 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.Organizations.Read,
                 DriveOsPermissionCodes.Branches.Read,
                 DriveOsPermissionCodes.BranchManagers.Read,
-                DriveOsPermissionCodes.BranchAssignments.Read
+                DriveOsPermissionCodes.BranchAssignments.Read,
+                DriveOsPermissionCodes.CrmLeads.Read,
+                DriveOsPermissionCodes.CrmLeads.Create,
+                DriveOsPermissionCodes.CrmLeads.Update,
+                DriveOsPermissionCodes.CrmActivities.Read,
+                DriveOsPermissionCodes.CrmActivities.Create,
+                DriveOsPermissionCodes.CrmAssessments.Read,
+                DriveOsPermissionCodes.CrmAssessments.Schedule
             ],
 
             [DriveOsRoleCodes.SupportAgent] =
