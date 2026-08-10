@@ -312,6 +312,17 @@ public static class DriveOsPermissionCodes
         public static readonly string[] All = [Read, Create];
     }
 
+    /// <summary>CRM &amp; Admissions: actions planifiées et relances d'un prospect.</summary>
+    public static class CrmTasks
+    {
+        public const string Read = "Crm.Tasks.Read";
+        public const string Create = "Crm.Tasks.Create";
+        public const string Complete = "Crm.Tasks.Complete";
+        public const string Cancel = "Crm.Tasks.Cancel";
+
+        public static readonly string[] All = [Read, Create, Complete, Cancel];
+    }
+
     /// <summary>
     /// CRM & Admissions: initial assessment appointments and assessments.
     /// </summary>
@@ -377,6 +388,7 @@ public static class DriveOsPermissionCodes
         .. OrganizationClosures.All,
         .. CrmLeads.All,
         .. CrmActivities.All,
+        .. CrmTasks.All,
         .. CrmAssessments.All,
         .. CrmOffers.All,
         .. CrmConversions.All
@@ -406,6 +418,7 @@ public static class DriveOsPermissionCodes
         OrganizationClosures.Read,
         CrmLeads.Read,
         CrmActivities.Read,
+        CrmTasks.Read,
         CrmAssessments.Read,
         CrmOffers.Read
     ];
