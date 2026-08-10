@@ -5,7 +5,7 @@
     <Description>LocaGuest application role, permission and policy contracts.</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Itech.Security.Contracts" />
+    <ProjectReference Include="..\Itech.Security.Contracts\Itech.Security.Contracts.csproj" />
   </ItemGroup>
 </Project>
 
