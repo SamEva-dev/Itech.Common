@@ -8,6 +8,25 @@ namespace DriveOS.Security.Contracts;
 /// </summary>
 public static class DriveOsRolePermissionDefaults
 {
+    private static readonly string[] DashboardBranch =
+    [
+        DriveOsPermissionCodes.CrmDashboard.Read,
+        DriveOsPermissionCodes.CrmDashboard.Nominal,
+        DriveOsPermissionCodes.CrmDashboard.BranchScope
+    ];
+
+    private static readonly string[] DashboardBranchFinancial =
+    [
+        .. DashboardBranch,
+        DriveOsPermissionCodes.CrmDashboard.FinancialRead
+    ];
+
+    private static readonly string[] DashboardOrganizationFinancial =
+    [
+        .. DashboardBranchFinancial,
+        DriveOsPermissionCodes.CrmDashboard.OrganizationScope
+    ];
+
     private static readonly IReadOnlyDictionary<
         string,
         IReadOnlyCollection<string>> Matrix =
@@ -39,7 +58,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmActivities.All,
                 .. DriveOsPermissionCodes.CrmAssessments.All,
                 .. DriveOsPermissionCodes.CrmOffers.All,
-                .. DriveOsPermissionCodes.CrmConversions.All
+                .. DriveOsPermissionCodes.CrmConversions.All,
+                .. DashboardOrganizationFinancial
             ],
 
             [DriveOsRoleCodes.OrganizationAdministrator] =
@@ -62,7 +82,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmActivities.All,
                 .. DriveOsPermissionCodes.CrmAssessments.All,
                 .. DriveOsPermissionCodes.CrmOffers.All,
-                .. DriveOsPermissionCodes.CrmConversions.All
+                .. DriveOsPermissionCodes.CrmConversions.All,
+                .. DashboardOrganizationFinancial
             ],
 
             [DriveOsRoleCodes.Director] =
@@ -85,7 +106,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmActivities.All,
                 .. DriveOsPermissionCodes.CrmAssessments.All,
                 .. DriveOsPermissionCodes.CrmOffers.All,
-                .. DriveOsPermissionCodes.CrmConversions.All
+                .. DriveOsPermissionCodes.CrmConversions.All,
+                .. DashboardOrganizationFinancial
             ],
 
             [DriveOsRoleCodes.BranchManager] =
@@ -117,7 +139,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmActivities.All,
                 .. DriveOsPermissionCodes.CrmAssessments.All,
                 .. DriveOsPermissionCodes.CrmOffers.All,
-                .. DriveOsPermissionCodes.CrmConversions.All
+                .. DriveOsPermissionCodes.CrmConversions.All,
+                .. DashboardBranchFinancial
             ],
 
             [DriveOsRoleCodes.PedagogicalManager] =
@@ -131,7 +154,8 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.CrmLeads.Read,
                 DriveOsPermissionCodes.CrmActivities.Read,
                 .. DriveOsPermissionCodes.CrmAssessments.All,
-                DriveOsPermissionCodes.CrmOffers.Read
+                DriveOsPermissionCodes.CrmOffers.Read,
+                .. DashboardBranch
             ],
 
             [DriveOsRoleCodes.AdministrativeManager] =
@@ -148,7 +172,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmActivities.All,
                 .. DriveOsPermissionCodes.CrmAssessments.All,
                 .. DriveOsPermissionCodes.CrmOffers.All,
-                .. DriveOsPermissionCodes.CrmConversions.All
+                .. DriveOsPermissionCodes.CrmConversions.All,
+                .. DashboardOrganizationFinancial
             ],
 
             [DriveOsRoleCodes.Secretary] =
@@ -167,7 +192,8 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.CrmActivities.Create,
                 DriveOsPermissionCodes.CrmAssessments.Read,
                 DriveOsPermissionCodes.CrmAssessments.Schedule,
-                DriveOsPermissionCodes.CrmOffers.Read
+                DriveOsPermissionCodes.CrmOffers.Read,
+                .. DashboardBranch
             ],
 
             [DriveOsRoleCodes.Accountant] =
@@ -195,7 +221,8 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmActivities.All,
                 .. DriveOsPermissionCodes.CrmAssessments.All,
                 .. DriveOsPermissionCodes.CrmOffers.All,
-                .. DriveOsPermissionCodes.CrmConversions.All
+                .. DriveOsPermissionCodes.CrmConversions.All,
+                .. DashboardBranch
             ],
 
             [DriveOsRoleCodes.ComplianceOfficer] =
@@ -224,7 +251,8 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.CrmActivities.Read,
                 DriveOsPermissionCodes.CrmActivities.Create,
                 DriveOsPermissionCodes.CrmAssessments.Read,
-                DriveOsPermissionCodes.CrmAssessments.Schedule
+                DriveOsPermissionCodes.CrmAssessments.Schedule,
+                .. DashboardBranch
             ],
 
             [DriveOsRoleCodes.SupportAgent] =

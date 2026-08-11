@@ -368,6 +368,33 @@ public static class DriveOsPermissionCodes
         public static readonly string[] All = [ConvertToStudent];
     }
 
+    /// <summary>
+    /// CRM dashboard: access, demonstrator states, data scopes and financial values.
+    /// </summary>
+    public static class CrmDashboard
+    {
+        public const string Read = "Crm.Dashboard.Read";
+        public const string Nominal = "Crm.Dashboard.Tabs.Nominal";
+        public const string Empty = "Crm.Dashboard.Tabs.Empty";
+        public const string PartialData = "Crm.Dashboard.Tabs.PartialData";
+        public const string RestrictedFinancial = "Crm.Dashboard.Tabs.RestrictedFinancial";
+        public const string ActiveFilters = "Crm.Dashboard.Tabs.ActiveFilters";
+        public const string IntegrationIncident = "Crm.Dashboard.Tabs.IntegrationIncident";
+        public const string Loading = "Crm.Dashboard.Tabs.Loading";
+        public const string WidgetError = "Crm.Dashboard.Tabs.WidgetError";
+        public const string BranchScope = "Crm.Dashboard.Scope.Branch";
+        public const string OrganizationScope = "Crm.Dashboard.Scope.Organization";
+        public const string NetworkScope = "Crm.Dashboard.Scope.Network";
+        public const string FinancialRead = "Crm.Dashboard.Financial.Read";
+
+        public static readonly string[] All =
+        [
+            Read, Nominal, Empty, PartialData, RestrictedFinancial,
+            ActiveFilters, IntegrationIncident, Loading, WidgetError,
+            BranchScope, OrganizationScope, NetworkScope, FinancialRead
+        ];
+    }
+
 
     /// <summary>
     /// Every DriveOS permission delivered from ORG-001 through ORG-013.
@@ -391,7 +418,8 @@ public static class DriveOsPermissionCodes
         .. CrmTasks.All,
         .. CrmAssessments.All,
         .. CrmOffers.All,
-        .. CrmConversions.All
+        .. CrmConversions.All,
+        .. CrmDashboard.All
     ];
 
     /// <summary>
@@ -420,7 +448,10 @@ public static class DriveOsPermissionCodes
         CrmActivities.Read,
         CrmTasks.Read,
         CrmAssessments.Read,
-        CrmOffers.Read
+        CrmOffers.Read,
+        CrmDashboard.Read,
+        CrmDashboard.Nominal,
+        CrmDashboard.BranchScope
     ];
 
     /// <summary>

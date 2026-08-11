@@ -37,4 +37,24 @@ public sealed class CatalogTests
                 "OrganizationSequences.Archive"
             ],
             DriveOsPermissionCodes.OrganizationSequences.All);
+
+    [Fact]
+    public void Crm_dashboard_permission_codes_are_stable() =>
+        Assert.Equal(
+            [
+                "Crm.Dashboard.Read",
+                "Crm.Dashboard.Tabs.Nominal",
+                "Crm.Dashboard.Tabs.Empty",
+                "Crm.Dashboard.Tabs.PartialData",
+                "Crm.Dashboard.Tabs.RestrictedFinancial",
+                "Crm.Dashboard.Tabs.ActiveFilters",
+                "Crm.Dashboard.Tabs.IntegrationIncident",
+                "Crm.Dashboard.Tabs.Loading",
+                "Crm.Dashboard.Tabs.WidgetError",
+                "Crm.Dashboard.Scope.Branch",
+                "Crm.Dashboard.Scope.Organization",
+                "Crm.Dashboard.Scope.Network",
+                "Crm.Dashboard.Financial.Read"
+            ],
+            DriveOsPermissionCodes.CrmDashboard.All);
 }
