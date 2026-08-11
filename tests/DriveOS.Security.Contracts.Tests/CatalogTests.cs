@@ -57,4 +57,10 @@ public sealed class CatalogTests
                 "Crm.Dashboard.Financial.Read"
             ],
             DriveOsPermissionCodes.CrmDashboard.All);
+
+    [Fact]
+    public void Network_permission_codes_are_stable() =>
+        Assert.Equal(
+            ["Networks.Read", "Networks.Manage"],
+            DriveOsPermissionCodes.Networks.All);
 }

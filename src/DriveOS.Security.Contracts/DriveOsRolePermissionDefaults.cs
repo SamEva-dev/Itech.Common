@@ -43,6 +43,7 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.Organizations.StatusHistoryRead,
                 DriveOsPermissionCodes.Organizations.SubmitForActivation,
                 DriveOsPermissionCodes.Organizations.Close,
+                .. DriveOsPermissionCodes.Networks.All,
 
                 .. DriveOsPermissionCodes.Branches.All,
                 .. DriveOsPermissionCodes.BranchManagers.All,
@@ -67,6 +68,7 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.Organizations.Read,
                 DriveOsPermissionCodes.Organizations.StatusHistoryRead,
                 DriveOsPermissionCodes.Organizations.SubmitForActivation,
+                .. DriveOsPermissionCodes.Networks.All,
 
                 .. DriveOsPermissionCodes.Branches.All,
                 .. DriveOsPermissionCodes.BranchManagers.All,

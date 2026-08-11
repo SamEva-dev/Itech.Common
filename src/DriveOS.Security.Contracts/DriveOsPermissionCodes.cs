@@ -44,6 +44,13 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+    public static class Networks
+    {
+        public const string Read = "Networks.Read";
+        public const string Manage = "Networks.Manage";
+        public static readonly string[] All = [Read, Manage];
+    }
+
     /// <summary>
     /// ORG-003 and ORG-004: branch CRUD, primary branch and lifecycle.
     /// </summary>
@@ -402,6 +409,7 @@ public static class DriveOsPermissionCodes
     public static readonly string[] All =
     [
         .. Organizations.All,
+        .. Networks.All,
         .. Branches.All,
         .. BranchManagers.All,
         .. BranchAssignments.All,
@@ -428,6 +436,7 @@ public static class DriveOsPermissionCodes
     public static readonly string[] ReadOnly =
     [
         Organizations.Read,
+        Networks.Read,
         Organizations.StatusHistoryRead,
         Branches.Read,
         Branches.StatusHistoryRead,
