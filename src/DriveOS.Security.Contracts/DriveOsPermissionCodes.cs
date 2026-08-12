@@ -343,11 +343,16 @@ public static class DriveOsPermissionCodes
         public const string Complete = "Crm.Assessments.Complete";
         public const string Submit = "Crm.Assessments.Submit";
         public const string CreateNotes = "Crm.AssessmentNotes.Create";
+        public const string ResultRead = "Crm.Assessments.Result.Read";
+        public const string ResultCreate = "Crm.Assessments.Result.Create";
+        public const string ResultValidate = "Crm.Assessments.Result.Validate";
+        public const string ResultShare = "Crm.Assessments.Result.Share";
         public const string Cancel = "Crm.Assessments.Cancel";
 
         public static readonly string[] All =
         [
-            Read, Create, Schedule, ReadAssigned, Start, Complete, Submit, CreateNotes, Cancel
+            Read, Create, Schedule, ReadAssigned, Start, Complete, Submit, CreateNotes,
+            ResultRead, ResultCreate, ResultValidate, ResultShare, Cancel
         ];
     }
 
@@ -460,6 +465,7 @@ public static class DriveOsPermissionCodes
         CrmActivities.Read,
         CrmTasks.Read,
         CrmAssessments.Read,
+        CrmAssessments.ResultRead,
         CrmOffers.Read,
         CrmDashboard.Read,
         CrmDashboard.Nominal,

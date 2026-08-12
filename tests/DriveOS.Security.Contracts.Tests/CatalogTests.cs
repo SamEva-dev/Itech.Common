@@ -70,6 +70,10 @@ public sealed class CatalogTests
                 "Crm.Assessments.Complete",
                 "Crm.Assessments.Submit",
                 "Crm.AssessmentNotes.Create",
+                "Crm.Assessments.Result.Read",
+                "Crm.Assessments.Result.Create",
+                "Crm.Assessments.Result.Validate",
+                "Crm.Assessments.Result.Share",
                 "Crm.Assessments.Cancel"
             ],
             DriveOsPermissionCodes.CrmAssessments.All);
