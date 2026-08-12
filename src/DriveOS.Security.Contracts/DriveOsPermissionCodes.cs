@@ -306,6 +306,9 @@ public static class DriveOsPermissionCodes
         public const string Reopen = "Crm.Leads.Reopen";
         public const string ReferToPartner = "Crm.Leads.ReferToPartner";
         public const string Export = "Crm.Leads.Export";
+        public const string ManageSavedViews = "Crm.Leads.SavedViews.Manage";
+        public const string ShareSavedViews = "Crm.Leads.SavedViews.Share";
+        public const string BulkManage = "Crm.Leads.Bulk.Manage";
         public const string TabNominal = "Crm.Leads.Tabs.Nominal";
         public const string TabEmpty = "Crm.Leads.Tabs.Empty";
         public const string TabNoResults = "Crm.Leads.Tabs.NoResults";
@@ -321,6 +324,7 @@ public static class DriveOsPermissionCodes
         [
             Read, Create, Update, Assign, Qualify, ChangeStatus,
             MarkLost, SetDormant, Reopen, ReferToPartner, Export,
+            ManageSavedViews, ShareSavedViews, BulkManage,
             TabNominal, TabEmpty, TabNoResults, TabLoading, TabError,
             TabPartialData, TabReadOnly, TabLimitedPermission, TabDuplicates, TabStaleData
         ];
