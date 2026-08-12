@@ -338,12 +338,16 @@ public static class DriveOsPermissionCodes
         public const string Read = "Crm.Assessments.Read";
         public const string Create = "Crm.Assessments.Create";
         public const string Schedule = "Crm.Assessments.Schedule";
+        public const string ReadAssigned = "Crm.Assessments.ReadAssigned";
+        public const string Start = "Crm.Assessments.Start";
         public const string Complete = "Crm.Assessments.Complete";
+        public const string Submit = "Crm.Assessments.Submit";
+        public const string CreateNotes = "Crm.AssessmentNotes.Create";
         public const string Cancel = "Crm.Assessments.Cancel";
 
         public static readonly string[] All =
         [
-            Read, Create, Schedule, Complete, Cancel
+            Read, Create, Schedule, ReadAssigned, Start, Complete, Submit, CreateNotes, Cancel
         ];
     }
 
@@ -409,7 +413,6 @@ public static class DriveOsPermissionCodes
     public static readonly string[] All =
     [
         .. Organizations.All,
-        .. Networks.All,
         .. Branches.All,
         .. BranchManagers.All,
         .. BranchAssignments.All,
@@ -436,7 +439,6 @@ public static class DriveOsPermissionCodes
     public static readonly string[] ReadOnly =
     [
         Organizations.Read,
-        Networks.Read,
         Organizations.StatusHistoryRead,
         Branches.Read,
         Branches.StatusHistoryRead,
