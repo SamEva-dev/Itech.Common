@@ -305,6 +305,7 @@ public static class DriveOsPermissionCodes
         public const string SetDormant = "Crm.Leads.SetDormant";
         public const string Reopen = "Crm.Leads.Reopen";
         public const string ReferToPartner = "Crm.Leads.ReferToPartner";
+        public const string Export = "Crm.Leads.Export";
         public const string TabNominal = "Crm.Leads.Tabs.Nominal";
         public const string TabEmpty = "Crm.Leads.Tabs.Empty";
         public const string TabNoResults = "Crm.Leads.Tabs.NoResults";
@@ -319,7 +320,7 @@ public static class DriveOsPermissionCodes
         public static readonly string[] All =
         [
             Read, Create, Update, Assign, Qualify, ChangeStatus,
-            MarkLost, SetDormant, Reopen, ReferToPartner,
+            MarkLost, SetDormant, Reopen, ReferToPartner, Export,
             TabNominal, TabEmpty, TabNoResults, TabLoading, TabError,
             TabPartialData, TabReadOnly, TabLimitedPermission, TabDuplicates, TabStaleData
         ];
