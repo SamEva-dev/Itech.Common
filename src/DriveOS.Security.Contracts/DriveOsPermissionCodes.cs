@@ -301,10 +301,15 @@ public static class DriveOsPermissionCodes
         public const string Assign = "Crm.Leads.Assign";
         public const string Qualify = "Crm.Leads.Qualify";
         public const string ChangeStatus = "Crm.Leads.ChangeStatus";
+        public const string MarkLost = "Crm.Leads.MarkLost";
+        public const string SetDormant = "Crm.Leads.SetDormant";
+        public const string Reopen = "Crm.Leads.Reopen";
+        public const string ReferToPartner = "Crm.Leads.ReferToPartner";
 
         public static readonly string[] All =
         [
-            Read, Create, Update, Assign, Qualify, ChangeStatus
+            Read, Create, Update, Assign, Qualify, ChangeStatus,
+            MarkLost, SetDormant, Reopen, ReferToPartner
         ];
     }
 
