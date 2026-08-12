@@ -364,13 +364,19 @@ public static class DriveOsPermissionCodes
         public const string Read = "Crm.Offers.Read";
         public const string Create = "Crm.Offers.Create";
         public const string Update = "Crm.Offers.Update";
+        public const string UpdateDraft = "Crm.Offers.UpdateDraft";
+        public const string SubmitForApproval = "Crm.Offers.SubmitForApproval";
+        public const string ApplyDiscountWithinLimit = "Crm.Discounts.ApplyWithinLimit";
+        public const string RequestDiscountApproval = "Crm.Discounts.RequestApproval";
         public const string Send = "Crm.Offers.Send";
         public const string Accept = "Crm.Offers.Accept";
         public const string Reject = "Crm.Offers.Reject";
 
         public static readonly string[] All =
         [
-            Read, Create, Update, Send, Accept, Reject
+            Read, Create, Update, UpdateDraft, SubmitForApproval,
+            ApplyDiscountWithinLimit, RequestDiscountApproval,
+            Send, Accept, Reject
         ];
     }
 
