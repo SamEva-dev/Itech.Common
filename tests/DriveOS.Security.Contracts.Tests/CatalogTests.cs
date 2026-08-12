@@ -59,8 +59,18 @@ public sealed class CatalogTests
             DriveOsPermissionCodes.CrmDashboard.All);
 
     [Fact]
-    public void Network_permission_codes_are_stable() =>
+    public void Crm_assessment_execution_permission_codes_are_stable() =>
         Assert.Equal(
-            ["Networks.Read", "Networks.Manage"],
-            DriveOsPermissionCodes.Networks.All);
+            [
+                "Crm.Assessments.Read",
+                "Crm.Assessments.Create",
+                "Crm.Assessments.Schedule",
+                "Crm.Assessments.ReadAssigned",
+                "Crm.Assessments.Start",
+                "Crm.Assessments.Complete",
+                "Crm.Assessments.Submit",
+                "Crm.AssessmentNotes.Create",
+                "Crm.Assessments.Cancel"
+            ],
+            DriveOsPermissionCodes.CrmAssessments.All);
 }

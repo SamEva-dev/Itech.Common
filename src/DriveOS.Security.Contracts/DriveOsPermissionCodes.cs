@@ -413,6 +413,7 @@ public static class DriveOsPermissionCodes
     public static readonly string[] All =
     [
         .. Organizations.All,
+        .. Networks.All,
         .. Branches.All,
         .. BranchManagers.All,
         .. BranchAssignments.All,
