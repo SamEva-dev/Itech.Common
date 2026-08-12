@@ -372,12 +372,16 @@ public static class DriveOsPermissionCodes
         public const string Send = "Crm.Offers.Send";
         public const string Accept = "Crm.Offers.Accept";
         public const string Reject = "Crm.Offers.Reject";
+        public const string Revise = "Crm.Offers.Revise";
+        public const string Withdraw = "Crm.Offers.Withdraw";
+        public const string MarkAccepted = "Crm.Offers.MarkAccepted";
+        public const string MarkRejected = "Crm.Offers.MarkRejected";
 
         public static readonly string[] All =
         [
             Read, Create, Update, UpdateDraft, SubmitForApproval, Approve,
             ApplyDiscountWithinLimit, RequestDiscountApproval,
-            Send, Accept, Reject
+            Send, Accept, Reject, Revise, Withdraw, MarkAccepted, MarkRejected
         ];
     }
 
