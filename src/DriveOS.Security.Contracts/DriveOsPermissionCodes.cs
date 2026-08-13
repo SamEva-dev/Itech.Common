@@ -337,8 +337,24 @@ public static class DriveOsPermissionCodes
     {
         public const string Read = "Crm.Activities.Read";
         public const string Create = "Crm.Activities.Create";
+        public const string CreateUnattached = "Crm.Activities.CreateUnattached";
+        public const string Attach = "Crm.Activities.Attach";
+        public const string Invalidate = "Crm.Activities.Invalidate";
+        public const string SyncManage = "Crm.Activities.Sync.Manage";
+        public const string InternalNotesRead = "Crm.Activities.InternalNotes.Read";
+        public const string TabNominal = "Crm.Activities.Tabs.Nominal";
+        public const string TabEmpty = "Crm.Activities.Tabs.Empty";
+        public const string TabUnattached = "Crm.Activities.Tabs.Unattached";
+        public const string TabImported = "Crm.Activities.Tabs.Imported";
+        public const string TabSyncError = "Crm.Activities.Tabs.SyncError";
+        public const string TabReadOnly = "Crm.Activities.Tabs.ReadOnly";
+        public const string TabDuplicate = "Crm.Activities.Tabs.Duplicate";
+        public const string TabLoading = "Crm.Activities.Tabs.Loading";
+        public const string TabPartialError = "Crm.Activities.Tabs.PartialError";
 
-        public static readonly string[] All = [Read, Create];
+        public static readonly string[] All = [Read, Create, CreateUnattached, Attach, Invalidate,
+            SyncManage, InternalNotesRead, TabNominal, TabEmpty, TabUnattached, TabImported,
+            TabSyncError, TabReadOnly, TabDuplicate, TabLoading, TabPartialError];
     }
 
     /// <summary>CRM &amp; Admissions: actions planifiées et relances d'un prospect.</summary>
