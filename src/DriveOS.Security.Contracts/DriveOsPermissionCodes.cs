@@ -342,6 +342,7 @@ public static class DriveOsPermissionCodes
         public const string Invalidate = "Crm.Activities.Invalidate";
         public const string SyncManage = "Crm.Activities.Sync.Manage";
         public const string InternalNotesRead = "Crm.Activities.InternalNotes.Read";
+        public const string InternalNotesCreate = "Crm.Activities.InternalNotes.Create";
         public const string TabNominal = "Crm.Activities.Tabs.Nominal";
         public const string TabEmpty = "Crm.Activities.Tabs.Empty";
         public const string TabUnattached = "Crm.Activities.Tabs.Unattached";
@@ -353,7 +354,7 @@ public static class DriveOsPermissionCodes
         public const string TabPartialError = "Crm.Activities.Tabs.PartialError";
 
         public static readonly string[] All = [Read, Create, CreateUnattached, Attach, Invalidate,
-            SyncManage, InternalNotesRead, TabNominal, TabEmpty, TabUnattached, TabImported,
+            SyncManage, InternalNotesRead, InternalNotesCreate, TabNominal, TabEmpty, TabUnattached, TabImported,
             TabSyncError, TabReadOnly, TabDuplicate, TabLoading, TabPartialError];
     }
 
