@@ -472,6 +472,34 @@ public static class DriveOsPermissionCodes
         public static readonly string[] All = [Read];
     }
 
+    /// <summary>Student Administration: consultation des élèves.</summary>
+    public static class Students
+    {
+        public const string Read = "Students.Read";
+        public const string Create = "Students.Create";
+        public static readonly string[] All = [Read, Create];
+    }
+
+    /// <summary>Student enrollment lifecycle.</summary>
+    public static class Enrollments
+    {
+        public const string Read = "Enrollments.Read";
+        public const string Create = "Enrollments.Create";
+        public static readonly string[] All = [Read, Create];
+    }
+
+    public static class Pedagogy
+    {
+        public const string SummaryRead = "Pedagogy.Summary.Read";
+        public static readonly string[] All = [SummaryRead];
+    }
+
+    public static class Finance
+    {
+        public const string SummaryRead = "Finance.Summary.Read";
+        public static readonly string[] All = [SummaryRead];
+    }
+
 
     /// <summary>
     /// Every DriveOS permission delivered from ORG-001 through ORG-013.
@@ -498,6 +526,10 @@ public static class DriveOsPermissionCodes
         .. CrmOffers.All,
         .. CrmConversions.All,
         .. CrmDashboard.All,
+        .. Students.All,
+        .. Enrollments.All,
+        .. Pedagogy.All,
+        .. Finance.All,
         .. StudentsDashboard.All
     ];
 
@@ -532,6 +564,10 @@ public static class DriveOsPermissionCodes
         CrmDashboard.Read,
         CrmDashboard.Nominal,
         CrmDashboard.BranchScope,
+        Students.Read,
+        Enrollments.Read,
+        Pedagogy.SummaryRead,
+        Finance.SummaryRead,
         StudentsDashboard.Read
     ];
 
