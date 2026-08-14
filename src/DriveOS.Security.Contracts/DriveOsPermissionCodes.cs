@@ -344,6 +344,9 @@ public static class DriveOsPermissionCodes
         public const string Import = "Crm.Activities.Import";
         public const string InternalNotesRead = "Crm.Activities.InternalNotes.Read";
         public const string InternalNotesCreate = "Crm.Activities.InternalNotes.Create";
+        public const string AttachmentsUpload = "Crm.Activities.Attachments.Upload";
+        public const string AttachmentsRead = "Crm.Activities.Attachments.Read";
+        public const string AttachmentsDelete = "Crm.Activities.Attachments.Delete";
         public const string TabNominal = "Crm.Activities.Tabs.Nominal";
         public const string TabEmpty = "Crm.Activities.Tabs.Empty";
         public const string TabUnattached = "Crm.Activities.Tabs.Unattached";
