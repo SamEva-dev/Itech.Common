@@ -465,6 +465,13 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+    /// <summary>Students dashboard operational access.</summary>
+    public static class StudentsDashboard
+    {
+        public const string Read = "Students.Dashboard.Read";
+        public static readonly string[] All = [Read];
+    }
+
 
     /// <summary>
     /// Every DriveOS permission delivered from ORG-001 through ORG-013.
@@ -490,7 +497,8 @@ public static class DriveOsPermissionCodes
         .. CrmAssessments.All,
         .. CrmOffers.All,
         .. CrmConversions.All,
-        .. CrmDashboard.All
+        .. CrmDashboard.All,
+        .. StudentsDashboard.All
     ];
 
     /// <summary>
@@ -523,7 +531,8 @@ public static class DriveOsPermissionCodes
         CrmOffers.Read,
         CrmDashboard.Read,
         CrmDashboard.Nominal,
-        CrmDashboard.BranchScope
+        CrmDashboard.BranchScope,
+        StudentsDashboard.Read
     ];
 
     /// <summary>
