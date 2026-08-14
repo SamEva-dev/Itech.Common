@@ -477,7 +477,16 @@ public static class DriveOsPermissionCodes
     {
         public const string Read = "Students.Read";
         public const string Create = "Students.Create";
-        public static readonly string[] All = [Read, Create];
+        public const string IdentityRead = "Students.Identity.Read";
+        public const string IdentityUpdate = "Students.Identity.Update";
+        public const string IdentityVerify = "Students.Identity.Verify";
+        public static readonly string[] All = [Read, Create, IdentityRead, IdentityUpdate, IdentityVerify];
+    }
+
+    public static class OwnProfile
+    {
+        public const string UpdateAllowedFields = "OwnProfile.UpdateAllowedFields";
+        public static readonly string[] All = [UpdateAllowedFields];
     }
 
     /// <summary>Student enrollment lifecycle.</summary>
@@ -527,6 +536,7 @@ public static class DriveOsPermissionCodes
         .. CrmConversions.All,
         .. CrmDashboard.All,
         .. Students.All,
+        .. OwnProfile.All,
         .. Enrollments.All,
         .. Pedagogy.All,
         .. Finance.All,
@@ -565,6 +575,7 @@ public static class DriveOsPermissionCodes
         CrmDashboard.Nominal,
         CrmDashboard.BranchScope,
         Students.Read,
+        Students.IdentityRead,
         Enrollments.Read,
         Pedagogy.SummaryRead,
         Finance.SummaryRead,
