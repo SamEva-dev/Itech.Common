@@ -480,7 +480,20 @@ public static class DriveOsPermissionCodes
         public const string IdentityRead = "Students.Identity.Read";
         public const string IdentityUpdate = "Students.Identity.Update";
         public const string IdentityVerify = "Students.Identity.Verify";
-        public static readonly string[] All = [Read, Create, IdentityRead, IdentityUpdate, IdentityVerify];
+        public const string AdministrationRead = "Students.Administration.Read";
+        public const string AdministrationUpdate = "Students.Administration.Update";
+        public const string TransferInternal = "Students.TransferInternal";
+        public const string TransferExternal = "Students.TransferExternal";
+        public const string Suspend = "Students.Suspend";
+        public const string SuspendFinancial = "Students.SuspendFinancial";
+        public const string SuspendPedagogical = "Students.SuspendPedagogical";
+        public const string Reactivate = "Students.Reactivate";
+        public const string Close = "Students.Close";
+        public const string Archive = "Students.Archive";
+        public const string Reopen = "Students.Reopen";
+        public static readonly string[] All = [Read, Create, IdentityRead, IdentityUpdate, IdentityVerify,
+            AdministrationRead, AdministrationUpdate, TransferInternal, TransferExternal,
+            Suspend, SuspendFinancial, SuspendPedagogical, Reactivate, Close, Archive, Reopen];
     }
 
     public static class OwnProfile
@@ -494,19 +507,131 @@ public static class DriveOsPermissionCodes
     {
         public const string Read = "Enrollments.Read";
         public const string Create = "Enrollments.Create";
-        public static readonly string[] All = [Read, Create];
+        public const string ChecklistRead = "Enrollments.Checklist.Read";
+        public const string ChecklistUpdate = "Enrollments.Checklist.Update";
+        public const string Activate = "Enrollments.Activate";
+        public const string Reactivate = "Enrollments.Reactivate";
+        public static readonly string[] All = [Read, Create, ChecklistRead, ChecklistUpdate, Activate, Reactivate];
     }
 
     public static class Pedagogy
     {
         public const string SummaryRead = "Pedagogy.Summary.Read";
-        public static readonly string[] All = [SummaryRead];
+        public const string ReviewRequest = "Pedagogy.ReviewRequest";
+        public static readonly string[] All = [SummaryRead, ReviewRequest];
+    }
+
+    public static class Compliance
+    {
+        public const string Read = "Compliance.Read";
+        public static readonly string[] All = [Read];
     }
 
     public static class Finance
     {
         public const string SummaryRead = "Finance.Summary.Read";
-        public static readonly string[] All = [SummaryRead];
+        public const string TransferReview = "Finance.TransferReview";
+        public const string TransferResolution = "Finance.TransferResolution";
+        public const string CloseStudentAccount = "Finance.CloseStudentAccount";
+        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount];
+    }
+
+    public static class Contracts
+    {
+        public const string Terminate = "Contracts.Terminate";
+        public static readonly string[] All = [Terminate];
+    }
+
+    public static class Partners
+    {
+        public const string StudentsTransfer = "Partners.Students.Transfer";
+        public static readonly string[] All = [StudentsTransfer];
+    }
+
+    public static class StudentDataGrants
+    {
+        public const string Create = "StudentDataGrants.Create";
+        public static readonly string[] All = [Create];
+    }
+
+    public static class Planning
+    {
+        public const string Reassign = "Planning.Reassign";
+        public static readonly string[] All = [Reassign];
+    }
+
+    public static class Documents
+    {
+        public const string Validate = "Documents.Validate";
+        public static readonly string[] All = [Validate];
+    }
+
+    public static class ComplianceExceptions
+    {
+        public const string Request = "Compliance.Exceptions.Request";
+        public const string Approve = "Compliance.Exceptions.Approve";
+        public static readonly string[] All = [Request, Approve];
+    }
+
+    public static class Guardians
+    {
+        public const string Read = "Guardians.Read";
+        public const string Create = "Guardians.Create";
+        public const string Update = "Guardians.Update";
+        public const string Revoke = "Guardians.Revoke";
+        public const string Invite = "Guardians.Invite";
+        public static readonly string[] All = [Read, Create, Update, Revoke, Invite];
+    }
+
+    public static class StudentRelationships
+    {
+        public const string Read = "StudentRelationships.Read";
+        public const string Create = "StudentRelationships.Create";
+        public const string Update = "StudentRelationships.Update";
+        public const string Revoke = "StudentRelationships.Revoke";
+        public const string ManagePayers = "Finance.Payers.Manage";
+        public static readonly string[] All = [Read, Create, Update, Revoke, ManagePayers];
+    }
+
+    public static class StudentDocuments
+    {
+        public const string Read = "StudentDocuments.Read";
+        public const string Request = "StudentDocuments.Request";
+        public const string Upload = "StudentDocuments.Upload";
+        public const string Validate = "StudentDocuments.Validate";
+        public const string Download = "StudentDocuments.Download";
+        public const string Share = "StudentDocuments.Share";
+        public static readonly string[] All = [Read, Request, Upload, Validate, Download, Share];
+    }
+
+    public static class StudentStatuses
+    {
+        public const string Read = "StudentStatuses.Read";
+        public static readonly string[] All = [Read];
+    }
+
+    public static class StudentBlocks
+    {
+        public const string Apply = "StudentBlocks.Apply";
+        public const string Release = "StudentBlocks.Release";
+        public const string Override = "StudentBlocks.Override";
+        public static readonly string[] All = [Apply, Release, Override];
+    }
+
+    public static class StudentBranches
+    {
+        public const string Read = "Students.Branches.Read";
+        public const string Assign = "Students.Branches.Assign";
+        public const string ChangePrimary = "Students.Branches.ChangePrimary";
+        public static readonly string[] All = [Read, Assign, ChangePrimary];
+    }
+
+    public static class StudentInstructors
+    {
+        public const string Read = "Students.Instructors.Read";
+        public const string Assign = "Students.Instructors.Assign";
+        public const string Replace = "Students.Instructors.Replace";
+        public static readonly string[] All = [Read, Assign, Replace];
     }
 
 
@@ -539,7 +664,21 @@ public static class DriveOsPermissionCodes
         .. OwnProfile.All,
         .. Enrollments.All,
         .. Pedagogy.All,
+        .. Compliance.All,
         .. Finance.All,
+        .. Contracts.All,
+        .. Partners.All,
+        .. StudentDataGrants.All,
+        .. Planning.All,
+        .. Documents.All,
+        .. ComplianceExceptions.All,
+        .. Guardians.All,
+        .. StudentRelationships.All,
+        .. StudentDocuments.All,
+        .. StudentStatuses.All,
+        .. StudentBlocks.All,
+        .. StudentBranches.All,
+        .. StudentInstructors.All,
         .. StudentsDashboard.All
     ];
 
@@ -576,7 +715,16 @@ public static class DriveOsPermissionCodes
         CrmDashboard.BranchScope,
         Students.Read,
         Students.IdentityRead,
+        Students.AdministrationRead,
+        Guardians.Read,
+        StudentRelationships.Read,
+        StudentDocuments.Read,
+        StudentDocuments.Download,
+        StudentStatuses.Read,
+        StudentBranches.Read,
+        StudentInstructors.Read,
         Enrollments.Read,
+        Enrollments.ChecklistRead,
         Pedagogy.SummaryRead,
         Finance.SummaryRead,
         StudentsDashboard.Read
