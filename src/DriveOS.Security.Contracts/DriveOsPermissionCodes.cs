@@ -538,8 +538,26 @@ public static class DriveOsPermissionCodes
 
     public static class Contracts
     {
+        public const string Read = "Contracts.Read";
+        public const string Create = "Contracts.Create";
+        public const string Generate = "Contracts.Generate";
+        public const string SignatoriesManage = "Contracts.Signatories.Manage";
+        public const string SignatoriesVerify = "Contracts.Signatories.Verify";
+        public const string SignatureSend = "Contracts.Signature.Send";
+        public const string SignatureRecord = "Contracts.Signature.Record";
+        public const string Activate = "Contracts.Activate";
+        public const string AmendmentsManage = "Contracts.Amendments.Manage";
+        public const string AmendmentsSignatureRecord = "Contracts.Amendments.Signature.Record";
+        public const string AmendmentsApply = "Contracts.Amendments.Apply";
+        public const string Suspend = "Contracts.Suspend";
         public const string Terminate = "Contracts.Terminate";
-        public static readonly string[] All = [Terminate];
+        public const string Complete = "Contracts.Complete";
+        public const string Expire = "Contracts.Expire";
+        public const string DocumentsRead = "Contracts.Documents.Read";
+        public const string DocumentsUpload = "Contracts.Documents.Upload";
+        public const string DocumentsArchive = "Contracts.Documents.Archive";
+        public const string AuditRead = "Contracts.Audit.Read";
+        public static readonly string[] All = [Read, Create, Generate, SignatoriesManage, SignatoriesVerify, SignatureSend, SignatureRecord, Activate, AmendmentsManage, AmendmentsSignatureRecord, AmendmentsApply, Suspend, Terminate, Complete, Expire, DocumentsRead, DocumentsUpload, DocumentsArchive, AuditRead];
     }
 
     public static class Partners
