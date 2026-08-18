@@ -25,6 +25,6 @@
             Pack="true"
             PackagePath="\" />
     <PackageVersion Include="Itech.Security.Contracts"
-                    Version="3.4.1" />
+                    Version="3.4.2" />
   </ItemGroup>
 </Project>
