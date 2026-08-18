@@ -541,7 +541,20 @@ public static class DriveOsPermissionCodes
         public const string InvoicesIssue = "Finance.Invoices.Issue";
         public const string InstallmentsRead = "Finance.Installments.Read";
         public const string InstallmentsManage = "Finance.Installments.Manage";
-        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage];
+        public const string PaymentsRead = "Finance.Payments.Read";
+        public const string PaymentsCreate = "Finance.Payments.Create";
+        public const string PaymentsRecord = "Finance.Payments.Record";
+        public const string PaymentsAllocate = "Finance.Payments.Allocate";
+        public const string CollectionsRead = "Finance.Collections.Read";
+        public const string CollectionsManage = "Finance.Collections.Manage";
+        public const string FundingPlansRead = "Finance.FundingPlans.Read";
+        public const string FundingPlansManage = "Finance.FundingPlans.Manage";
+        public const string FundingPlansApprove = "Finance.FundingPlans.Approve";
+        public const string BillingPartiesRead = "Finance.BillingParties.Read";
+        public const string BillingPartiesManage = "Finance.BillingParties.Manage";
+        public const string TrainingCreditsRead = "Finance.TrainingCredits.Read";
+        public const string TrainingCreditsManage = "Finance.TrainingCredits.Manage";
+        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage];
     }
 
     public static class Contracts
