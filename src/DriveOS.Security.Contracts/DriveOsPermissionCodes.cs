@@ -554,7 +554,14 @@ public static class DriveOsPermissionCodes
         public const string BillingPartiesManage = "Finance.BillingParties.Manage";
         public const string TrainingCreditsRead = "Finance.TrainingCredits.Read";
         public const string TrainingCreditsManage = "Finance.TrainingCredits.Manage";
-        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage];
+        public const string RefundsRead = "Finance.Refunds.Read";
+        public const string RefundsRequest = "Finance.Refunds.Request";
+        public const string RefundsApprove = "Finance.Refunds.Approve";
+        public const string RefundsProcess = "Finance.Refunds.Process";
+        public const string CreditNotesRead = "Finance.CreditNotes.Read";
+        public const string CreditNotesCreate = "Finance.CreditNotes.Create";
+        public const string CreditNotesIssue = "Finance.CreditNotes.Issue";
+        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage, RefundsRead, RefundsRequest, RefundsApprove, RefundsProcess, CreditNotesRead, CreditNotesCreate, CreditNotesIssue];
     }
 
     public static class Contracts
