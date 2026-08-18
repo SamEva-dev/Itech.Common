@@ -518,10 +518,22 @@ public static class DriveOsPermissionCodes
     {
         public const string SummaryRead = "Pedagogy.Summary.Read";
         public const string ReviewRequest = "Pedagogy.ReviewRequest";
+        public const string ReviewsRead = "Pedagogy.Reviews.Read";
+        public const string ReviewsManage = "Pedagogy.Reviews.Manage";
+        public const string RemediationPlansRead = "Pedagogy.RemediationPlans.Read";
+        public const string RemediationPlansManage = "Pedagogy.RemediationPlans.Manage";
         public const string CurriculaRead = "Pedagogy.Curricula.Read";
         public const string CurriculaManage = "Pedagogy.Curricula.Manage";
         public const string CurriculaPublish = "Pedagogy.Curricula.Publish";
-        public static readonly string[] All = [SummaryRead, ReviewRequest, CurriculaRead, CurriculaManage, CurriculaPublish];
+        public const string TrainingPathsRead = "Pedagogy.TrainingPaths.Read";
+        public const string TrainingPathsCreate = "Pedagogy.TrainingPaths.Create";
+        public const string TrainingPathsManage = "Pedagogy.TrainingPaths.Manage";
+        public const string TrainingPathsActivate = "Pedagogy.TrainingPaths.Activate";
+        public const string CompetenciesRead = "Pedagogy.Competencies.Read";
+        public const string CompetenciesAssess = "Pedagogy.Competencies.Assess";
+        public const string ReadinessRead = "Pedagogy.Readiness.Read";
+        public const string ReadinessDecide = "Pedagogy.Readiness.Decide";
+        public static readonly string[] All = [SummaryRead, ReviewRequest, ReviewsRead, ReviewsManage, RemediationPlansRead, RemediationPlansManage, CurriculaRead, CurriculaManage, CurriculaPublish, TrainingPathsRead, TrainingPathsCreate, TrainingPathsManage, TrainingPathsActivate, CompetenciesRead, CompetenciesAssess, ReadinessRead, ReadinessDecide];
     }
 
     public static class Compliance
@@ -762,6 +774,11 @@ public static class DriveOsPermissionCodes
         CrmOffers.Read,
         CrmDashboard.Read,
         Pedagogy.CurriculaRead,
+        Pedagogy.TrainingPathsRead,
+        Pedagogy.CompetenciesRead,
+        Pedagogy.ReviewsRead,
+        Pedagogy.RemediationPlansRead,
+        Pedagogy.ReadinessRead,
         CrmDashboard.Nominal,
         CrmDashboard.BranchScope,
         Students.Read,
