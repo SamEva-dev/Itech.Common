@@ -518,7 +518,10 @@ public static class DriveOsPermissionCodes
     {
         public const string SummaryRead = "Pedagogy.Summary.Read";
         public const string ReviewRequest = "Pedagogy.ReviewRequest";
-        public static readonly string[] All = [SummaryRead, ReviewRequest];
+        public const string CurriculaRead = "Pedagogy.Curricula.Read";
+        public const string CurriculaManage = "Pedagogy.Curricula.Manage";
+        public const string CurriculaPublish = "Pedagogy.Curricula.Publish";
+        public static readonly string[] All = [SummaryRead, ReviewRequest, CurriculaRead, CurriculaManage, CurriculaPublish];
     }
 
     public static class Compliance
@@ -758,6 +761,7 @@ public static class DriveOsPermissionCodes
         CrmAssessments.ResultRead,
         CrmOffers.Read,
         CrmDashboard.Read,
+        Pedagogy.CurriculaRead,
         CrmDashboard.Nominal,
         CrmDashboard.BranchScope,
         Students.Read,
