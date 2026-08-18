@@ -3,9 +3,15 @@
     <IsPackable>true</IsPackable>
     <PackageId>LocaGuest.Security.Contracts</PackageId>
     <Description>LocaGuest application role, permission and policy contracts.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>locaguest;security;authorization;permissions;roles;contracts</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Itech.Security.Contracts\Itech.Security.Contracts.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>
 

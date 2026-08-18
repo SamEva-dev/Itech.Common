@@ -3,9 +3,14 @@
     <IsPackable>true</IsPackable>
     <PackageId>Itech.Querying</PackageId>
     <Description>Reusable dynamic-query helpers for Itech APIs.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>itech;querying;dynamic-query;domainrelay</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="DomainRelay.Mapping.Expressions" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>

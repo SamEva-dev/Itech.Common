@@ -3,9 +3,15 @@
     <IsPackable>true</IsPackable>
     <PackageId>DriveOS.Security.Contracts</PackageId>
     <Description>DriveOS application role and permission contracts.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>driveos;security;authorization;permissions;roles;contracts</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Itech.Security.Contracts\Itech.Security.Contracts.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>
 

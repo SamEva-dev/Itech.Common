@@ -3,6 +3,11 @@
     <IsPackable>true</IsPackable>
     <PackageId>Itech.Security.Contracts</PackageId>
     <Description>Product-neutral security and authorization contracts for Itech applications.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>itech;security;authorization;contracts</PackageTags>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>
