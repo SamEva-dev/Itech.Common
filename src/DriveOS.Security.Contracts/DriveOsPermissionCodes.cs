@@ -561,7 +561,8 @@ public static class DriveOsPermissionCodes
         public const string CreditNotesRead = "Finance.CreditNotes.Read";
         public const string CreditNotesCreate = "Finance.CreditNotes.Create";
         public const string CreditNotesIssue = "Finance.CreditNotes.Issue";
-        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage, RefundsRead, RefundsRequest, RefundsApprove, RefundsProcess, CreditNotesRead, CreditNotesCreate, CreditNotesIssue];
+        public const string AuditRead = "Finance.Audit.Read";
+        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage, RefundsRead, RefundsRequest, RefundsApprove, RefundsProcess, CreditNotesRead, CreditNotesCreate, CreditNotesIssue, AuditRead];
     }
 
     public static class Contracts
