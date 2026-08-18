@@ -539,7 +539,9 @@ public static class DriveOsPermissionCodes
         public const string InvoicesCreate = "Finance.Invoices.Create";
         public const string InvoicesManageDraft = "Finance.Invoices.ManageDraft";
         public const string InvoicesIssue = "Finance.Invoices.Issue";
-        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue];
+        public const string InstallmentsRead = "Finance.Installments.Read";
+        public const string InstallmentsManage = "Finance.Installments.Manage";
+        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage];
     }
 
     public static class Contracts
