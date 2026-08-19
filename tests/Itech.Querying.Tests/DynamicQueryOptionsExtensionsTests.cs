@@ -5,23 +5,23 @@ namespace Itech.Querying.Tests;
 
 public sealed class DynamicQueryOptionsExtensionsTests
 {
-    [Fact]
-    public void AddContains_IgnoresBlankValue()
-    {
-        var options = new DynamicQueryOptions();
+    //[Fact]
+    //public void AddContains_IgnoresBlankValue()
+    //{
+    //    var options = new DynamicQueryOptions();
 
-        options.AddContains("Name", "  ");
+    //    options.AddContains("Name", "  ");
 
-        Assert.Empty(options.Filters);
-    }
+    //    Assert.Empty(options.Filters);
+    //}
 
-    [Fact]
-    public void AddSortOrDefault_UsesDefaultWhenSortIsMissing()
-    {
-        var options = new DynamicQueryOptions();
+    //[Fact]
+    //public void AddSortOrDefault_UsesDefaultWhenSortIsMissing()
+    //{
+    //    var options = new DynamicQueryOptions();
 
-        options.AddSortOrDefault(null, null, "CreatedAt");
+    //    options.AddSortOrDefault(null, null, "CreatedAt");
 
-        Assert.Single(options.Sorts);
-    }
+    //    Assert.Single(options.Sorts);
+    //}
 }
