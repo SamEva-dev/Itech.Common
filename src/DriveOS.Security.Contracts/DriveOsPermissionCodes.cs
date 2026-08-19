@@ -533,7 +533,8 @@ public static class DriveOsPermissionCodes
         public const string CompetenciesAssess = "Pedagogy.Competencies.Assess";
         public const string ReadinessRead = "Pedagogy.Readiness.Read";
         public const string ReadinessDecide = "Pedagogy.Readiness.Decide";
-        public static readonly string[] All = [SummaryRead, ReviewRequest, ReviewsRead, ReviewsManage, RemediationPlansRead, RemediationPlansManage, CurriculaRead, CurriculaManage, CurriculaPublish, TrainingPathsRead, TrainingPathsCreate, TrainingPathsManage, TrainingPathsActivate, CompetenciesRead, CompetenciesAssess, ReadinessRead, ReadinessDecide];
+        public const string AuditRead = "Pedagogy.Audit.Read";
+        public static readonly string[] All = [SummaryRead, ReviewRequest, ReviewsRead, ReviewsManage, RemediationPlansRead, RemediationPlansManage, CurriculaRead, CurriculaManage, CurriculaPublish, TrainingPathsRead, TrainingPathsCreate, TrainingPathsManage, TrainingPathsActivate, CompetenciesRead, CompetenciesAssess, ReadinessRead, ReadinessDecide, AuditRead];
     }
 
     public static class Compliance
@@ -614,6 +615,20 @@ public static class DriveOsPermissionCodes
     {
         public const string Create = "StudentDataGrants.Create";
         public static readonly string[] All = [Create];
+    }
+
+    public static class Scheduling
+    {
+        public const string ResourcesRead = "Scheduling.Resources.Read";
+        public const string ResourcesManage = "Scheduling.Resources.Manage";
+        public const string AvailabilityRead = "Scheduling.Availability.Read";
+        public const string AvailabilityManage = "Scheduling.Availability.Manage";
+        public const string BookingsRead = "Scheduling.Bookings.Read";
+        public const string BookingsCreate = "Scheduling.Bookings.Create";
+        public const string BookingsManage = "Scheduling.Bookings.Manage";
+        public const string BookingsReserve = "Scheduling.Bookings.Reserve";
+        public const string BookingsConfirm = "Scheduling.Bookings.Confirm";
+        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm];
     }
 
     public static class Planning
@@ -726,6 +741,7 @@ public static class DriveOsPermissionCodes
         .. OwnProfile.All,
         .. Enrollments.All,
         .. Pedagogy.All,
+        .. Scheduling.All,
         .. Compliance.All,
         .. Finance.All,
         .. Contracts.All,
