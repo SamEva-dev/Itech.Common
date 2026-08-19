@@ -629,6 +629,11 @@ public static class DriveOsPermissionCodes
         public const string BookingsReserve = "Scheduling.Bookings.Reserve";
         public const string BookingsConfirm = "Scheduling.Bookings.Confirm";
         public const string BookingsReschedule = "Scheduling.Bookings.Reschedule";
+        public const string BookingsCancel = "Scheduling.Bookings.Cancel";
+        public const string BookingsCancelOverride = "Scheduling.Bookings.CancelOverride";
+        public const string AttendanceRecord = "Scheduling.Attendance.Record";
+        public const string AttendanceUpdateWithinWindow = "Scheduling.Attendance.UpdateWithinWindow";
+        public const string AttendanceOverride = "Scheduling.Attendance.Override";
         public const string RecurrenceCreate = "Scheduling.Recurrence.Create";
         public const string RecurrenceUpdate = "Scheduling.Recurrence.Update";
         public const string RecurrenceCancel = "Scheduling.Recurrence.Cancel";
@@ -637,7 +642,7 @@ public static class DriveOsPermissionCodes
         public const string ConflictsOverride = "Scheduling.Conflicts.Override";
         public const string WaitingListRead = "Scheduling.WaitingList.Read";
         public const string WaitingListManage = "Scheduling.WaitingList.Manage";
-        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage];
+        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, BookingsCancel, BookingsCancelOverride, AttendanceRecord, AttendanceUpdateWithinWindow, AttendanceOverride, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage];
     }
 
     public static class Planning
