@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>Itech.Querying</PackageId>
@@ -10,7 +10,7 @@
     <PackageReference Include="DomainRelay.Mapping.Expressions" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../../README.md" Pack="true" PackagePath="" Link="README.md" />
+    <None Include="../../README.md" Pack="true" PackagePath="README.md" />
   </ItemGroup>
 
 </Project>
