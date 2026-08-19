@@ -11,7 +11,4 @@
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="../../src/Itech.Querying/Itech.Querying.csproj" />
-  </ItemGroup>
 </Project>

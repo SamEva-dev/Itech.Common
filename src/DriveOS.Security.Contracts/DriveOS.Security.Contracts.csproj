@@ -10,7 +10,7 @@
     <ProjectReference Include="..\Itech.Security.Contracts\Itech.Security.Contracts.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="../../README.md" Pack="true" PackagePath="" Link="README.md" />
   </ItemGroup>
 
 </Project>
