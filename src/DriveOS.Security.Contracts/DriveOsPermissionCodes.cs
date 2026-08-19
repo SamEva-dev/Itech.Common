@@ -642,7 +642,17 @@ public static class DriveOsPermissionCodes
         public const string ConflictsOverride = "Scheduling.Conflicts.Override";
         public const string WaitingListRead = "Scheduling.WaitingList.Read";
         public const string WaitingListManage = "Scheduling.WaitingList.Manage";
-        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, BookingsCancel, BookingsCancelOverride, AttendanceRecord, AttendanceUpdateWithinWindow, AttendanceOverride, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage];
+        public const string InstructorReplacementRead = "Scheduling.InstructorReplacement.Read";
+        public const string InstructorReplacementAssign = "Scheduling.InstructorReplacement.Assign";
+        public const string VehicleReplacementRead = "Scheduling.VehicleReplacement.Read";
+        public const string VehicleReplacementAssign = "Scheduling.VehicleReplacement.Assign";
+        public const string TravelRead = "Scheduling.Travel.Read";
+        public const string TravelPreciseLocation = "Scheduling.Travel.PreciseLocation";
+        public const string SlotSearch = "Scheduling.SlotSearch";
+        public const string CapacityRead = "Scheduling.Capacity.Read";
+        public const string CapacityForecast = "Scheduling.Capacity.Forecast";
+        public const string CapacityScenariosCreate = "Scheduling.Capacity.Scenarios.Create";
+        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, BookingsCancel, BookingsCancelOverride, AttendanceRecord, AttendanceUpdateWithinWindow, AttendanceOverride, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage, InstructorReplacementRead, InstructorReplacementAssign, VehicleReplacementRead, VehicleReplacementAssign, TravelRead, TravelPreciseLocation, SlotSearch, CapacityRead, CapacityForecast, CapacityScenariosCreate];
     }
 
     public static class Planning
