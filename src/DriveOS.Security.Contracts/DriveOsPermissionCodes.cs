@@ -628,6 +628,7 @@ public static class DriveOsPermissionCodes
         public const string BookingsManage = "Scheduling.Bookings.Manage";
         public const string BookingsReserve = "Scheduling.Bookings.Reserve";
         public const string BookingsConfirm = "Scheduling.Bookings.Confirm";
+        public const string BookingsReschedule = "Scheduling.Bookings.Reschedule";
         public const string RecurrenceCreate = "Scheduling.Recurrence.Create";
         public const string RecurrenceUpdate = "Scheduling.Recurrence.Update";
         public const string RecurrenceCancel = "Scheduling.Recurrence.Cancel";
@@ -636,7 +637,7 @@ public static class DriveOsPermissionCodes
         public const string ConflictsOverride = "Scheduling.Conflicts.Override";
         public const string WaitingListRead = "Scheduling.WaitingList.Read";
         public const string WaitingListManage = "Scheduling.WaitingList.Manage";
-        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage];
+        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage];
     }
 
     public static class Planning
