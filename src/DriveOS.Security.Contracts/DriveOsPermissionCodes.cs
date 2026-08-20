@@ -682,6 +682,33 @@ public static class DriveOsPermissionCodes
         public const string CancellationsRead = "TrainingDelivery.Cancellations.Read";
         public const string CancellationsRecord = "TrainingDelivery.Cancellations.Record";
         public static readonly string[] All = [SessionsRead, SessionsMaterialize, SessionsPrepare, SessionsStart, SessionsComplete, AttendanceRecord, AttendanceCorrect, AttendanceOverride, InterventionsRecord, ObservationsRecord, Interrupt, Resume, OdometerRecord, AssessmentsRecord, IncidentsRead, IncidentsReport, IncidentsUpdate, IncidentsEscalate, IncidentsResolve, IncidentsClose, ConsequencesRead, ConsequencesRetry, CancellationsRead, CancellationsRecord];
+
+        /// <summary>Read-only Training Delivery permissions suitable for administrative observers.</summary>
+        public static readonly string[] ReadOnly =
+        [
+            SessionsRead,
+            IncidentsRead,
+            ConsequencesRead,
+            CancellationsRead
+        ];
+
+        /// <summary>Operational permissions required by an instructor to execute assigned sessions.</summary>
+        public static readonly string[] InstructorOperations =
+        [
+            SessionsRead,
+            SessionsPrepare,
+            SessionsStart,
+            SessionsComplete,
+            AttendanceRecord,
+            InterventionsRecord,
+            ObservationsRecord,
+            Interrupt,
+            Resume,
+            OdometerRecord,
+            AssessmentsRecord,
+            IncidentsRead,
+            IncidentsReport
+        ];
     }
 
     public static class Planning
