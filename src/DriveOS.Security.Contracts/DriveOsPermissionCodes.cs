@@ -655,6 +655,35 @@ public static class DriveOsPermissionCodes
         public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, BookingsCancel, BookingsCancelOverride, AttendanceRecord, AttendanceUpdateWithinWindow, AttendanceOverride, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage, InstructorReplacementRead, InstructorReplacementAssign, VehicleReplacementRead, VehicleReplacementAssign, TravelRead, TravelPreciseLocation, SlotSearch, CapacityRead, CapacityForecast, CapacityScenariosCreate];
     }
 
+    public static class TrainingDelivery
+    {
+        public const string SessionsRead = "TrainingDelivery.Sessions.Read";
+        public const string SessionsMaterialize = "TrainingDelivery.Sessions.Materialize";
+        public const string SessionsPrepare = "TrainingDelivery.Sessions.Prepare";
+        public const string SessionsStart = "TrainingDelivery.Sessions.Start";
+        public const string SessionsComplete = "TrainingDelivery.Sessions.Complete";
+        public const string AttendanceRecord = "TrainingDelivery.Attendance.Record";
+        public const string AttendanceCorrect = "TrainingDelivery.Attendance.Correct";
+        public const string AttendanceOverride = "TrainingDelivery.Attendance.Override";
+        public const string InterventionsRecord = "TrainingDelivery.Execution.Interventions.Record";
+        public const string ObservationsRecord = "TrainingDelivery.Execution.Observations.Record";
+        public const string Interrupt = "TrainingDelivery.Execution.Interrupt";
+        public const string Resume = "TrainingDelivery.Execution.Resume";
+        public const string OdometerRecord = "TrainingDelivery.Execution.Odometer.Record";
+        public const string AssessmentsRecord = "TrainingDelivery.Assessments.Record";
+        public const string IncidentsRead = "TrainingDelivery.Incidents.Read";
+        public const string IncidentsReport = "TrainingDelivery.Incidents.Report";
+        public const string IncidentsUpdate = "TrainingDelivery.Incidents.Update";
+        public const string IncidentsEscalate = "TrainingDelivery.Incidents.Escalate";
+        public const string IncidentsResolve = "TrainingDelivery.Incidents.Resolve";
+        public const string IncidentsClose = "TrainingDelivery.Incidents.Close";
+        public const string ConsequencesRead = "TrainingDelivery.Consequences.Read";
+        public const string ConsequencesRetry = "TrainingDelivery.Consequences.Retry";
+        public const string CancellationsRead = "TrainingDelivery.Cancellations.Read";
+        public const string CancellationsRecord = "TrainingDelivery.Cancellations.Record";
+        public static readonly string[] All = [SessionsRead, SessionsMaterialize, SessionsPrepare, SessionsStart, SessionsComplete, AttendanceRecord, AttendanceCorrect, AttendanceOverride, InterventionsRecord, ObservationsRecord, Interrupt, Resume, OdometerRecord, AssessmentsRecord, IncidentsRead, IncidentsReport, IncidentsUpdate, IncidentsEscalate, IncidentsResolve, IncidentsClose, ConsequencesRead, ConsequencesRetry, CancellationsRead, CancellationsRecord];
+    }
+
     public static class Planning
     {
         public const string Reassign = "Planning.Reassign";
@@ -766,6 +795,7 @@ public static class DriveOsPermissionCodes
         .. Enrollments.All,
         .. Pedagogy.All,
         .. Scheduling.All,
+        .. TrainingDelivery.All,
         .. Compliance.All,
         .. Finance.All,
         .. Contracts.All,
@@ -819,6 +849,7 @@ public static class DriveOsPermissionCodes
         Pedagogy.ReviewsRead,
         Pedagogy.RemediationPlansRead,
         Pedagogy.ReadinessRead,
+        TrainingDelivery.ConsequencesRead,
         CrmDashboard.Nominal,
         CrmDashboard.BranchScope,
         Students.Read,
@@ -835,7 +866,10 @@ public static class DriveOsPermissionCodes
         Enrollments.ChecklistRead,
         Pedagogy.SummaryRead,
         Finance.SummaryRead,
-        StudentsDashboard.Read
+        StudentsDashboard.Read,
+        TrainingDelivery.SessionsRead,
+        TrainingDelivery.IncidentsRead,
+        TrainingDelivery.CancellationsRead
     ];
 
     /// <summary>
