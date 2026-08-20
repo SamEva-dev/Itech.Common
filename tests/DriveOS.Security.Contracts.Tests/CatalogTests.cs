@@ -77,4 +77,60 @@ public sealed class CatalogTests
                 "Crm.Assessments.Cancel"
             ],
             DriveOsPermissionCodes.CrmAssessments.All);
+    [Fact]
+    public void Training_delivery_permission_codes_are_stable() =>
+        Assert.Equal(
+            [
+                "TrainingDelivery.Sessions.Read",
+                "TrainingDelivery.Sessions.Materialize",
+                "TrainingDelivery.Sessions.Prepare",
+                "TrainingDelivery.Sessions.Start",
+                "TrainingDelivery.Sessions.Complete",
+                "TrainingDelivery.Attendance.Record",
+                "TrainingDelivery.Attendance.Correct",
+                "TrainingDelivery.Attendance.Override",
+                "TrainingDelivery.Execution.Interventions.Record",
+                "TrainingDelivery.Execution.Observations.Record",
+                "TrainingDelivery.Execution.Interrupt",
+                "TrainingDelivery.Execution.Resume",
+                "TrainingDelivery.Execution.Odometer.Record",
+                "TrainingDelivery.Assessments.Record",
+                "TrainingDelivery.Incidents.Read",
+                "TrainingDelivery.Incidents.Report",
+                "TrainingDelivery.Incidents.Update",
+                "TrainingDelivery.Incidents.Escalate",
+                "TrainingDelivery.Incidents.Resolve",
+                "TrainingDelivery.Incidents.Close",
+                "TrainingDelivery.Consequences.Read",
+                "TrainingDelivery.Consequences.Retry",
+                "TrainingDelivery.Cancellations.Read",
+                "TrainingDelivery.Cancellations.Record",
+                "TrainingDelivery.SessionComments.CreateShared",
+                "TrainingDelivery.SessionNotes.CreateInternal",
+                "TrainingDelivery.SessionNotes.ReadInternal",
+                "TrainingDelivery.Reports.Read",
+                "TrainingDelivery.Reports.Submit",
+                "TrainingDelivery.Reports.RequestReview",
+                "TrainingDelivery.Reports.Monitor"
+            ],
+            DriveOsPermissionCodes.TrainingDelivery.All);
+
+    [Fact]
+    public void Instructor_receives_training_delivery_execution_permissions()
+    {
+        var permissions = DriveOsRolePermissionDefaults.GetPermissions(DriveOsRoleCodes.Instructor);
+
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.SessionsRead, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.SessionsPrepare, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.SessionsStart, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.SessionsComplete, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.AttendanceRecord, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.IncidentsReport, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.ReportsRead, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.ReportsSubmit, permissions);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ReportsMonitor, permissions);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.AttendanceOverride, permissions);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ConsequencesRetry, permissions);
+    }
+
 }
