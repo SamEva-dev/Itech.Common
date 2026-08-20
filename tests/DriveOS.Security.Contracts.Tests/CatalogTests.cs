@@ -111,7 +111,18 @@ public sealed class CatalogTests
                 "TrainingDelivery.Reports.Read",
                 "TrainingDelivery.Reports.Submit",
                 "TrainingDelivery.Reports.RequestReview",
-                "TrainingDelivery.Reports.Monitor"
+                "TrainingDelivery.Reports.Monitor",
+                "TrainingDelivery.Reports.RequestCorrection",
+                "TrainingDelivery.Reports.Correct",
+                "TrainingDelivery.Reports.ApproveCorrection",
+                "TrainingDelivery.Reports.Dispute",
+                "TrainingDelivery.GroupSessions.Read",
+                "TrainingDelivery.GroupSessions.Materialize",
+                "TrainingDelivery.GroupSessions.ManageParticipants",
+                "TrainingDelivery.GroupSessions.Attendance.Record",
+                "TrainingDelivery.GroupSessions.Assessments.Record",
+                "TrainingDelivery.GroupSessions.Report.Write",
+                "TrainingDelivery.GroupSessions.Certificates.Prepare"
             ],
             DriveOsPermissionCodes.TrainingDelivery.All);
 
