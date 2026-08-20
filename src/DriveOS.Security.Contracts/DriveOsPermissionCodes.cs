@@ -629,6 +629,11 @@ public static class DriveOsPermissionCodes
         public const string BookingsReserve = "Scheduling.Bookings.Reserve";
         public const string BookingsConfirm = "Scheduling.Bookings.Confirm";
         public const string BookingsReschedule = "Scheduling.Bookings.Reschedule";
+        public const string BookingsCancel = "Scheduling.Bookings.Cancel";
+        public const string BookingsCancelOverride = "Scheduling.Bookings.CancelOverride";
+        public const string AttendanceRecord = "Scheduling.Attendance.Record";
+        public const string AttendanceUpdateWithinWindow = "Scheduling.Attendance.UpdateWithinWindow";
+        public const string AttendanceOverride = "Scheduling.Attendance.Override";
         public const string RecurrenceCreate = "Scheduling.Recurrence.Create";
         public const string RecurrenceUpdate = "Scheduling.Recurrence.Update";
         public const string RecurrenceCancel = "Scheduling.Recurrence.Cancel";
@@ -637,13 +642,23 @@ public static class DriveOsPermissionCodes
         public const string ConflictsOverride = "Scheduling.Conflicts.Override";
         public const string WaitingListRead = "Scheduling.WaitingList.Read";
         public const string WaitingListManage = "Scheduling.WaitingList.Manage";
-        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage];
+        public const string InstructorReplacementRead = "Scheduling.InstructorReplacement.Read";
+        public const string InstructorReplacementAssign = "Scheduling.InstructorReplacement.Assign";
+        public const string VehicleReplacementRead = "Scheduling.VehicleReplacement.Read";
+        public const string VehicleReplacementAssign = "Scheduling.VehicleReplacement.Assign";
+        public const string TravelRead = "Scheduling.Travel.Read";
+        public const string TravelPreciseLocation = "Scheduling.Travel.PreciseLocation";
+        public const string SlotSearch = "Scheduling.SlotSearch";
+        public const string CapacityRead = "Scheduling.Capacity.Read";
+        public const string CapacityForecast = "Scheduling.Capacity.Forecast";
+        public const string CapacityScenariosCreate = "Scheduling.Capacity.Scenarios.Create";
+        public static readonly string[] All = [ResourcesRead, ResourcesManage, AvailabilityRead, AvailabilityManage, BookingsRead, BookingsCreate, BookingsManage, BookingsReserve, BookingsConfirm, BookingsReschedule, BookingsCancel, BookingsCancelOverride, AttendanceRecord, AttendanceUpdateWithinWindow, AttendanceOverride, RecurrenceCreate, RecurrenceUpdate, RecurrenceCancel, ConflictsRead, ConflictsResolve, ConflictsOverride, WaitingListRead, WaitingListManage, InstructorReplacementRead, InstructorReplacementAssign, VehicleReplacementRead, VehicleReplacementAssign, TravelRead, TravelPreciseLocation, SlotSearch, CapacityRead, CapacityForecast, CapacityScenariosCreate];
     }
 
     public static class TrainingDelivery
     {
-        public const string SessionsMaterialize = "TrainingDelivery.Sessions.Materialize";
         public const string SessionsRead = "TrainingDelivery.Sessions.Read";
+        public const string SessionsMaterialize = "TrainingDelivery.Sessions.Materialize";
         public const string SessionsPrepare = "TrainingDelivery.Sessions.Prepare";
         public const string SessionsStart = "TrainingDelivery.Sessions.Start";
         public const string SessionsComplete = "TrainingDelivery.Sessions.Complete";
@@ -656,69 +671,17 @@ public static class DriveOsPermissionCodes
         public const string Resume = "TrainingDelivery.Execution.Resume";
         public const string OdometerRecord = "TrainingDelivery.Execution.Odometer.Record";
         public const string AssessmentsRecord = "TrainingDelivery.Assessments.Record";
-        public const string CancellationsRecord = "TrainingDelivery.Cancellations.Record";
-        public const string CancellationsRead = "TrainingDelivery.Cancellations.Read";
-        public const string ConsequencesRead = "TrainingDelivery.Consequences.Read";
-        public const string ConsequencesRetry = "TrainingDelivery.Consequences.Retry";
-        public const string IncidentsReport = "TrainingDelivery.Incidents.Report";
         public const string IncidentsRead = "TrainingDelivery.Incidents.Read";
+        public const string IncidentsReport = "TrainingDelivery.Incidents.Report";
         public const string IncidentsUpdate = "TrainingDelivery.Incidents.Update";
         public const string IncidentsEscalate = "TrainingDelivery.Incidents.Escalate";
         public const string IncidentsResolve = "TrainingDelivery.Incidents.Resolve";
         public const string IncidentsClose = "TrainingDelivery.Incidents.Close";
-
-        public static readonly string[] All =
-        [
-            SessionsMaterialize,
-            SessionsRead,
-            SessionsPrepare,
-            SessionsStart,
-            SessionsComplete,
-            AttendanceRecord,
-            AttendanceCorrect,
-            AttendanceOverride,
-            InterventionsRecord,
-            ObservationsRecord,
-            Interrupt,
-            Resume,
-            OdometerRecord,
-            AssessmentsRecord,
-            CancellationsRecord,
-            CancellationsRead,
-            ConsequencesRead,
-            ConsequencesRetry,
-            IncidentsReport,
-            IncidentsRead,
-            IncidentsUpdate,
-            IncidentsEscalate,
-            IncidentsResolve,
-            IncidentsClose
-        ];
-
-        public static readonly string[] ReadOnly =
-        [
-            SessionsRead,
-            CancellationsRead,
-            ConsequencesRead,
-            IncidentsRead
-        ];
-
-        public static readonly string[] InstructorOperations =
-        [
-            SessionsRead,
-            SessionsPrepare,
-            SessionsStart,
-            SessionsComplete,
-            AttendanceRecord,
-            InterventionsRecord,
-            ObservationsRecord,
-            Interrupt,
-            Resume,
-            OdometerRecord,
-            AssessmentsRecord,
-            IncidentsReport,
-            IncidentsRead
-        ];
+        public const string ConsequencesRead = "TrainingDelivery.Consequences.Read";
+        public const string ConsequencesRetry = "TrainingDelivery.Consequences.Retry";
+        public const string CancellationsRead = "TrainingDelivery.Cancellations.Read";
+        public const string CancellationsRecord = "TrainingDelivery.Cancellations.Record";
+        public static readonly string[] All = [SessionsRead, SessionsMaterialize, SessionsPrepare, SessionsStart, SessionsComplete, AttendanceRecord, AttendanceCorrect, AttendanceOverride, InterventionsRecord, ObservationsRecord, Interrupt, Resume, OdometerRecord, AssessmentsRecord, IncidentsRead, IncidentsReport, IncidentsUpdate, IncidentsEscalate, IncidentsResolve, IncidentsClose, ConsequencesRead, ConsequencesRetry, CancellationsRead, CancellationsRecord];
     }
 
     public static class Planning
@@ -886,6 +849,7 @@ public static class DriveOsPermissionCodes
         Pedagogy.ReviewsRead,
         Pedagogy.RemediationPlansRead,
         Pedagogy.ReadinessRead,
+        TrainingDelivery.ConsequencesRead,
         CrmDashboard.Nominal,
         CrmDashboard.BranchScope,
         Students.Read,
@@ -901,9 +865,11 @@ public static class DriveOsPermissionCodes
         Enrollments.Read,
         Enrollments.ChecklistRead,
         Pedagogy.SummaryRead,
-        .. TrainingDelivery.ReadOnly,
         Finance.SummaryRead,
-        StudentsDashboard.Read
+        StudentsDashboard.Read,
+        TrainingDelivery.SessionsRead,
+        TrainingDelivery.IncidentsRead,
+        TrainingDelivery.CancellationsRead
     ];
 
     /// <summary>
