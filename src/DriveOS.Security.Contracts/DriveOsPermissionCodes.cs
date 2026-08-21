@@ -685,6 +685,7 @@ public static class DriveOsPermissionCodes
         public const string SessionNotesCreateInternal = "TrainingDelivery.SessionNotes.CreateInternal";
         public const string SessionNotesReadInternal = "TrainingDelivery.SessionNotes.ReadInternal";
         public const string ReportsRead = "TrainingDelivery.Reports.Read";
+        public const string ReportsWrite = "TrainingDelivery.Reports.Write";
         public const string ReportsSubmit = "TrainingDelivery.Reports.Submit";
         public const string ReportsRequestReview = "TrainingDelivery.Reports.RequestReview";
         public const string ReportsMonitor = "TrainingDelivery.Reports.Monitor";
@@ -699,7 +700,7 @@ public static class DriveOsPermissionCodes
         public const string GroupSessionsAssessmentsRecord = "TrainingDelivery.GroupSessions.Assessments.Record";
         public const string GroupSessionsReportWrite = "TrainingDelivery.GroupSessions.Report.Write";
         public const string GroupSessionsCertificatesPrepare = "TrainingDelivery.GroupSessions.Certificates.Prepare";
-        public static readonly string[] All = [SessionsRead, SessionsMaterialize, SessionsPrepare, SessionsStart, SessionsComplete, AttendanceRecord, AttendanceCorrect, AttendanceOverride, InterventionsRecord, ObservationsRecord, Interrupt, Resume, OdometerRecord, AssessmentsRecord, IncidentsRead, IncidentsReport, IncidentsUpdate, IncidentsEscalate, IncidentsResolve, IncidentsClose, ConsequencesRead, ConsequencesRetry, CancellationsRead, CancellationsRecord, SessionCommentsCreateShared, SessionNotesCreateInternal, SessionNotesReadInternal, ReportsRead, ReportsSubmit, ReportsRequestReview, ReportsMonitor, ReportsRequestCorrection, ReportsCorrect, ReportsApproveCorrection, ReportsDispute, GroupSessionsRead, GroupSessionsMaterialize, GroupSessionsManageParticipants, GroupSessionsAttendanceRecord, GroupSessionsAssessmentsRecord, GroupSessionsReportWrite, GroupSessionsCertificatesPrepare];
+        public static readonly string[] All = [SessionsRead, SessionsMaterialize, SessionsPrepare, SessionsStart, SessionsComplete, AttendanceRecord, AttendanceCorrect, AttendanceOverride, InterventionsRecord, ObservationsRecord, Interrupt, Resume, OdometerRecord, AssessmentsRecord, IncidentsRead, IncidentsReport, IncidentsUpdate, IncidentsEscalate, IncidentsResolve, IncidentsClose, ConsequencesRead, ConsequencesRetry, CancellationsRead, CancellationsRecord, SessionCommentsCreateShared, SessionNotesCreateInternal, SessionNotesReadInternal, ReportsRead, ReportsWrite, ReportsSubmit, ReportsRequestReview, ReportsMonitor, ReportsRequestCorrection, ReportsCorrect, ReportsApproveCorrection, ReportsDispute, GroupSessionsRead, GroupSessionsMaterialize, GroupSessionsManageParticipants, GroupSessionsAttendanceRecord, GroupSessionsAssessmentsRecord, GroupSessionsReportWrite, GroupSessionsCertificatesPrepare];
 
         /// <summary>Read-only Training Delivery permissions suitable for administrative observers.</summary>
         public static readonly string[] ReadOnly =
@@ -710,8 +711,6 @@ public static class DriveOsPermissionCodes
             CancellationsRead,
             ReportsRead,
             ReportsMonitor,
-            ReportsRequestCorrection,
-            ReportsApproveCorrection,
             GroupSessionsRead
         ];
 
@@ -735,6 +734,7 @@ public static class DriveOsPermissionCodes
             SessionNotesCreateInternal,
             SessionNotesReadInternal,
             ReportsRead,
+            ReportsWrite,
             ReportsSubmit,
             ReportsRequestReview,
             ReportsRequestCorrection,

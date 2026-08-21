@@ -109,6 +109,7 @@ public sealed class CatalogTests
                 "TrainingDelivery.SessionNotes.CreateInternal",
                 "TrainingDelivery.SessionNotes.ReadInternal",
                 "TrainingDelivery.Reports.Read",
+                "TrainingDelivery.Reports.Write",
                 "TrainingDelivery.Reports.Submit",
                 "TrainingDelivery.Reports.RequestReview",
                 "TrainingDelivery.Reports.Monitor",
@@ -127,6 +128,17 @@ public sealed class CatalogTests
             DriveOsPermissionCodes.TrainingDelivery.All);
 
     [Fact]
+    public void Training_delivery_read_only_group_contains_no_mutating_permissions()
+    {
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ReportsWrite, DriveOsPermissionCodes.TrainingDelivery.ReadOnly);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ReportsSubmit, DriveOsPermissionCodes.TrainingDelivery.ReadOnly);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ReportsRequestCorrection, DriveOsPermissionCodes.TrainingDelivery.ReadOnly);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ReportsApproveCorrection, DriveOsPermissionCodes.TrainingDelivery.ReadOnly);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ConsequencesRetry, DriveOsPermissionCodes.TrainingDelivery.ReadOnly);
+        Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.AttendanceOverride, DriveOsPermissionCodes.TrainingDelivery.ReadOnly);
+    }
+
+    [Fact]
     public void Instructor_receives_training_delivery_execution_permissions()
     {
         var permissions = DriveOsRolePermissionDefaults.GetPermissions(DriveOsRoleCodes.Instructor);
@@ -138,6 +150,7 @@ public sealed class CatalogTests
         Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.AttendanceRecord, permissions);
         Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.IncidentsReport, permissions);
         Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.ReportsRead, permissions);
+        Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.ReportsWrite, permissions);
         Assert.Contains(DriveOsPermissionCodes.TrainingDelivery.ReportsSubmit, permissions);
         Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.ReportsMonitor, permissions);
         Assert.DoesNotContain(DriveOsPermissionCodes.TrainingDelivery.AttendanceOverride, permissions);
