@@ -76,3 +76,28 @@ public sealed class FleetPermissionCatalogTests
             .Should().Contain(DriveOsPermissionCodes.Fleet.All);
     }
 }
+
+public sealed class WorkforcePermissionCatalogTests
+{
+    [Fact]
+    public void Workforce_read_only_contains_analytics_permission()
+        => Assert.Contains(DriveOsPermissionCodes.Workforce.AnalyticsRead, DriveOsPermissionCodes.Workforce.ReadOnly);
+
+    [Fact]
+    public void Workforce_all_contains_rehire_permission()
+        => Assert.Contains(DriveOsPermissionCodes.Workforce.EmployeesRehire, DriveOsPermissionCodes.Workforce.All);
+
+    [Fact]
+    public void Workforce_permissions_should_be_unique_and_part_of_global_catalog()
+    {
+        DriveOsPermissionCodes.Workforce.All.Should().OnlyHaveUniqueItems();
+        DriveOsPermissionCodes.All.Should().Contain(DriveOsPermissionCodes.Workforce.All);
+    }
+
+    [Fact]
+    public void WorkforceManager_should_receive_all_workforce_permissions()
+    {
+        DriveOsRolePermissionDefaults.GetPermissions(DriveOsRoleCodes.WorkforceManager)
+            .Should().Contain(DriveOsPermissionCodes.Workforce.All);
+    }
+}

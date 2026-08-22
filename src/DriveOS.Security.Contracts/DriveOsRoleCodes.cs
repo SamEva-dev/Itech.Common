@@ -39,6 +39,9 @@ public static class DriveOsRoleCodes
     public const string FleetManager =
         "DriveOS.FleetManager";
 
+    public const string WorkforceManager =
+        "DriveOS.WorkforceManager";
+
     public const string ExamCoordinator =
         "DriveOS.ExamCoordinator";
 
@@ -75,6 +78,7 @@ public static class DriveOsRoleCodes
         Secretary,
         Accountant,
         FleetManager,
+        WorkforceManager,
         ExamCoordinator,
         Instructor,
         SalesAdvisor,

@@ -222,9 +222,7 @@ public static class DriveOsPermissionCodes
     {
         public const string Read = "RegulatoryIntegrations.Read";
         public const string Manage = "RegulatoryIntegrations.Manage";
-        public const string SubmissionsRead = "RegulatoryIntegrations.Submissions.Read";
-        public const string SubmissionsManage = "RegulatoryIntegrations.Submissions.Manage";
-        public static readonly string[] All = [Read, Manage, SubmissionsRead, SubmissionsManage];
+        public static readonly string[] All = [Read, Manage];
     }
 
 
@@ -837,6 +835,69 @@ public static class DriveOsPermissionCodes
     }
 
 
+    /// <summary>BC-12 Workforce & HR permissions.</summary>
+    public static class Workforce
+    {
+        public const string DashboardRead = "Workforce.Dashboard.Read";
+        public const string AnalyticsRead = "Workforce.Analytics.Read";
+        public const string EmployeesRead = "Workforce.Employees.Read";
+        public const string EmployeesCreate = "Workforce.Employees.Create";
+        public const string EmployeesUpdate = "Workforce.Employees.Update";
+        public const string EmployeesOnboard = "Workforce.Employees.Onboard";
+        public const string EmployeesActivate = "Workforce.Employees.Activate";
+        public const string EmployeesSuspend = "Workforce.Employees.Suspend";
+        public const string EmployeesReactivate = "Workforce.Employees.Reactivate";
+        public const string EmployeesTerminate = "Workforce.Employees.Terminate";
+        public const string EmployeesRehire = "Workforce.Employees.Rehire";
+        public const string BranchAssignmentsRead = "Workforce.BranchAssignments.Read";
+        public const string BranchAssignmentsManage = "Workforce.BranchAssignments.Manage";
+        public const string JobPositionsRead = "Workforce.JobPositions.Read";
+        public const string JobPositionsManage = "Workforce.JobPositions.Manage";
+        public const string JobPositionsAssign = "Workforce.JobPositions.Assign";
+        public const string QualificationsRead = "Workforce.Qualifications.Read";
+        public const string QualificationsManage = "Workforce.Qualifications.Manage";
+        public const string QualificationsVerify = "Workforce.Qualifications.Verify";
+        public const string InstructorAuthorizationsRead = "Workforce.InstructorAuthorizations.Read";
+        public const string InstructorAuthorizationsManage = "Workforce.InstructorAuthorizations.Manage";
+        public const string InstructorAuthorizationsVerify = "Workforce.InstructorAuthorizations.Verify";
+        public const string EmploymentContractsRead = "Workforce.EmploymentContracts.Read";
+        public const string EmploymentContractsManage = "Workforce.EmploymentContracts.Manage";
+        public const string EmploymentContractsSign = "Workforce.EmploymentContracts.Sign";
+        public const string LeavePoliciesRead = "Workforce.LeavePolicies.Read";
+        public const string LeavePoliciesManage = "Workforce.LeavePolicies.Manage";
+        public const string LeaveRequestsRead = "Workforce.LeaveRequests.Read";
+        public const string LeaveRequestsManage = "Workforce.LeaveRequests.Manage";
+        public const string LeaveRequestsSubmit = "Workforce.LeaveRequests.Submit";
+        public const string LeaveRequestsApprove = "Workforce.LeaveRequests.Approve";
+        public const string WorkingTimeRead = "Workforce.WorkingTime.Read";
+        public const string WorkingTimeManage = "Workforce.WorkingTime.Manage";
+        public const string TimesheetsRead = "Workforce.Timesheets.Read";
+        public const string TimesheetsManage = "Workforce.Timesheets.Manage";
+        public const string TimesheetsSubmit = "Workforce.Timesheets.Submit";
+        public const string TimesheetsApprove = "Workforce.Timesheets.Approve";
+        public const string TimesheetsLock = "Workforce.Timesheets.Lock";
+        public const string EquipmentAssignmentsRead = "Workforce.EquipmentAssignments.Read";
+        public const string EquipmentAssignmentsManage = "Workforce.EquipmentAssignments.Manage";
+        public const string PerformanceReviewsRead = "Workforce.PerformanceReviews.Read";
+        public const string PerformanceReviewsManage = "Workforce.PerformanceReviews.Manage";
+        public const string PerformanceReviewsAcknowledge = "Workforce.PerformanceReviews.Acknowledge";
+        public const string PerformanceReviewsValidate = "Workforce.PerformanceReviews.Validate";
+        public const string EmployeeDocumentsRead = "Workforce.EmployeeDocuments.Read";
+        public const string EmployeeDocumentsManage = "Workforce.EmployeeDocuments.Manage";
+        public const string EmployeeDocumentsVerify = "Workforce.EmployeeDocuments.Verify";
+        public const string EmployeeDocumentsConfidentialRead = "Workforce.EmployeeDocuments.Confidential.Read";
+        public const string ProfessionalRestrictionsRead = "Workforce.ProfessionalRestrictions.Read";
+        public const string ProfessionalRestrictionsManage = "Workforce.ProfessionalRestrictions.Manage";
+        public const string ProfessionalRestrictionsApply = "Workforce.ProfessionalRestrictions.Apply";
+        public const string ProfessionalRestrictionsLift = "Workforce.ProfessionalRestrictions.Lift";
+        public const string OffboardingRead = "Workforce.Offboarding.Read";
+        public const string OffboardingManage = "Workforce.Offboarding.Manage";
+        public const string OffboardingWaive = "Workforce.Offboarding.Waive";
+        public const string OffboardingComplete = "Workforce.Offboarding.Complete";
+        public static readonly string[] ReadOnly = [DashboardRead, AnalyticsRead, EmployeesRead, BranchAssignmentsRead, JobPositionsRead, QualificationsRead, InstructorAuthorizationsRead, EmploymentContractsRead, LeavePoliciesRead, LeaveRequestsRead, WorkingTimeRead, TimesheetsRead, EquipmentAssignmentsRead, PerformanceReviewsRead, EmployeeDocumentsRead, ProfessionalRestrictionsRead, OffboardingRead];
+        public static readonly string[] All = [DashboardRead, AnalyticsRead, EmployeesRead, EmployeesCreate, EmployeesUpdate, EmployeesOnboard, EmployeesActivate, EmployeesSuspend, EmployeesReactivate, EmployeesTerminate, EmployeesRehire, BranchAssignmentsRead, BranchAssignmentsManage, JobPositionsRead, JobPositionsManage, JobPositionsAssign, QualificationsRead, QualificationsManage, QualificationsVerify, InstructorAuthorizationsRead, InstructorAuthorizationsManage, InstructorAuthorizationsVerify, EmploymentContractsRead, EmploymentContractsManage, EmploymentContractsSign, LeavePoliciesRead, LeavePoliciesManage, LeaveRequestsRead, LeaveRequestsManage, LeaveRequestsSubmit, LeaveRequestsApprove, WorkingTimeRead, WorkingTimeManage, TimesheetsRead, TimesheetsManage, TimesheetsSubmit, TimesheetsApprove, TimesheetsLock, EquipmentAssignmentsRead, EquipmentAssignmentsManage, PerformanceReviewsRead, PerformanceReviewsManage, PerformanceReviewsAcknowledge, PerformanceReviewsValidate, EmployeeDocumentsRead, EmployeeDocumentsManage, EmployeeDocumentsVerify, EmployeeDocumentsConfidentialRead, ProfessionalRestrictionsRead, ProfessionalRestrictionsManage, ProfessionalRestrictionsApply, ProfessionalRestrictionsLift, OffboardingRead, OffboardingManage, OffboardingWaive, OffboardingComplete];
+    }
+
     /// <summary>BC-14 Fleet & Resources permissions.</summary>
     public static class Fleet
     {
@@ -955,6 +1016,7 @@ public static class DriveOsPermissionCodes
         .. Scheduling.All,
         .. TrainingDelivery.All,
         .. Exams.All,
+        .. Workforce.All,
         .. Fleet.All,
         .. Compliance.All,
         .. Finance.All,
@@ -996,7 +1058,6 @@ public static class DriveOsPermissionCodes
         OrganizationRepresentatives.Read,
         OrganizationLegalProfiles.Read,
         RegulatoryIntegrations.Read,
-        RegulatoryIntegrations.SubmissionsRead,
         InstructorRegulatoryCredentials.Read,
         OrganizationClosures.Read,
         CrmLeads.Read,
@@ -1034,6 +1095,7 @@ public static class DriveOsPermissionCodes
         TrainingDelivery.SessionsRead,
         TrainingDelivery.IncidentsRead,
         TrainingDelivery.CancellationsRead,
+        .. Workforce.ReadOnly,
         Fleet.VehiclesRead,
         Fleet.MaintenanceRead,
         Fleet.IncidentsRead
