@@ -759,6 +759,72 @@ public static class DriveOsPermissionCodes
         public static readonly string[] All = [Validate];
     }
 
+
+    /// <summary>BC-11 Exams & Certification permissions.</summary>
+    public static class Exams
+    {
+        public const string DashboardRead = "Exams.Dashboard.Read";
+        public const string ReadinessRead = "ExamReadiness.Read";
+        public const string ReadinessReview = "ExamReadiness.Review";
+        public const string ReadinessDecide = "ExamReadiness.Decide";
+        public const string ReadinessEvaluate = "ExamReadiness.Evaluate";
+        public const string ReadinessSubmitOpinion = "ExamReadiness.SubmitOpinion";
+        public const string ReadinessReadOpinions = "ExamReadiness.ReadOpinions";
+        public const string PlacesRead = "ExamPlaces.Read";
+        public const string PlacesImport = "ExamPlaces.Import";
+        public const string PlacesManage = "ExamPlaces.Manage";
+        public const string PlacesWatch = "ExamPlaces.Watch";
+        public const string RegistrationsRead = "ExamRegistrations.Read";
+        public const string RegistrationsCreate = "ExamRegistrations.Create";
+        public const string RegistrationsUpdate = "ExamRegistrations.Update";
+        public const string RegistrationsSubmit = "ExamRegistrations.Submit";
+        public const string RegistrationsResolveErrors = "ExamRegistrations.ResolveErrors";
+        public const string PreparationRead = "ExamPreparation.Read";
+        public const string PreparationManage = "ExamPreparation.Manage";
+        public const string AttemptsRead = "ExamAttempts.Read";
+        public const string AttemptsManage = "ExamAttempts.Manage";
+        public const string ResultsRead = "ExamResults.Read";
+        public const string ResultsRecord = "ExamResults.Record";
+        public const string ResultsImport = "ExamResults.Import";
+        public const string ResultsVerify = "ExamResults.Verify";
+        public const string ResultsFinalize = "ExamResults.Finalize";
+        public const string ResultsCorrect = "ExamResults.Correct";
+        public const string SuccessRead = "ExamSuccess.Read";
+        public const string SuccessManage = "ExamSuccess.Manage";
+        public const string FailureAnalysisRead = "ExamFailureAnalysis.Read";
+        public const string FailureAnalysisManage = "ExamFailureAnalysis.Manage";
+        public const string RemediationRead = "ExamRemediation.Read";
+        public const string RemediationManage = "ExamRemediation.Manage";
+        public const string CertificationsRead = "ExamCertifications.Read";
+        public const string CertificationsIssue = "ExamCertifications.Issue";
+        public const string CertificationsRevoke = "ExamCertifications.Revoke";
+        public const string CertificationsVerify = "ExamCertifications.Verify";
+        public const string AnalyticsRead = "ExamAnalytics.Read";
+        public const string ProvidersManage = "ExamProviders.Manage";
+
+        public static readonly string[] ReadOnly =
+        [DashboardRead, ReadinessRead, ReadinessEvaluate, ReadinessReadOpinions, PlacesRead, RegistrationsRead, PreparationRead, AttemptsRead, ResultsRead, SuccessRead, FailureAnalysisRead, RemediationRead, CertificationsRead, AnalyticsRead];
+
+        public static readonly string[] All =
+        [DashboardRead, ReadinessRead, ReadinessReview, ReadinessDecide, ReadinessEvaluate, ReadinessSubmitOpinion, ReadinessReadOpinions, PlacesRead, PlacesImport, PlacesManage, PlacesWatch, RegistrationsRead, RegistrationsCreate, RegistrationsUpdate, RegistrationsSubmit, RegistrationsResolveErrors, PreparationRead, PreparationManage, AttemptsRead, AttemptsManage, ResultsRead, ResultsRecord, ResultsImport, ResultsVerify, ResultsFinalize, ResultsCorrect, SuccessRead, SuccessManage, FailureAnalysisRead, FailureAnalysisManage, RemediationRead, RemediationManage, CertificationsRead, CertificationsIssue, CertificationsRevoke, CertificationsVerify, AnalyticsRead, ProvidersManage];
+    }
+
+
+    /// <summary>BC-14 Fleet & Resources permissions.</summary>
+    public static class Fleet
+    {
+        public const string VehiclesRead = "Fleet.Vehicles.Read";
+        public const string VehiclesManage = "Fleet.Vehicles.Manage";
+        public const string VehiclesManageCompliance = "Fleet.Vehicles.ManageCompliance";
+        public const string MaintenanceRead = "Fleet.Maintenance.Read";
+        public const string MaintenanceManage = "Fleet.Maintenance.Manage";
+        public const string IncidentsRead = "Fleet.Incidents.Read";
+        public const string IncidentsManage = "Fleet.Incidents.Manage";
+
+        public static readonly string[] ReadOnly = [VehiclesRead, MaintenanceRead, IncidentsRead];
+        public static readonly string[] All = [VehiclesRead, VehiclesManage, VehiclesManageCompliance, MaintenanceRead, MaintenanceManage, IncidentsRead, IncidentsManage];
+    }
+
     public static class ComplianceExceptions
     {
         public const string Request = "Compliance.Exceptions.Request";
@@ -859,6 +925,8 @@ public static class DriveOsPermissionCodes
         .. Pedagogy.All,
         .. Scheduling.All,
         .. TrainingDelivery.All,
+        .. Exams.All,
+        .. Fleet.All,
         .. Compliance.All,
         .. Finance.All,
         .. Contracts.All,
@@ -932,7 +1000,10 @@ public static class DriveOsPermissionCodes
         StudentsDashboard.Read,
         TrainingDelivery.SessionsRead,
         TrainingDelivery.IncidentsRead,
-        TrainingDelivery.CancellationsRead
+        TrainingDelivery.CancellationsRead,
+        Fleet.VehiclesRead,
+        Fleet.MaintenanceRead,
+        Fleet.IncidentsRead
     ];
 
     /// <summary>

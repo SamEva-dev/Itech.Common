@@ -61,6 +61,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmOffers.All,
                 .. DriveOsPermissionCodes.CrmConversions.All,
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
+                .. DriveOsPermissionCodes.Exams.All,
                 .. DashboardOrganizationFinancial
             ],
 
@@ -87,6 +88,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmOffers.All,
                 .. DriveOsPermissionCodes.CrmConversions.All,
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
+                .. DriveOsPermissionCodes.Exams.All,
                 .. DashboardOrganizationFinancial
             ],
 
@@ -112,6 +114,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmOffers.All,
                 .. DriveOsPermissionCodes.CrmConversions.All,
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
+                .. DriveOsPermissionCodes.Exams.All,
                 .. DashboardOrganizationFinancial
             ],
 
@@ -146,6 +149,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmOffers.All,
                 .. DriveOsPermissionCodes.CrmConversions.All,
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
+                .. DriveOsPermissionCodes.Exams.All,
                 .. DashboardBranchFinancial
             ],
 
@@ -162,6 +166,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmAssessments.All,
                 DriveOsPermissionCodes.CrmOffers.Read,
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
+                .. DriveOsPermissionCodes.Exams.All,
                 .. DashboardBranch
             ],
 
@@ -181,6 +186,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.CrmOffers.All,
                 .. DriveOsPermissionCodes.CrmConversions.All,
                 .. DriveOsPermissionCodes.TrainingDelivery.ReadOnly,
+                .. DriveOsPermissionCodes.Exams.ReadOnly,
                 .. DashboardOrganizationFinancial
             ],
 
@@ -202,6 +208,7 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.CrmAssessments.Schedule,
                 DriveOsPermissionCodes.CrmOffers.Read,
                 .. DriveOsPermissionCodes.TrainingDelivery.ReadOnly,
+                .. DriveOsPermissionCodes.Exams.ReadOnly,
                 .. DashboardBranch
             ],
 
@@ -209,10 +216,19 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.ReadOnly,
 
             [DriveOsRoleCodes.FleetManager] =
-                DriveOsPermissionCodes.ReadOnly,
+            [
+                DriveOsPermissionCodes.Organizations.Read,
+                DriveOsPermissionCodes.Branches.Read,
+                .. DriveOsPermissionCodes.Fleet.All
+            ],
 
             [DriveOsRoleCodes.ExamCoordinator] =
-                DriveOsPermissionCodes.ReadOnly,
+            [
+                DriveOsPermissionCodes.Organizations.Read,
+                DriveOsPermissionCodes.Branches.Read,
+                .. DriveOsPermissionCodes.Exams.All,
+                .. DriveOsPermissionCodes.Fleet.ReadOnly
+            ],
 
             [DriveOsRoleCodes.Instructor] =
             [
@@ -220,7 +236,15 @@ public static class DriveOsRolePermissionDefaults
                 DriveOsPermissionCodes.Branches.Read,
                 DriveOsPermissionCodes.BranchManagers.Read,
                 DriveOsPermissionCodes.BranchAssignments.Read,
-                .. DriveOsPermissionCodes.TrainingDelivery.InstructorOperations
+                .. DriveOsPermissionCodes.TrainingDelivery.InstructorOperations,
+                DriveOsPermissionCodes.Exams.DashboardRead,
+                DriveOsPermissionCodes.Exams.ReadinessRead,
+                DriveOsPermissionCodes.Exams.ReadinessEvaluate,
+                DriveOsPermissionCodes.Exams.ReadinessSubmitOpinion,
+                DriveOsPermissionCodes.Exams.ReadinessReadOpinions,
+                DriveOsPermissionCodes.Exams.RegistrationsRead,
+                DriveOsPermissionCodes.Exams.PreparationRead,
+                DriveOsPermissionCodes.Exams.AttemptsRead
             ],
 
             [DriveOsRoleCodes.SalesAdvisor] =
