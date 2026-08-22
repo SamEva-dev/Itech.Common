@@ -214,6 +214,29 @@ public static class DriveOsPermissionCodes
         ];
     }
 
+
+    /// <summary>
+    /// Organization/branch connections to national regulatory platforms.
+    /// </summary>
+    public static class RegulatoryIntegrations
+    {
+        public const string Read = "RegulatoryIntegrations.Read";
+        public const string Manage = "RegulatoryIntegrations.Manage";
+        public const string SubmissionsRead = "RegulatoryIntegrations.Submissions.Read";
+        public const string SubmissionsManage = "RegulatoryIntegrations.Submissions.Manage";
+        public static readonly string[] All = [Read, Manage, SubmissionsRead, SubmissionsManage];
+    }
+
+
+    /// <summary>Pre-Workforce regulatory credentials required for instructor integrations.</summary>
+    public static class InstructorRegulatoryCredentials
+    {
+        public const string Read = "InstructorRegulatoryCredentials.Read";
+        public const string Manage = "InstructorRegulatoryCredentials.Manage";
+        public const string Verify = "InstructorRegulatoryCredentials.Verify";
+        public static readonly string[] All = [Read, Manage, Verify];
+    }
+
     /// <summary>
     /// ORG-011: organization and branch business-number sequences.
     /// </summary>
@@ -480,6 +503,9 @@ public static class DriveOsPermissionCodes
         public const string IdentityRead = "Students.Identity.Read";
         public const string IdentityUpdate = "Students.Identity.Update";
         public const string IdentityVerify = "Students.Identity.Verify";
+        public const string RegulatoryIdentityRead = "Students.RegulatoryIdentity.Read";
+        public const string RegulatoryIdentityManage = "Students.RegulatoryIdentity.Manage";
+        public const string RegulatoryIdentityVerify = "Students.RegulatoryIdentity.Verify";
         public const string AdministrationRead = "Students.Administration.Read";
         public const string AdministrationUpdate = "Students.Administration.Update";
         public const string TransferInternal = "Students.TransferInternal";
@@ -492,6 +518,7 @@ public static class DriveOsPermissionCodes
         public const string Archive = "Students.Archive";
         public const string Reopen = "Students.Reopen";
         public static readonly string[] All = [Read, Create, IdentityRead, IdentityUpdate, IdentityVerify,
+            RegulatoryIdentityRead, RegulatoryIdentityManage, RegulatoryIdentityVerify,
             AdministrationRead, AdministrationUpdate, TransferInternal, TransferExternal,
             Suspend, SuspendFinancial, SuspendPedagogical, Reactivate, Close, Archive, Reopen];
     }
@@ -911,6 +938,8 @@ public static class DriveOsPermissionCodes
         .. OrganizationSequences.All,
         .. OrganizationRepresentatives.All,
         .. OrganizationLegalProfiles.All,
+        .. RegulatoryIntegrations.All,
+        .. InstructorRegulatoryCredentials.All,
         .. OrganizationClosures.All,
         .. CrmLeads.All,
         .. CrmActivities.All,
@@ -966,6 +995,9 @@ public static class DriveOsPermissionCodes
         OrganizationSequences.Read,
         OrganizationRepresentatives.Read,
         OrganizationLegalProfiles.Read,
+        RegulatoryIntegrations.Read,
+        RegulatoryIntegrations.SubmissionsRead,
+        InstructorRegulatoryCredentials.Read,
         OrganizationClosures.Read,
         CrmLeads.Read,
         CrmActivities.Read,
@@ -985,6 +1017,7 @@ public static class DriveOsPermissionCodes
         CrmDashboard.BranchScope,
         Students.Read,
         Students.IdentityRead,
+        Students.RegulatoryIdentityRead,
         Students.AdministrationRead,
         Guardians.Read,
         StudentRelationships.Read,
