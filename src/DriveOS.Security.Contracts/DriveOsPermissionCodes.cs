@@ -222,7 +222,16 @@ public static class DriveOsPermissionCodes
     {
         public const string Read = "RegulatoryIntegrations.Read";
         public const string Manage = "RegulatoryIntegrations.Manage";
-        public static readonly string[] All = [Read, Manage];
+        public const string SubmissionsRead = "RegulatoryIntegrations.Submissions.Read";
+        public const string SubmissionsManage = "RegulatoryIntegrations.Submissions.Manage";
+
+        public static readonly string[] All =
+        [
+            Read,
+            Manage,
+            SubmissionsRead,
+            SubmissionsManage
+        ];
     }
 
 
