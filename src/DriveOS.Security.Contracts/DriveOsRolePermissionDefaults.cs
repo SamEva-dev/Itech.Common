@@ -68,6 +68,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
                 .. DriveOsPermissionCodes.Exams.All,
                 .. DriveOsPermissionCodes.Workforce.All,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.All,
                 .. DashboardOrganizationFinancial
             ],
 
@@ -101,6 +102,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
                 .. DriveOsPermissionCodes.Exams.All,
                 .. DriveOsPermissionCodes.Workforce.All,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.All,
                 .. DashboardOrganizationFinancial
             ],
 
@@ -133,6 +135,7 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.TrainingDelivery.All,
                 .. DriveOsPermissionCodes.Exams.All,
                 .. DriveOsPermissionCodes.Workforce.All,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.All,
                 .. DashboardOrganizationFinancial
             ],
 
@@ -272,6 +275,13 @@ public static class DriveOsRolePermissionDefaults
                 .. DriveOsPermissionCodes.Workforce.All
             ],
 
+            [DriveOsRoleCodes.ProfessionalMarketplaceManager] =
+            [
+                DriveOsPermissionCodes.Organizations.Read,
+                DriveOsPermissionCodes.Branches.Read,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.All
+            ],
+
             [DriveOsRoleCodes.ExamCoordinator] =
             [
                 DriveOsPermissionCodes.Organizations.Read,
@@ -310,7 +320,13 @@ public static class DriveOsRolePermissionDefaults
             ],
 
             [DriveOsRoleCodes.ComplianceOfficer] =
-                DriveOsPermissionCodes.ReadOnly,
+            [
+                .. DriveOsPermissionCodes.ReadOnly,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.Compliance.All,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.Moderation.All,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.DataLifecycle.All,
+                .. DriveOsPermissionCodes.ProfessionalMarketplace.Audit.All
+            ],
 
             [DriveOsRoleCodes.TrainingCoordinator] =
             [

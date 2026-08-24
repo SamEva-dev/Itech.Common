@@ -100,4 +100,29 @@ public sealed class WorkforcePermissionCatalogTests
         DriveOsRolePermissionDefaults.GetPermissions(DriveOsRoleCodes.WorkforceManager)
             .Should().Contain(DriveOsPermissionCodes.Workforce.All);
     }
+
+    [Fact]
+    public void Professional_marketplace_catalog_is_complete_and_unique()
+    {
+        Assert.NotEmpty(DriveOsPermissionCodes.ProfessionalMarketplace.All);
+        Assert.Equal(
+            DriveOsPermissionCodes.ProfessionalMarketplace.All.Length,
+            DriveOsPermissionCodes.ProfessionalMarketplace.All.Distinct(StringComparer.Ordinal).Count());
+
+        Assert.All(
+            DriveOsPermissionCodes.ProfessionalMarketplace.All,
+            code => Assert.Contains(DriveOsPermissionCatalog.All, item => item.Code == code));
+    }
+
+    [Fact]
+    public void Professional_marketplace_manager_receives_all_marketplace_permissions()
+    {
+        IReadOnlyCollection<string> permissions =
+            DriveOsRolePermissionDefaults.GetPermissions(DriveOsRoleCodes.ProfessionalMarketplaceManager);
+
+        Assert.All(
+            DriveOsPermissionCodes.ProfessionalMarketplace.All,
+            permission => Assert.Contains(permission, permissions));
+    }
+
 }
