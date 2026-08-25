@@ -611,8 +611,14 @@ public static class DriveOsPermissionCodes
         public const string CreditNotesRead = "Finance.CreditNotes.Read";
         public const string CreditNotesCreate = "Finance.CreditNotes.Create";
         public const string CreditNotesIssue = "Finance.CreditNotes.Issue";
+        public const string SupplierInvoicesRead = "Finance.SupplierInvoices.Read";
+        public const string SupplierInvoicesCreate = "Finance.SupplierInvoices.Create";
+        public const string SupplierInvoicesMatch = "Finance.SupplierInvoices.Match";
+        public const string SupplierInvoicesApproveOperational = "Finance.SupplierInvoices.ApproveOperational";
+        public const string SupplierInvoicesApproveFinancial = "Finance.SupplierInvoices.ApproveFinancial";
+        public const string SupplierInvoicesSchedulePayment = "Finance.SupplierInvoices.SchedulePayment";
         public const string AuditRead = "Finance.Audit.Read";
-        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage, RefundsRead, RefundsRequest, RefundsApprove, RefundsProcess, CreditNotesRead, CreditNotesCreate, CreditNotesIssue, AuditRead];
+        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage, RefundsRead, RefundsRequest, RefundsApprove, RefundsProcess, CreditNotesRead, CreditNotesCreate, CreditNotesIssue, SupplierInvoicesRead, SupplierInvoicesCreate, SupplierInvoicesMatch, SupplierInvoicesApproveOperational, SupplierInvoicesApproveFinancial, SupplierInvoicesSchedulePayment, AuditRead];
     }
 
     public static class Contracts
@@ -850,6 +856,36 @@ public static class DriveOsPermissionCodes
     /// Stable authorization contract for professional profiles, discovery,
     /// compliance, opportunities, negotiations, engagements and marketplace operations.
     /// </summary>
+
+    public static class Communication
+    {
+        public static class Notifications
+        {
+            public const string Read = "Communication.Notifications.Read";
+            public const string Manage = "Communication.Notifications.Manage";
+            public static readonly string[] All = [Read, Manage];
+            public static readonly string[] ReadOnly = [Read];
+        }
+
+        public static class NotificationPreferences
+        {
+            public const string Manage = "Communication.NotificationPreferences.Manage";
+            public static readonly string[] All = [Manage];
+            public static readonly string[] ReadOnly = [];
+        }
+
+        public static readonly string[] All =
+        [
+            .. Notifications.All,
+            .. NotificationPreferences.All
+        ];
+
+        public static readonly string[] ReadOnly =
+        [
+            .. Notifications.ReadOnly
+        ];
+    }
+
     public static class ProfessionalMarketplace
     {
         public static class Dashboard
@@ -1419,6 +1455,7 @@ public static class DriveOsPermissionCodes
         .. TrainingDelivery.All,
         .. Exams.All,
         .. Workforce.All,
+        .. Communication.All,
         .. ProfessionalMarketplace.All,
         .. Fleet.All,
         .. Compliance.All,
@@ -1499,6 +1536,7 @@ public static class DriveOsPermissionCodes
         TrainingDelivery.IncidentsRead,
         TrainingDelivery.CancellationsRead,
         .. Workforce.ReadOnly,
+        .. Communication.ReadOnly,
         .. ProfessionalMarketplace.ReadOnly,
         Fleet.VehiclesRead,
         Fleet.MaintenanceRead,
