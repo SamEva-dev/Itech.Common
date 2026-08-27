@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace DriveOS.Security.Contracts.Tests;
 
 public sealed class CommunicationPermissionTests
@@ -12,8 +14,8 @@ public sealed class CommunicationPermissionTests
             DriveOsPermissionCodes.Communication.NotificationPreferences.Manage
         ];
 
-        foreach(string permission in expected)
-            Assert.Contains(permission,DriveOsPermissionCodes.All);
+        foreach (string permission in expected)
+            Assert.Contains(permission, DriveOsPermissionCodes.All);
     }
 
     [Fact]
