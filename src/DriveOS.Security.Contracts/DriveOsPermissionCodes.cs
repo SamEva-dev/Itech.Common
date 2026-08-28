@@ -617,8 +617,11 @@ public static class DriveOsPermissionCodes
         public const string SupplierInvoicesApproveOperational = "Finance.SupplierInvoices.ApproveOperational";
         public const string SupplierInvoicesApproveFinancial = "Finance.SupplierInvoices.ApproveFinancial";
         public const string SupplierInvoicesSchedulePayment = "Finance.SupplierInvoices.SchedulePayment";
+        public const string SupplierInvoicesRecordManualPayment = "Finance.SupplierInvoices.RecordManualPayment";
+        public const string SupplierInvoicesRefundPayment = "Finance.SupplierInvoices.RefundPayment";
+        public const string SupplierInvoicesBatchPayment = "Finance.SupplierInvoices.BatchPayment";
         public const string AuditRead = "Finance.Audit.Read";
-        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage, RefundsRead, RefundsRequest, RefundsApprove, RefundsProcess, CreditNotesRead, CreditNotesCreate, CreditNotesIssue, SupplierInvoicesRead, SupplierInvoicesCreate, SupplierInvoicesMatch, SupplierInvoicesApproveOperational, SupplierInvoicesApproveFinancial, SupplierInvoicesSchedulePayment, AuditRead];
+        public static readonly string[] All = [SummaryRead, TransferReview, TransferResolution, CloseStudentAccount, BillingAccountsRead, BillingAccountsCreate, InvoicesRead, InvoicesCreate, InvoicesManageDraft, InvoicesIssue, InstallmentsRead, InstallmentsManage, PaymentsRead, PaymentsCreate, PaymentsRecord, PaymentsAllocate, CollectionsRead, CollectionsManage, FundingPlansRead, FundingPlansManage, FundingPlansApprove, BillingPartiesRead, BillingPartiesManage, TrainingCreditsRead, TrainingCreditsManage, RefundsRead, RefundsRequest, RefundsApprove, RefundsProcess, CreditNotesRead, CreditNotesCreate, CreditNotesIssue, SupplierInvoicesRead, SupplierInvoicesCreate, SupplierInvoicesMatch, SupplierInvoicesApproveOperational, SupplierInvoicesApproveFinancial, SupplierInvoicesSchedulePayment, SupplierInvoicesRecordManualPayment, SupplierInvoicesRefundPayment, SupplierInvoicesBatchPayment, AuditRead];
     }
 
     public static class Contracts
