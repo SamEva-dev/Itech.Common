@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace DriveOS.Security.Contracts.Tests;
 
 public sealed class SupplierAdvancedSettlementPermissionTests
