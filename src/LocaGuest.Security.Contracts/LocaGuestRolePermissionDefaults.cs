@@ -55,6 +55,11 @@ public static class LocaGuestRolePermissionDefaults
         LocaGuestPermissionCodes.DocumentsGenerate,
         LocaGuestPermissionCodes.DocumentsDelete,
 
+        // Templates
+        LocaGuestPermissionCodes.TemplatesRead,
+        LocaGuestPermissionCodes.TemplatesWrite,
+        LocaGuestPermissionCodes.TemplatesDelete,
+
         // Rooms
         LocaGuestPermissionCodes.RoomsRead,
         LocaGuestPermissionCodes.RoomsWrite,
@@ -75,6 +80,12 @@ public static class LocaGuestRolePermissionDefaults
         LocaGuestPermissionCodes.TeamRead,
         LocaGuestPermissionCodes.TeamManage,
 
+        // Banking
+        LocaGuestPermissionCodes.BankingRead,
+        LocaGuestPermissionCodes.BankingWrite,
+        LocaGuestPermissionCodes.BankingImport,
+        LocaGuestPermissionCodes.BankingReconcile,
+
         // Analytics
         LocaGuestPermissionCodes.AnalyticsRead,
         LocaGuestPermissionCodes.AnalyticsExport,
@@ -86,6 +97,17 @@ public static class LocaGuestRolePermissionDefaults
 
         LocaGuestPermissionCodes.TaxPreparationRead,
         LocaGuestPermissionCodes.TaxPreparationExport,
+
+        // AI Assistant
+        LocaGuestPermissionCodes.AssistantUse,
+        LocaGuestPermissionCodes.AssistantFinancial,
+        LocaGuestPermissionCodes.AssistantLegal,
+        LocaGuestPermissionCodes.AssistantTax,
+        LocaGuestPermissionCodes.AssistantActionsManage,
+
+        // Knowledge / RAG
+        LocaGuestPermissionCodes.KnowledgeRead,
+        LocaGuestPermissionCodes.KnowledgeManage,
 
         // Audit
         LocaGuestPermissionCodes.AuditRead,
@@ -99,7 +121,7 @@ public static class LocaGuestRolePermissionDefaults
         // IAM
         LocaGuestPermissionCodes.PermissionsRead,
 
-        // Signatre
+        // Signatures
         LocaGuestPermissionCodes.SignaturesWrite,
         LocaGuestPermissionCodes.SignaturesRead,
 
@@ -149,6 +171,11 @@ public static class LocaGuestRolePermissionDefaults
         LocaGuestPermissionCodes.DocumentsGenerate,
         LocaGuestPermissionCodes.DocumentsDelete,
 
+        // Templates
+        LocaGuestPermissionCodes.TemplatesRead,
+        LocaGuestPermissionCodes.TemplatesWrite,
+        LocaGuestPermissionCodes.TemplatesDelete,
+
         // Rooms
         LocaGuestPermissionCodes.RoomsRead,
         LocaGuestPermissionCodes.RoomsWrite,
@@ -169,6 +196,12 @@ public static class LocaGuestRolePermissionDefaults
         LocaGuestPermissionCodes.TeamRead,
         LocaGuestPermissionCodes.TeamManage,
 
+        // Banking
+        LocaGuestPermissionCodes.BankingRead,
+        LocaGuestPermissionCodes.BankingWrite,
+        LocaGuestPermissionCodes.BankingImport,
+        LocaGuestPermissionCodes.BankingReconcile,
+
         // Analytics
         LocaGuestPermissionCodes.AnalyticsRead,
         LocaGuestPermissionCodes.AnalyticsExport,
@@ -179,6 +212,16 @@ public static class LocaGuestRolePermissionDefaults
 
         LocaGuestPermissionCodes.TaxPreparationRead,
         LocaGuestPermissionCodes.TaxPreparationExport,
+
+        // AI Assistant
+        LocaGuestPermissionCodes.AssistantUse,
+        LocaGuestPermissionCodes.AssistantFinancial,
+        LocaGuestPermissionCodes.AssistantLegal,
+        LocaGuestPermissionCodes.AssistantTax,
+        LocaGuestPermissionCodes.AssistantActionsManage,
+
+        // Knowledge / RAG
+        LocaGuestPermissionCodes.KnowledgeRead,
 
         // Audit
         LocaGuestPermissionCodes.AuditRead,
@@ -192,7 +235,7 @@ public static class LocaGuestRolePermissionDefaults
         // IAM
         LocaGuestPermissionCodes.PermissionsRead,
 
-        // Signatre
+        // Signatures
         LocaGuestPermissionCodes.SignaturesWrite,
         LocaGuestPermissionCodes.SignaturesRead,
 
@@ -225,6 +268,10 @@ public static class LocaGuestRolePermissionDefaults
         LocaGuestPermissionCodes.DocumentsUpload,
         LocaGuestPermissionCodes.DocumentsGenerate,
 
+        // Templates
+        LocaGuestPermissionCodes.TemplatesRead,
+        LocaGuestPermissionCodes.TemplatesWrite,
+
         // Rooms
         LocaGuestPermissionCodes.RoomsRead,
         LocaGuestPermissionCodes.RoomsWrite,
@@ -244,10 +291,20 @@ public static class LocaGuestRolePermissionDefaults
         // Team
         LocaGuestPermissionCodes.TeamRead,
 
+        // Banking
+        LocaGuestPermissionCodes.BankingRead,
+        LocaGuestPermissionCodes.BankingImport,
+        LocaGuestPermissionCodes.BankingReconcile,
+
         // Analytics
         LocaGuestPermissionCodes.AnalyticsRead,
 
-        // Signatre
+        // AI Assistant
+        LocaGuestPermissionCodes.AssistantUse,
+        LocaGuestPermissionCodes.AssistantFinancial,
+        LocaGuestPermissionCodes.AssistantActionsManage,
+
+        // Signatures
         LocaGuestPermissionCodes.SignaturesWrite,
         LocaGuestPermissionCodes.SignaturesRead,
 
@@ -277,6 +334,9 @@ public static class LocaGuestRolePermissionDefaults
         LocaGuestPermissionCodes.DocumentsRead,
         LocaGuestPermissionCodes.DocumentsUpload,
 
+        // Templates
+        LocaGuestPermissionCodes.TemplatesRead,
+
         // Rooms
         LocaGuestPermissionCodes.RoomsRead,
 
@@ -293,7 +353,10 @@ public static class LocaGuestRolePermissionDefaults
         LocaGuestPermissionCodes.TeamRead,
 
         // Analytics (read only)
-        LocaGuestPermissionCodes.AnalyticsRead
+        LocaGuestPermissionCodes.AnalyticsRead,
+
+        // AI Assistant
+        LocaGuestPermissionCodes.AssistantUse
     };
 
     /// <summary>
@@ -313,6 +376,9 @@ public static class LocaGuestRolePermissionDefaults
 
         // Documents
         LocaGuestPermissionCodes.DocumentsRead,
+
+        // Templates
+        LocaGuestPermissionCodes.TemplatesRead,
 
         // Rooms
         LocaGuestPermissionCodes.RoomsRead,
@@ -336,7 +402,7 @@ public static class LocaGuestRolePermissionDefaults
         // Audit
         LocaGuestPermissionCodes.AuditRead,
 
-        // Signatre
+        // Signatures
         LocaGuestPermissionCodes.SignaturesRead,
          // Rentability
         LocaGuestPermissionCodes.RentabilityRead

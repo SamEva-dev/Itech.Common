@@ -37,6 +37,10 @@ public static class LocaGuestPermissionCodes
     public const string DocumentsGenerate = "documents.generate";
     public const string DocumentsDelete = "documents.delete";
 
+    public const string TemplatesRead = "templates.read";
+    public const string TemplatesWrite = "templates.write";
+    public const string TemplatesDelete = "templates.delete";
+
     public const string RoomsRead = "rooms.read";
     public const string RoomsWrite = "rooms.write";
 
@@ -52,6 +56,11 @@ public static class LocaGuestPermissionCodes
     public const string TeamRead = "team.read";
     public const string TeamManage = "team.manage";
 
+    public const string BankingRead = "banking.read";
+    public const string BankingWrite = "banking.write";
+    public const string BankingImport = "banking.import";
+    public const string BankingReconcile = "banking.reconcile";
+
     public const string RentabilityRead = "rentability.read";
     public const string RentabilityWrite = "rentability.write";
 
@@ -66,6 +75,15 @@ public static class LocaGuestPermissionCodes
 
     public const string TaxPreparationRead = "tax-preparation.read";
     public const string TaxPreparationExport = "tax-preparation.export";
+
+    public const string AssistantUse = "assistant.use";
+    public const string AssistantFinancial = "assistant.financial";
+    public const string AssistantLegal = "assistant.legal";
+    public const string AssistantTax = "assistant.tax";
+    public const string AssistantActionsManage = "assistant.actions.manage";
+
+    public const string KnowledgeRead = "knowledge.read";
+    public const string KnowledgeManage = "knowledge.manage";
 
     public const string AuditRead = "audit.read";
     public const string AuditLogsRead = "auditlogs.read";
@@ -117,6 +135,9 @@ public static class LocaGuestPermissionCodes
         DocumentsUpload,
         DocumentsGenerate,
         DocumentsDelete,
+        TemplatesRead,
+        TemplatesWrite,
+        TemplatesDelete,
         RoomsRead,
         RoomsWrite,
         SeasonRead,
@@ -127,6 +148,10 @@ public static class LocaGuestPermissionCodes
         DepositsWrite,
         TeamRead,
         TeamManage,
+        BankingRead,
+        BankingWrite,
+        BankingImport,
+        BankingReconcile,
         RentabilityRead,
         RentabilityWrite,
         AnalyticsRead,
@@ -137,6 +162,13 @@ public static class LocaGuestPermissionCodes
         FinanceExport,
         TaxPreparationRead,
         TaxPreparationExport,
+        AssistantUse,
+        AssistantFinancial,
+        AssistantLegal,
+        AssistantTax,
+        AssistantActionsManage,
+        KnowledgeRead,
+        KnowledgeManage,
         AuditRead,
         AuditLogsRead,
         OpsLogsRead,
