@@ -21,6 +21,35 @@ public sealed class PermissionCatalogTests
             DriveOsPermissionCatalog.All,
             item => Assert.Equal(DriveOsApplication.Code, item.ApplicationCode));
     }
+
+    [Fact]
+    public void Cross_tenant_permissions_are_reserved_to_platform_administrator_by_default()
+    {
+        var platformPermissions = DriveOsRolePermissionDefaults.GetPermissions(
+            DriveOsRoleCodes.PlatformAdministrator
+        );
+        platformPermissions.Should().Contain(
+            DriveOsPermissionCodes.Organizations.CrossTenantRead
+        );
+        platformPermissions.Should().Contain(
+            DriveOsPermissionCodes.Organizations.CrossTenantManage
+        );
+
+        foreach (
+            string role in DriveOsRoleCodes.All.Where(
+                role => role != DriveOsRoleCodes.PlatformAdministrator
+            )
+        )
+        {
+            var permissions = DriveOsRolePermissionDefaults.GetPermissions(role);
+            permissions.Should().NotContain(
+                DriveOsPermissionCodes.Organizations.CrossTenantRead
+            );
+            permissions.Should().NotContain(
+                DriveOsPermissionCodes.Organizations.CrossTenantManage
+            );
+        }
+    }
 }
 
 public sealed class ExamsPermissionCatalogTests

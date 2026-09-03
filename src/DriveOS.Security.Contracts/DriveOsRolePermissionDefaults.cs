@@ -1,10 +1,10 @@
 namespace DriveOS.Security.Contracts;
 
 /// <summary>
-/// Default DriveOS role-to-permission matrix for initial AuthGate seeding.
+/// Default DriveOS role-to-permission matrix published to IAM adapters.
 ///
-/// This matrix is a bootstrap default only. AuthGate remains the source of
-/// truth and may persist tenant-specific role customizations afterwards.
+/// This matrix is the product-owned bootstrap contract. Tenant-specific role
+/// customizations are assignments; they must not redefine permission codes.
 /// </summary>
 public static class DriveOsRolePermissionDefaults
 {
@@ -39,7 +39,6 @@ public static class DriveOsRolePermissionDefaults
             [DriveOsRoleCodes.OrganizationOwner] =
             [
                 DriveOsPermissionCodes.Organizations.Read,
-                DriveOsPermissionCodes.Organizations.Create,
                 DriveOsPermissionCodes.Organizations.StatusHistoryRead,
                 DriveOsPermissionCodes.Organizations.SubmitForActivation,
                 DriveOsPermissionCodes.Organizations.Close,

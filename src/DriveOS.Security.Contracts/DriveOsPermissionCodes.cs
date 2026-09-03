@@ -17,6 +17,8 @@ public static class DriveOsPermissionCodes
     {
         public const string Read = "Organizations.Read";
         public const string Create = "Organizations.Create";
+        public const string CrossTenantRead = "Organizations.CrossTenant.Read";
+        public const string CrossTenantManage = "Organizations.CrossTenant.Manage";
 
         public const string StatusHistoryRead =
             "Organizations.StatusHistory.Read";
@@ -34,6 +36,8 @@ public static class DriveOsPermissionCodes
         [
             Read,
             Create,
+            CrossTenantRead,
+            CrossTenantManage,
             StatusHistoryRead,
             SubmitForActivation,
             Activate,
@@ -524,10 +528,12 @@ public static class DriveOsPermissionCodes
         public const string Close = "Students.Close";
         public const string Archive = "Students.Archive";
         public const string Reopen = "Students.Reopen";
+        public const string HistoryRead = "Students.History.Read";
         public static readonly string[] All = [Read, Create, IdentityRead, IdentityUpdate, IdentityVerify,
             RegulatoryIdentityRead, RegulatoryIdentityManage, RegulatoryIdentityVerify,
             AdministrationRead, AdministrationUpdate, TransferInternal, TransferExternal,
-            Suspend, SuspendFinancial, SuspendPedagogical, Reactivate, Close, Archive, Reopen];
+            Suspend, SuspendFinancial, SuspendPedagogical, Reactivate, Close, Archive, Reopen,
+            HistoryRead];
     }
 
     public static class OwnProfile
@@ -650,8 +656,9 @@ public static class DriveOsPermissionCodes
 
     public static class Partners
     {
+        public const string Read = "Partners.Read";
         public const string StudentsTransfer = "Partners.Students.Transfer";
-        public static readonly string[] All = [StudentsTransfer];
+        public static readonly string[] All = [Read, StudentsTransfer];
     }
 
     public static class StudentDataGrants
