@@ -5,6 +5,7 @@
     <Project Path="src/Itech.Querying/Itech.Querying.csproj" />
     <Project Path="src/Itech.Security.Contracts/Itech.Security.Contracts.csproj" />
     <Project Path="src/LocaGuest.Security.Contracts/LocaGuest.Security.Contracts.csproj" />
+    <Project Path="src/PedagoraPilot.Security.Contracts/PedagoraPilot.Security.Contracts.csproj" Id="1f8dfd03-331f-42b7-8f33-f0b0817ac788" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/DriveOS.Security.Contracts.Tests/DriveOS.Security.Contracts.Tests.csproj" />
