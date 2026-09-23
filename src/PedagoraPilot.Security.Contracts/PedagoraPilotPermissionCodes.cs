@@ -173,6 +173,14 @@ public static class PedagoraPilotPermissionCodes
         public static readonly string[] All = [View];
     }
 
+
+    public static class Audit
+    {
+        public const string View = "audit.view";
+        public const string Export = "audit.export";
+        public static readonly string[] All = [View, Export];
+    }
+
     public static class Access
     {
         public const string Manage = "access.manage";
@@ -210,6 +218,7 @@ public static class PedagoraPilotPermissionCodes
         .. Success.All,
         .. Reports.All,
         .. Statistics.All,
+        .. Audit.All,
         .. Access.All,
         .. Administration.All
     ];

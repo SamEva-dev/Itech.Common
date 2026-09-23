@@ -32,6 +32,7 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Success.All,
                 .. PedagoraPilotPermissionCodes.Reports.All,
                 .. PedagoraPilotPermissionCodes.Statistics.All,
+                .. PedagoraPilotPermissionCodes.Audit.All,
                 .. PedagoraPilotPermissionCodes.Access.All
             ],
 
@@ -54,7 +55,8 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Results.All,
                 .. PedagoraPilotPermissionCodes.Success.All,
                 .. PedagoraPilotPermissionCodes.Reports.All,
-                .. PedagoraPilotPermissionCodes.Statistics.All
+                .. PedagoraPilotPermissionCodes.Statistics.All,
+                PedagoraPilotPermissionCodes.Audit.View
             ],
 
             [PedagoraPilotRoleCodes.Secretariat] =
@@ -72,7 +74,8 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Certification.All,
                 .. PedagoraPilotPermissionCodes.Results.All,
                 .. PedagoraPilotPermissionCodes.Success.All,
-                .. PedagoraPilotPermissionCodes.Reports.All
+                .. PedagoraPilotPermissionCodes.Reports.All,
+                PedagoraPilotPermissionCodes.Audit.View
             ],
 
             [PedagoraPilotRoleCodes.Trainer] =
@@ -138,7 +141,8 @@ public static class PedagoraPilotRolePermissionDefaults
                 PedagoraPilotPermissionCodes.Results.View,
                 PedagoraPilotPermissionCodes.Success.View,
                 PedagoraPilotPermissionCodes.Reports.View,
-                PedagoraPilotPermissionCodes.Statistics.View
+                PedagoraPilotPermissionCodes.Statistics.View,
+                PedagoraPilotPermissionCodes.Audit.View
             ]
         };
 
