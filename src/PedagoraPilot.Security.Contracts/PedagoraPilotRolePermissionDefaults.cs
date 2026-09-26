@@ -7,7 +7,12 @@ public static class PedagoraPilotRolePermissionDefaults
         {
             [PedagoraPilotRoleCodes.PlatformAdministrator] = PedagoraPilotPermissionCodes.All,
             [PedagoraPilotRoleCodes.OrganizationAdministrator] = PedagoraPilotPermissionCodes.All,
-            [PedagoraPilotRoleCodes.OrganizationDirection] = PedagoraPilotPermissionCodes.All,
+            [PedagoraPilotRoleCodes.OrganizationDirection] =
+                PedagoraPilotPermissionCodes.All
+                    .Where(code => !string.Equals(code, PedagoraPilotPermissionCodes.Access.PrivilegedManage, StringComparison.OrdinalIgnoreCase)
+                                   && !string.Equals(code, PedagoraPilotPermissionCodes.Organization.OwnershipTransfer, StringComparison.OrdinalIgnoreCase)
+                                   && !string.Equals(code, PedagoraPilotPermissionCodes.Organization.CommercialManage, StringComparison.OrdinalIgnoreCase))
+                    .ToArray(),
 
             [PedagoraPilotRoleCodes.SiteDirection] =
             [
@@ -32,8 +37,7 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Success.All,
                 .. PedagoraPilotPermissionCodes.Reports.All,
                 .. PedagoraPilotPermissionCodes.Statistics.All,
-                .. PedagoraPilotPermissionCodes.Audit.All,
-                .. PedagoraPilotPermissionCodes.Access.All
+                .. PedagoraPilotPermissionCodes.Audit.All
             ],
 
             [PedagoraPilotRoleCodes.PedagogicalManager] =

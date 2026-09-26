@@ -17,7 +17,13 @@ public static class PedagoraPilotPermissionCodes
         public const string Dashboard = "organization.dashboard";
         public const string Read = "organization.read";
         public const string Manage = "organization.manage";
-        public static readonly string[] All = [Dashboard, Read, Manage];
+        /// <summary>Transfer the full tenant administrator responsibility to another active member.</summary>
+        public const string OwnershipTransfer = "organization.ownership.transfer";
+        /// <summary>Read commercial/subscription state for the current tenant.</summary>
+        public const string CommercialRead = "organization.commercial.read";
+        /// <summary>Manage tenant commercial/subscription settings intended for customer self-service.</summary>
+        public const string CommercialManage = "organization.commercial.manage";
+        public static readonly string[] All = [Dashboard, Read, Manage, OwnershipTransfer, CommercialRead, CommercialManage];
     }
 
     public static class Sites
@@ -184,7 +190,12 @@ public static class PedagoraPilotPermissionCodes
     public static class Access
     {
         public const string Manage = "access.manage";
-        public static readonly string[] All = [Manage];
+        /// <summary>
+        /// Sensitive tenant-administration operations: promoting/demoting organization administrators
+        /// and creating administrator invitations. Reserved to tenant full administrators.
+        /// </summary>
+        public const string PrivilegedManage = "access.privileged.manage";
+        public static readonly string[] All = [Manage, PrivilegedManage];
     }
 
     public static class Administration
