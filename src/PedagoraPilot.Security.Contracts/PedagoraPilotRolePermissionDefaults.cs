@@ -108,6 +108,7 @@ public static class PedagoraPilotRolePermissionDefaults
                 PedagoraPilotPermissionCodes.Driving.View,
                 PedagoraPilotPermissionCodes.Sheets.View,
                 PedagoraPilotPermissionCodes.Skills.View,
+                PedagoraPilotPermissionCodes.Attendance.View,
                 PedagoraPilotPermissionCodes.Internships.View,
                 PedagoraPilotPermissionCodes.Documents.View,
                 PedagoraPilotPermissionCodes.Certification.View,
@@ -116,6 +117,7 @@ public static class PedagoraPilotRolePermissionDefaults
 
             [PedagoraPilotRoleCodes.Jury] =
             [
+                PedagoraPilotPermissionCodes.Certification.View,
                 PedagoraPilotPermissionCodes.Certification.CandidateView,
                 PedagoraPilotPermissionCodes.Jury.View,
                 PedagoraPilotPermissionCodes.Jury.Evaluate
