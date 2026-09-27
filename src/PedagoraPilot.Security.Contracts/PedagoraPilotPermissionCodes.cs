@@ -93,14 +93,18 @@ public static class PedagoraPilotPermissionCodes
     {
         public const string View = "sessions.view";
         public const string Manage = "sessions.manage";
-        public static readonly string[] All = [View, Manage];
+        public const string ViewOthers = "sessions.viewOthers";
+        public const string AssignTrainer = "sessions.assignTrainer";
+        public static readonly string[] All = [View, Manage, ViewOthers, AssignTrainer];
     }
 
     public static class Driving
     {
         public const string View = "driving.view";
         public const string Manage = "driving.manage";
-        public static readonly string[] All = [View, Manage];
+        public const string ViewOthers = "driving.viewOthers";
+        public const string AssignTrainer = "driving.assignTrainer";
+        public static readonly string[] All = [View, Manage, ViewOthers, AssignTrainer];
     }
 
     public static class Sheets
