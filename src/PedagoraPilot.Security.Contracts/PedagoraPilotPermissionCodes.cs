@@ -30,14 +30,16 @@ public static class PedagoraPilotPermissionCodes
     {
         public const string View = "sites.view";
         public const string Manage = "sites.manage";
-        public static readonly string[] All = [View, Manage];
+        public const string Delete = "sites.delete";
+        public static readonly string[] All = [View, Manage, Delete];
     }
 
     public static class Programs
     {
         public const string View = "programs.view";
         public const string Manage = "programs.manage";
-        public static readonly string[] All = [View, Manage];
+        public const string Delete = "programs.delete";
+        public static readonly string[] All = [View, Manage, Delete];
     }
 
     public static class Referentials
@@ -83,7 +85,8 @@ public static class PedagoraPilotPermissionCodes
     {
         public const string View = "promotions.view";
         public const string Manage = "promotions.manage";
-        public static readonly string[] All = [View, Manage];
+        public const string Delete = "promotions.delete";
+        public static readonly string[] All = [View, Manage, Delete];
     }
 
     public static class Sessions
