@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>MobiOne.Security.Contracts</PackageId>
+    <Description>MobiOne application role and authorization contracts.</Description>
+    <PackageTags>mobione;security;authorization;roles;contracts</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Itech.Security.Contracts\Itech.Security.Contracts.csproj" />
+  </ItemGroup>
+</Project>
