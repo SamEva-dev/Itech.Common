@@ -4,7 +4,16 @@
     <PackageId>MobiOne.Security.Contracts</PackageId>
     <Description>MobiOne application role and authorization contracts.</Description>
     <PackageTags>mobione;security;authorization;roles;contracts</PackageTags>
+    <!-- Nested backend projects are not part of the contracts package. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);MobiOne/**</DefaultItemExcludes>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Itech.Security.Contracts\Itech.Security.Contracts.csproj" />
   </ItemGroup>
