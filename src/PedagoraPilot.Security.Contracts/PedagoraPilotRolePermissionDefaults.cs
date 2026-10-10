@@ -1,5 +1,12 @@
 namespace PedagoraPilot.Security.Contracts;
 
+/// <summary>
+/// Default permission matrix for AuthGate role provisioning.
+/// These permissions are capabilities, not unconditional access to documents:
+/// handlers must still validate tenant, site, cohort, membership and signer identity.
+/// PedagogicalManager includes trainer capabilities; no distinct referent role exists
+/// in the provided PedagoraPilotRoleCodes catalog.
+/// </summary>
 public static class PedagoraPilotRolePermissionDefaults
 {
     private static readonly IReadOnlyDictionary<string, IReadOnlyList<string>> Matrix =
@@ -7,12 +14,7 @@ public static class PedagoraPilotRolePermissionDefaults
         {
             [PedagoraPilotRoleCodes.PlatformAdministrator] = PedagoraPilotPermissionCodes.All,
             [PedagoraPilotRoleCodes.OrganizationAdministrator] = PedagoraPilotPermissionCodes.All,
-            [PedagoraPilotRoleCodes.OrganizationDirection] =
-                PedagoraPilotPermissionCodes.All
-                    .Where(code => !string.Equals(code, PedagoraPilotPermissionCodes.Access.PrivilegedManage, StringComparison.OrdinalIgnoreCase)
-                                   && !string.Equals(code, PedagoraPilotPermissionCodes.Organization.OwnershipTransfer, StringComparison.OrdinalIgnoreCase)
-                                   && !string.Equals(code, PedagoraPilotPermissionCodes.Organization.CommercialManage, StringComparison.OrdinalIgnoreCase))
-                    .ToArray(),
+            [PedagoraPilotRoleCodes.OrganizationDirection] = PedagoraPilotPermissionCodes.All,
 
             [PedagoraPilotRoleCodes.SiteDirection] =
             [
@@ -26,8 +28,10 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Learners.All,
                 PedagoraPilotPermissionCodes.Cohorts.View,
                 PedagoraPilotPermissionCodes.Cohorts.Manage,
-                .. PedagoraPilotPermissionCodes.Sessions.All,
-                .. PedagoraPilotPermissionCodes.Driving.All,
+                PedagoraPilotPermissionCodes.Sessions.View,
+                PedagoraPilotPermissionCodes.Sessions.Manage,
+                PedagoraPilotPermissionCodes.Driving.View,
+                PedagoraPilotPermissionCodes.Driving.Manage,
                 .. PedagoraPilotPermissionCodes.Sheets.All,
                 .. PedagoraPilotPermissionCodes.Skills.All,
                 .. PedagoraPilotPermissionCodes.Attendance.All,
@@ -38,7 +42,15 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Success.All,
                 .. PedagoraPilotPermissionCodes.Reports.All,
                 .. PedagoraPilotPermissionCodes.Statistics.All,
-                .. PedagoraPilotPermissionCodes.Audit.All
+                .. PedagoraPilotPermissionCodes.Audit.All,
+                .. PedagoraPilotPermissionCodes.Access.All,
+                PedagoraPilotPermissionCodes.Sessions.ViewOthers,
+                PedagoraPilotPermissionCodes.Sessions.AssignTrainer,
+                PedagoraPilotPermissionCodes.Driving.ViewOthers,
+                PedagoraPilotPermissionCodes.Driving.AssignTrainer,
+                PedagoraPilotPermissionCodes.Signatures.View,
+                PedagoraPilotPermissionCodes.Signatures.Request,
+                PedagoraPilotPermissionCodes.Signatures.Supervise,
             ],
 
             [PedagoraPilotRoleCodes.PedagogicalManager] =
@@ -50,8 +62,10 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Learners.All,
                 PedagoraPilotPermissionCodes.Cohorts.View,
                 PedagoraPilotPermissionCodes.Cohorts.Manage,
-                .. PedagoraPilotPermissionCodes.Sessions.All,
-                .. PedagoraPilotPermissionCodes.Driving.All,
+                PedagoraPilotPermissionCodes.Sessions.View,
+                PedagoraPilotPermissionCodes.Sessions.Manage,
+                PedagoraPilotPermissionCodes.Driving.View,
+                PedagoraPilotPermissionCodes.Driving.Manage,
                 .. PedagoraPilotPermissionCodes.Sheets.All,
                 .. PedagoraPilotPermissionCodes.Skills.All,
                 .. PedagoraPilotPermissionCodes.Attendance.All,
@@ -62,7 +76,14 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Success.All,
                 .. PedagoraPilotPermissionCodes.Reports.All,
                 .. PedagoraPilotPermissionCodes.Statistics.All,
-                PedagoraPilotPermissionCodes.Audit.View
+                PedagoraPilotPermissionCodes.Audit.View,
+                PedagoraPilotPermissionCodes.Sessions.ViewOthers,
+                PedagoraPilotPermissionCodes.Sessions.AssignTrainer,
+                PedagoraPilotPermissionCodes.Driving.ViewOthers,
+                PedagoraPilotPermissionCodes.Driving.AssignTrainer,
+                PedagoraPilotPermissionCodes.Signatures.View,
+                PedagoraPilotPermissionCodes.Signatures.Request,
+                PedagoraPilotPermissionCodes.Signatures.Supervise,
             ],
 
             [PedagoraPilotRoleCodes.Secretariat] =
@@ -74,7 +95,8 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Learners.All,
                 PedagoraPilotPermissionCodes.Cohorts.View,
                 PedagoraPilotPermissionCodes.Cohorts.Manage,
-                .. PedagoraPilotPermissionCodes.Sessions.All,
+                PedagoraPilotPermissionCodes.Sessions.View,
+                PedagoraPilotPermissionCodes.Sessions.Manage,
                 .. PedagoraPilotPermissionCodes.Attendance.All,
                 .. PedagoraPilotPermissionCodes.Internships.All,
                 .. PedagoraPilotPermissionCodes.Documents.All,
@@ -82,7 +104,9 @@ public static class PedagoraPilotRolePermissionDefaults
                 .. PedagoraPilotPermissionCodes.Results.All,
                 .. PedagoraPilotPermissionCodes.Success.All,
                 .. PedagoraPilotPermissionCodes.Reports.All,
-                PedagoraPilotPermissionCodes.Audit.View
+                PedagoraPilotPermissionCodes.Audit.View,
+                PedagoraPilotPermissionCodes.Sessions.ViewOthers,
+                PedagoraPilotPermissionCodes.Signatures.View,
             ],
 
             [PedagoraPilotRoleCodes.Trainer] =
@@ -103,7 +127,9 @@ public static class PedagoraPilotRolePermissionDefaults
                 PedagoraPilotPermissionCodes.Internships.View,
                 PedagoraPilotPermissionCodes.Documents.View,
                 PedagoraPilotPermissionCodes.Certification.View,
-                PedagoraPilotPermissionCodes.Certification.CandidateView
+                PedagoraPilotPermissionCodes.Certification.CandidateView,
+                PedagoraPilotPermissionCodes.Signatures.View,
+                PedagoraPilotPermissionCodes.Signatures.Request,
             ],
 
             [PedagoraPilotRoleCodes.Student] =
@@ -116,16 +142,16 @@ public static class PedagoraPilotRolePermissionDefaults
                 PedagoraPilotPermissionCodes.Driving.View,
                 PedagoraPilotPermissionCodes.Sheets.View,
                 PedagoraPilotPermissionCodes.Skills.View,
-                PedagoraPilotPermissionCodes.Attendance.View,
                 PedagoraPilotPermissionCodes.Internships.View,
                 PedagoraPilotPermissionCodes.Documents.View,
                 PedagoraPilotPermissionCodes.Certification.View,
-                PedagoraPilotPermissionCodes.Certification.CandidateView
+                PedagoraPilotPermissionCodes.Certification.CandidateView,
+                PedagoraPilotPermissionCodes.Signatures.View,
+                PedagoraPilotPermissionCodes.Signatures.Sign,
             ],
 
             [PedagoraPilotRoleCodes.Jury] =
             [
-                PedagoraPilotPermissionCodes.Certification.View,
                 PedagoraPilotPermissionCodes.Certification.CandidateView,
                 PedagoraPilotPermissionCodes.Jury.View,
                 PedagoraPilotPermissionCodes.Jury.Evaluate
