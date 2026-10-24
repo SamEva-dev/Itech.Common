@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,12 +11,14 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace Itech.Common.Observability;
 
-/// <summary>Shared Serilog bootstrap, sinks, correlation and HTTP diagnostics for Itech APIs.</summary>
+/// <summary>
+/// Sets up the standard Itech logging pipeline in C# rather than loading a list of
+/// Serilog extensions by assembly name from appsettings. Optional sinks are loaded
+/// only when explicitly enabled.
+/// </summary>
 public static class ObservabilityExtensions
 {
     public static WebApplicationBuilder AddItechObservability(this WebApplicationBuilder builder, string applicationName)
@@ -22,11 +26,8 @@ public static class ObservabilityExtensions
         if (string.IsNullOrWhiteSpace(applicationName))
             throw new ArgumentException("An application name is required", nameof(applicationName));
 
-        // Bootstrap logs startup failures before the host DI container exists.
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
-            .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
             .Enrich.FromLogContext()
             .WriteTo.Console(new RenderedCompactJsonFormatter())
             .CreateBootstrapLogger();
@@ -44,54 +45,84 @@ public static class ObservabilityExtensions
         Directory.CreateDirectory(Path.GetDirectoryName(appPath)!);
         Directory.CreateDirectory(Path.GetDirectoryName(efPath)!);
 
-        // Matches MobiOne appsettings Serilog:WriteTo ordering. Set paths before ReadFrom.Configuration.
-        builder.Configuration["Serilog:WriteTo:1:Args:configureLogger:WriteTo:0:Args:path"] = appPath;
-        builder.Configuration["Serilog:WriteTo:2:Args:configureLogger:WriteTo:0:Args:path"] = efPath;
-        builder.Configuration["Serilog:Properties:Application"] = applicationName;
-
-        // Optional external sinks: no credentials embedded in committed appsettings.
-        var index = 3;
         var seqEnabled = builder.Configuration.GetValue<bool>("ItechLogging:Seq:Enabled");
         var seqUrl = builder.Configuration["ItechLogging:Seq:ServerUrl"];
+        var pgEnabled = builder.Configuration.GetValue<bool>("ItechLogging:PostgreSql:Enabled");
+        var pgConnection = builder.Configuration.GetConnectionString("ItechLogging");
+
+        // Validate optional sinks early, providing a useful error only if they are enabled.
         if (seqEnabled)
         {
             if (!Uri.TryCreate(seqUrl, UriKind.Absolute, out var uri) || uri.Scheme is not ("http" or "https"))
-                throw new InvalidOperationException("ItechLogging:Seq:ServerUrl must be a valid HTTP(S) URI when Seq is enabled.");
-            EnsureSinkAvailable("Serilog.Sinks.Seq", "Serilog.Sinks.Seq");
-            // The optional assembly must only enter Serilog:Using when the sink is enabled.
-            AddUsingAssembly(builder.Configuration, "Serilog.Sinks.Seq");
-            builder.Configuration[$"Serilog:WriteTo:{index}:Name"] = "Seq";
-            builder.Configuration[$"Serilog:WriteTo:{index}:Args:serverUrl"] = seqUrl;
-            index++;
+                throw new InvalidOperationException("ItechLogging:Seq:ServerUrl must be an HTTP(S) URL when Seq is enabled.");
+            EnsureAssemblyAvailable("Serilog.Sinks.Seq");
         }
-
-        var pgEnabled = builder.Configuration.GetValue<bool>("ItechLogging:PostgreSql:Enabled");
-        var pgConnection = builder.Configuration.GetConnectionString("ItechLogging");
         if (pgEnabled)
         {
             if (string.IsNullOrWhiteSpace(pgConnection))
                 throw new InvalidOperationException("ConnectionStrings:ItechLogging is required when PostgreSQL log sink is enabled.");
-            EnsureSinkAvailable("Serilog.Sinks.PostgreSQL", "Serilog.Sinks.PostgreSQL");
-            EnsureSinkAvailable("Serilog.Sinks.PostgreSQL.Configuration", "Serilog.Sinks.PostgreSQL.Configuration");
-            AddUsingAssembly(builder.Configuration, "Serilog.Sinks.PostgreSQL");
-            AddUsingAssembly(builder.Configuration, "Serilog.Sinks.PostgreSQL.Configuration");
-            builder.Configuration[$"Serilog:WriteTo:{index}:Name"] = "PostgreSQL";
-            builder.Configuration[$"Serilog:WriteTo:{index}:Args:connectionString"] = pgConnection;
-            builder.Configuration[$"Serilog:WriteTo:{index}:Args:tableName"] = "AppLogs";
-            builder.Configuration[$"Serilog:WriteTo:{index}:Args:needAutoCreateTable"] = "false";
-            builder.Configuration[$"Serilog:WriteTo:{index}:Args:schemaName"] = "public";
-            builder.Configuration[$"Serilog:WriteTo:{index}:Args:useCopy"] = "false";
-            builder.Configuration[$"Serilog:WriteTo:{index}:Args:restrictedToMinimumLevel"] = "Warning";
+            EnsureAssemblyAvailable("Serilog.Sinks.PostgreSQL");
+            EnsureAssemblyAvailable("Serilog.Sinks.PostgreSQL.Configuration");
         }
 
-        builder.Host.UseSerilog((ctx, services, configuration) => configuration
-            .ReadFrom.Configuration(ctx.Configuration)
-            .ReadFrom.Services(services));
+        builder.Host.UseSerilog((ctx, services, logger) =>
+        {
+            var config = ctx.Configuration;
+            logger
+                .MinimumLevel.Information()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Information)
+                .MinimumLevel.Override("VPSControlCenter", LogEventLevel.Debug)
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("Application", applicationName)
+                .ReadFrom.Services(services)
+                .WriteTo.Console(outputTemplate:
+                    "[{Timestamp:HH:mm:ss} {Level:u3}] [{Application}] [{CorrelationId}] {SourceContext}: {Message:lj}{NewLine}{Exception}")
+                .WriteTo.Logger(child => child
+                    .Filter.ByExcluding(IsEntityFrameworkEvent)
+                    .WriteTo.File(appPath,
+                        fileSizeLimitBytes: 104857600,
+                        rollOnFileSizeLimit: true,
+                        retainedFileCountLimit: 100,
+                        outputTemplate:
+                            "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {Properties}{NewLine}{Exception}"))
+                .WriteTo.Logger(child => child
+                    .Filter.ByIncludingOnly(IsEntityFrameworkEvent)
+                    .WriteTo.File(efPath,
+                        restrictedToMinimumLevel: LogEventLevel.Information,
+                        fileSizeLimitBytes: 104857600,
+                        rollOnFileSizeLimit: true,
+                        retainedFileCountLimit: 100,
+                        outputTemplate:
+                            "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {Properties}{NewLine}{Exception}"));
+
+            // Configure only the external sinks the host explicitly enables. The main
+            // pipeline never invokes ReadFrom.Configuration() on application appsettings.
+            if (seqEnabled)
+            {
+                logger.ReadFrom.Configuration(BuildOptionalSinkConfiguration(
+                    "Serilog.Sinks.Seq", "Seq",
+                    ("serverUrl", seqUrl!)));
+            }
+            if (pgEnabled)
+            {
+                // Preserve the existing PostgreSQL configuration convention.
+                logger.ReadFrom.Configuration(BuildOptionalSinkConfiguration(
+                    "Serilog.Sinks.PostgreSQL.Configuration", "PostgreSQL",
+                    ("connectionString", pgConnection!),
+                    ("tableName", "AppLogs"),
+                    ("needAutoCreateTable", "false"),
+                    ("schemaName", "public"),
+                    ("useCopy", "false"),
+                    ("restrictedToMinimumLevel", "Warning")));
+            }
+        });
+
         builder.Logging.Configure(options => options.ActivityTrackingOptions =
             ActivityTrackingOptions.TraceId | ActivityTrackingOptions.SpanId |
             ActivityTrackingOptions.ParentId | ActivityTrackingOptions.Baggage);
 
-        // MVC actions only (Minimal API endpoints are covered by UseSerilogRequestLogging).
         builder.Services.AddScoped<ApiActionLoggingFilter>();
         builder.Services.AddExceptionHandler<ExceptionLoggingHandler>();
         return builder;
@@ -124,29 +155,38 @@ public static class ObservabilityExtensions
         return app;
     }
 
-    private static void EnsureSinkAvailable(string assemblyName, string packageName)
+    private static bool IsEntityFrameworkEvent(LogEvent evt)
+    {
+        if (!evt.Properties.TryGetValue("SourceContext", out var value)) return false;
+        return value is ScalarValue { Value: string source }
+            && source.StartsWith("Microsoft.EntityFrameworkCore", StringComparison.Ordinal);
+    }
+
+    private static IConfiguration BuildOptionalSinkConfiguration(
+        string assemblyName, string sinkName, params (string Key, string Value)[] args)
+    {
+        var entries = new Dictionary<string, string?>
+        {
+            ["Serilog:Using:0"] = assemblyName,
+            ["Serilog:WriteTo:0:Name"] = sinkName
+        };
+        foreach (var (key, value) in args)
+            entries[$"Serilog:WriteTo:0:Args:{key}"] = value;
+        return new ConfigurationBuilder().AddInMemoryCollection(entries).Build();
+    }
+
+    private static void EnsureAssemblyAvailable(string assemblyName)
     {
         try { _ = Assembly.Load(new AssemblyName(assemblyName)); }
         catch (FileNotFoundException ex)
         {
             throw new InvalidOperationException(
-                $"ItechLogging requires {packageName} because its sink is enabled. " +
-                "Restore and publish the API with the Itech.Common.Observability project/package reference, " +
-                "or disable that sink in ItechLogging configuration.", ex);
+                $"Optional logging sink '{assemblyName}' is enabled but its assembly is missing. " +
+                "Restore/publish the sink package or disable it under ItechLogging.", ex);
         }
     }
 
-    private static void AddUsingAssembly(IConfiguration configuration, string assemblyName)
-    {
-        var usingSection = configuration.GetSection("Serilog:Using");
-        if (usingSection.GetChildren().Any(x => string.Equals(x.Value, assemblyName, StringComparison.Ordinal)))
-            return;
-        var nextIndex = usingSection.GetChildren()
-            .Select(x => int.TryParse(x.Key, out var i) ? i : -1)
-            .DefaultIfEmpty(-1).Max() + 1;
-        configuration[$"Serilog:Using:{nextIndex}"] = assemblyName;
-    }
-
-    private static string NormalizeEnvironmentName(string name)
-        => new string(name.ToUpperInvariant().Select(c => char.IsLetterOrDigit(c) ? c : '_').ToArray());
+    private static string NormalizeEnvironmentName(string name) =>
+        new string(name.ToUpperInvariant()
+            .Select(c => char.IsLetterOrDigit(c) ? c : '_').ToArray());
 }
