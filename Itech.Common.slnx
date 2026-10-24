@@ -2,6 +2,7 @@
   <Folder Name="/src/">
     <Project Path="src/DriveOS.Security.Contracts/DriveOS.Security.Contracts.csproj" />
     <Project Path="src/Itech.Application.Contracts/Itech.Application.Contracts.csproj" />
+    <Project Path="src/Itech.Common.Observability/Itech.Common.Observability.csproj" Id="e0f88a06-760c-4138-9a02-0c64c39c6b9d" />
     <Project Path="src/Itech.Querying/Itech.Querying.csproj" />
     <Project Path="src/Itech.Security.Contracts/Itech.Security.Contracts.csproj" />
     <Project Path="src/LocaGuest.Security.Contracts/LocaGuest.Security.Contracts.csproj" />
