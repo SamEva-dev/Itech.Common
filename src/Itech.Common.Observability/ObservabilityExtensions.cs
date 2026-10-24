@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +9,8 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Compact;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Itech.Common.Observability;
 
@@ -56,6 +57,9 @@ public static class ObservabilityExtensions
         {
             if (!Uri.TryCreate(seqUrl, UriKind.Absolute, out var uri) || uri.Scheme is not ("http" or "https"))
                 throw new InvalidOperationException("ItechLogging:Seq:ServerUrl must be a valid HTTP(S) URI when Seq is enabled.");
+            EnsureSinkAvailable("Serilog.Sinks.Seq", "Serilog.Sinks.Seq");
+            // The optional assembly must only enter Serilog:Using when the sink is enabled.
+            AddUsingAssembly(builder.Configuration, "Serilog.Sinks.Seq");
             builder.Configuration[$"Serilog:WriteTo:{index}:Name"] = "Seq";
             builder.Configuration[$"Serilog:WriteTo:{index}:Args:serverUrl"] = seqUrl;
             index++;
@@ -67,6 +71,10 @@ public static class ObservabilityExtensions
         {
             if (string.IsNullOrWhiteSpace(pgConnection))
                 throw new InvalidOperationException("ConnectionStrings:ItechLogging is required when PostgreSQL log sink is enabled.");
+            EnsureSinkAvailable("Serilog.Sinks.PostgreSQL", "Serilog.Sinks.PostgreSQL");
+            EnsureSinkAvailable("Serilog.Sinks.PostgreSQL.Configuration", "Serilog.Sinks.PostgreSQL.Configuration");
+            AddUsingAssembly(builder.Configuration, "Serilog.Sinks.PostgreSQL");
+            AddUsingAssembly(builder.Configuration, "Serilog.Sinks.PostgreSQL.Configuration");
             builder.Configuration[$"Serilog:WriteTo:{index}:Name"] = "PostgreSQL";
             builder.Configuration[$"Serilog:WriteTo:{index}:Args:connectionString"] = pgConnection;
             builder.Configuration[$"Serilog:WriteTo:{index}:Args:tableName"] = "AppLogs";
@@ -114,6 +122,29 @@ public static class ObservabilityExtensions
             };
         });
         return app;
+    }
+
+    private static void EnsureSinkAvailable(string assemblyName, string packageName)
+    {
+        try { _ = Assembly.Load(new AssemblyName(assemblyName)); }
+        catch (FileNotFoundException ex)
+        {
+            throw new InvalidOperationException(
+                $"ItechLogging requires {packageName} because its sink is enabled. " +
+                "Restore and publish the API with the Itech.Common.Observability project/package reference, " +
+                "or disable that sink in ItechLogging configuration.", ex);
+        }
+    }
+
+    private static void AddUsingAssembly(IConfiguration configuration, string assemblyName)
+    {
+        var usingSection = configuration.GetSection("Serilog:Using");
+        if (usingSection.GetChildren().Any(x => string.Equals(x.Value, assemblyName, StringComparison.Ordinal)))
+            return;
+        var nextIndex = usingSection.GetChildren()
+            .Select(x => int.TryParse(x.Key, out var i) ? i : -1)
+            .DefaultIfEmpty(-1).Max() + 1;
+        configuration[$"Serilog:Using:{nextIndex}"] = assemblyName;
     }
 
     private static string NormalizeEnvironmentName(string name)
