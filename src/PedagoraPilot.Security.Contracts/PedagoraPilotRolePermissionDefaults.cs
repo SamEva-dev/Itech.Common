@@ -150,6 +150,12 @@ public static class PedagoraPilotRolePermissionDefaults
                 PedagoraPilotPermissionCodes.Signatures.Sign,
             ],
 
+            [PedagoraPilotRoleCodes.InternshipTutor] =
+            [
+                PedagoraPilotPermissionCodes.Internships.TutorViewAssigned,
+                PedagoraPilotPermissionCodes.Internships.TutorEvaluateAssigned
+            ],
+
             [PedagoraPilotRoleCodes.Jury] =
             [
                 PedagoraPilotPermissionCodes.Certification.CandidateView,

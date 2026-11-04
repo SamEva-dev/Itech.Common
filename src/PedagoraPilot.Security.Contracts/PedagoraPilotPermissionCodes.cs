@@ -143,7 +143,9 @@ public static class PedagoraPilotPermissionCodes
     {
         public const string View = "internships.view";
         public const string Manage = "internships.manage";
-        public static readonly string[] All = [View, Manage];
+        public const string TutorViewAssigned = "internships.tutor.viewAssigned";
+        public const string TutorEvaluateAssigned = "internships.tutor.evaluateAssigned";
+        public static readonly string[] All = [View, Manage, TutorViewAssigned, TutorEvaluateAssigned];
     }
 
     public static class Documents

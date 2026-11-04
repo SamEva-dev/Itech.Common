@@ -10,6 +10,7 @@ public static class PedagoraPilotRoleCodes
     public const string Secretariat = "PedagoraPilot.Secretariat";
     public const string Trainer = "PedagoraPilot.Trainer";
     public const string Student = "PedagoraPilot.Student";
+    public const string InternshipTutor = "PedagoraPilot.InternshipTutor";
     public const string Jury = "PedagoraPilot.Jury";
     public const string ReadOnly = "PedagoraPilot.ReadOnly";
 
@@ -23,6 +24,7 @@ public static class PedagoraPilotRoleCodes
         Secretariat,
         Trainer,
         Student,
+        InternshipTutor,
         Jury,
         ReadOnly
     ];
