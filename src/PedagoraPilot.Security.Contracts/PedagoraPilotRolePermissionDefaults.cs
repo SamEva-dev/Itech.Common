@@ -150,12 +150,6 @@ public static class PedagoraPilotRolePermissionDefaults
                 PedagoraPilotPermissionCodes.Signatures.Sign,
             ],
 
-            [PedagoraPilotRoleCodes.InternshipTutor] =
-            [
-                PedagoraPilotPermissionCodes.Internships.TutorViewAssigned,
-                PedagoraPilotPermissionCodes.Internships.TutorEvaluateAssigned
-            ],
-
             [PedagoraPilotRoleCodes.Jury] =
             [
                 PedagoraPilotPermissionCodes.Certification.CandidateView,
@@ -165,6 +159,8 @@ public static class PedagoraPilotRolePermissionDefaults
 
             [PedagoraPilotRoleCodes.ReadOnly] =
             [
+                // Read-only users may consult referentials, but must never manage or publish them.
+                PedagoraPilotPermissionCodes.Referentials.View,
                 PedagoraPilotPermissionCodes.Home.View,
                 PedagoraPilotPermissionCodes.Planning.View,
                 PedagoraPilotPermissionCodes.DistanceLearning.View,
