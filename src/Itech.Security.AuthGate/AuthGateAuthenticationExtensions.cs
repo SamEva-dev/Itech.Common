@@ -105,7 +105,14 @@ public static class AuthGateAuthenticationExtensions
                         ? await validator.ValidatePlatformAsync(settings, "Bearer " + token, tokenContext.UserId,
                             context.HttpContext.RequestAborted)
                         : await validator.ValidateAsync(settings, "Bearer " + token, context.HttpContext.RequestAborted);
-                    if (result != AuthGateSessionState.Active) context.Fail("AuthGate session invalid or unavailable.");
+                    if (result != AuthGateSessionState.Active)
+                    {
+                        context.Fail("AuthGate session invalid or unavailable.");
+                        return;
+                    }
+                    AuthGateConnectionLease.Capture(context.HttpContext,
+                        new AuthGateConnectionLease(validator, settings, tokenContext.UserId, tokenContext.TokenId, token,
+                            new DateTimeOffset(context.SecurityToken.ValidTo.ToUniversalTime()), platform));
                 }
             };
         });
