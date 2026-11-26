@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Itech.Security.AuthGate</PackageId>
+    <Description>Product-neutral AuthGate OIDC resource server authentication.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>itech;authgate;oidc;authentication</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+  </ItemGroup>
+</Project>
