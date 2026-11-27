@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "ES2022", "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM"], "strict": true, "declaration": true,
+    "experimentalDecorators": true, "useDefineForClassFields": false,
+    "skipLibCheck": true, "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true, "forceConsistentCasingInFileNames": true
+  },
+  "angularCompilerOptions": { "compilationMode": "partial", "strictInjectionParameters": true },
+  "include": ["src/**/*.ts"]
+}

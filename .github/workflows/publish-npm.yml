@@ -1,0 +1,112 @@
+name: Publish Angular AuthGate package
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'npm/authgate/**'
+      - '.github/workflows/publish-npm.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'npm/authgate/**'
+      - '.github/workflows/publish-npm.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: authgate-npm-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      ready: ${{ steps.source.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check source availability
+        id: source
+        shell: bash
+        run: |
+          if [[ ! -f npm/authgate/package.json ]]; then
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo '::warning::Original Angular sources not yet integrated; publication disabled.'
+            exit 0
+          fi
+          test -f npm/authgate/package-lock.json
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v6
+        if: steps.source.outputs.ready == 'true'
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Restore, test and build library
+        if: steps.source.outputs.ready == 'true'
+        working-directory: npm/authgate
+        run: |
+          npm ci
+          npm test
+          npm run build
+      - name: Validate and pack compiled library
+        if: steps.source.outputs.ready == 'true'
+        working-directory: npm/authgate
+        shell: bash
+        run: |
+          node - <<'JS'
+          const p = require('./dist/authgate/package.json');
+          const root = require('./package.json');
+          const repo = typeof p.repository === 'string' ? p.repository : p.repository?.url;
+          const expected = `https://github.com/${process.env.GITHUB_REPOSITORY}`;
+          if (p.name !== '@itech-core/authgate' || p.version !== root.version || p.private === true) throw Error('Invalid public package identity/version');
+          if ((repo || '').replace(/^git\+/, '').replace(/\.git$/, '') !== expected) throw Error('repository.url must match GitHub repository');
+          if (p.publishConfig?.registry !== 'https://registry.npmjs.org/' || p.publishConfig?.access !== 'public') throw Error('Invalid publishConfig');
+          if (!p.exports || !p.types || !p.peerDependencies?.['@angular/core']) throw Error('Missing Angular package metadata');
+          JS
+          mkdir -p "$RUNNER_TEMP/authgate-package"
+          npm pack ./dist/authgate --dry-run --json
+          npm pack ./dist/authgate --pack-destination "$RUNNER_TEMP/authgate-package"
+      - uses: actions/upload-artifact@v4
+        if: steps.source.outputs.ready == 'true'
+        with:
+          name: authgate-npm-package
+          path: ${{ runner.temp }}/authgate-package/*.tgz
+          if-no-files-found: error
+          retention-days: 14
+
+  publish:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.build.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Verify npm version
+        run: |
+          npm --version
+          node -e 'const [a,b,c]=require("child_process").execSync("npm --version").toString().trim().split(".").map(Number); if(a<11 || (a===11 && (b<5 || (b===5 && c<1)))) process.exit(1)'
+      - uses: actions/download-artifact@v4
+        with:
+          name: authgate-npm-package
+          path: package
+      - name: Publish using npm trusted publishing
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(package/*.tgz)
+          [[ ${#files[@]} -eq 1 ]]
+          metadata=$(tar -xOzf "${files[0]}" package/package.json)
+          version=$(node -e 'console.log(JSON.parse(process.argv[1]).version)' "$metadata")
+          tag=latest
+          [[ "$version" != *-* ]] || tag=preview
+          npm publish "${files[0]}" --registry https://registry.npmjs.org/ --access public --tag "$tag" --ignore-scripts

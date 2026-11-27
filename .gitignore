@@ -6,3 +6,14 @@ artifacts/
 TestResults/
 *.user
 *.suo
+
+# Angular / npm
+node_modules/
+.angular/
+dist/
+coverage/
+*.tgz
+.env
+.env.*
+!.env.example
+.npmrc.local

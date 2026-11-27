@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "outDir": ".test-dist",
+    "rootDir": "projects/authgate/src/lib",
+    "noEmitOnError": true
+  },
+  "files": [
+    "projects/authgate/src/lib/authgate-config.ts",
+    "projects/authgate/src/lib/authgate-contracts.ts",
+    "projects/authgate/src/lib/authgate-oidc.ts",
+    "projects/authgate/src/lib/authgate-session-core.ts",
+    "projects/authgate/src/lib/authgate-http-core.ts",
+    "projects/authgate/src/lib/authgate-access-core.ts",
+    "projects/authgate/src/lib/authgate-access-transport.ts",
+    "projects/authgate/src/lib/authgate-logout-core.ts",
+    "projects/authgate/src/lib/authgate-session-monitor.ts"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@itech/authgate",
+  "version": "0.1.0-preview.9g",
+  "description": "AuthGate Angular security foundation, independent of business applications",
+  "sideEffects": false,
+  "peerDependencies": {
+    "@angular/core": ">=20.3.0 <23.0.0",
+    "rxjs": "^7.8.0",
+    "@angular/common": ">=20.3.0 <23.0.0",
+    "@angular/router": ">=20.3.0 <23.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  }
+}

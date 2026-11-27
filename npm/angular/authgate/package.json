@@ -1,0 +1,21 @@
+{
+  "name": "itech-authgate-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "ng-packagr -p projects/authgate/ng-package.json -c projects/authgate/tsconfig.lib.json",
+    "test": "tsc -p tsconfig.core-tests.json && node --test tests/*.test.cjs",
+    "pack:local": "npm run build && npm pack ./dist/authgate"
+  },
+  "devDependencies": {
+    "@angular/core": "~20.3.0",
+    "@angular/compiler": "~20.3.0",
+    "@angular/compiler-cli": "~20.3.0",
+    "ng-packagr": "^20.0.0",
+    "rxjs": "^7.8.2",
+    "tslib": "^2.8.1",
+    "typescript": "~5.9.2",
+    "@angular/common": "~20.3.0",
+    "@angular/router": "~20.3.0"
+  }
+}
