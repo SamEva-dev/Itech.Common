@@ -12,9 +12,9 @@ public sealed class AuthGateSessionValidator(IHttpClientFactory factory, ILogger
 {
     internal const string HttpClientName = "Itech.Security.AuthGate.Session";
 
-    public async Task<AuthGateSessionState> ValidateAsync(AuthGateOidcSettings settings,
+    public Task<AuthGateSessionState> ValidateAsync(AuthGateOidcSettings settings,
         string authorization, CancellationToken cancellationToken = default) =>
-        ValidateCoreAsync(settings, authorization, null, cancellationToken).Result;
+        ValidateCoreAsync(settings, authorization, null, cancellationToken);
 
     public Task<AuthGateSessionState> ValidatePlatformAsync(AuthGateOidcSettings settings,
         string authorization, Guid subject, CancellationToken cancellationToken = default) =>

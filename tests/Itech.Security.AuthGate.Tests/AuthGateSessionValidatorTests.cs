@@ -35,6 +35,75 @@ public sealed class AuthGateSessionValidatorTests
         Assert.Equal(0, handler.Calls);
     }
 
+    [Fact]
+    public async Task ReturnsPendingTaskWithoutBlockingCaller()
+    {
+        var handler = new PendingHandler();
+        var validator = new AuthGateSessionValidator(new Factory(handler), NullLogger<AuthGateSessionValidator>.Instance);
+        var returned = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var settings = Settings with { SessionTimeoutSeconds = 30 };
+        using var cancellation = new CancellationTokenSource();
+        var invocation = Task.Run(() =>
+        {
+            var pending = validator.ValidateAsync(settings, "Bearer test-token", cancellation.Token);
+            returned.TrySetResult(true);
+            return pending;
+        });
+        try
+        {
+            await handler.Entered.Task.WaitAsync(TimeSpan.FromSeconds(5));
+            await returned.Task.WaitAsync(TimeSpan.FromSeconds(5));
+            Assert.False(invocation.IsCompleted);
+            handler.Release.TrySetResult(true);
+            Assert.Equal(AuthGateSessionState.Active, await invocation.WaitAsync(TimeSpan.FromSeconds(5)));
+        }
+        finally
+        {
+            handler.Release.TrySetResult(true);
+            cancellation.Cancel();
+        }
+    }
+
+    [Fact]
+    public async Task PropagatesCallerCancellation()
+    {
+        var handler = new PendingHandler();
+        var validator = new AuthGateSessionValidator(new Factory(handler), NullLogger<AuthGateSessionValidator>.Instance);
+        using var cancellation = new CancellationTokenSource();
+        var invocation = Task.Run(() => validator.ValidateAsync(Settings with { SessionTimeoutSeconds = 30 },
+            "Bearer test-token", cancellation.Token));
+        try
+        {
+            await handler.Entered.Task.WaitAsync(TimeSpan.FromSeconds(5));
+            cancellation.Cancel();
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
+            {
+                await invocation.WaitAsync(TimeSpan.FromSeconds(5));
+            });
+        }
+        finally
+        {
+            handler.Release.TrySetResult(true);
+            cancellation.Cancel();
+        }
+    }
+
+    private sealed class PendingHandler : HttpMessageHandler
+    {
+        public TaskCompletionSource<bool> Entered { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        public TaskCompletionSource<bool> Release { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            Entered.TrySetResult(true);
+            await Release.Task.WaitAsync(cancellationToken);
+            return new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("{\"active\":true}", Encoding.UTF8, "application/json")
+            };
+        }
+    }
+
     private sealed class Factory(HttpMessageHandler handler) : IHttpClientFactory
     {
         public HttpClient CreateClient(string name) => new(handler, disposeHandler: false);
