@@ -36,7 +36,7 @@ export class AuthGateAccessTransport {
     try {
       const response=await this.fetcher(target,{
         method:request.workspaceId===null?'GET':'POST',
-        headers:{Authorization:`Bearer ${token}`,Accept:'application/json',...(request.workspaceId===null?{}:{'Content-Type':'application/json'})},
+        headers:{Authorization:`Bearer ${token}`,Accept:'application/json',...(request.workspaceId===null?{}:{'Content-Type':'application/json','Idempotency-Key':crypto.randomUUID()})},
         ...(request.workspaceId===null?{}:{body:JSON.stringify({workspaceId:request.workspaceId})}),
         signal:abort.signal,redirect:'error',credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer',
       });

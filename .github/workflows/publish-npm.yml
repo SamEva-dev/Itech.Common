@@ -15,7 +15,7 @@ on:
 
 env:
   # Seule valeur a modifier avant chaque nouvelle publication.
-  PACKAGE_VERSION: "1.0.0"
+  PACKAGE_VERSION: "1.0.1"
 
 permissions:
   contents: read
