@@ -4,14 +4,18 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'npm/authgate/**'
+      - 'npm/angular/**'
       - '.github/workflows/publish-npm.yml'
   push:
     branches: [main]
     paths:
-      - 'npm/authgate/**'
+      - 'npm/angular/**'
       - '.github/workflows/publish-npm.yml'
   workflow_dispatch:
+
+env:
+  # Seule valeur a modifier avant chaque nouvelle publication.
+  PACKAGE_VERSION: "0.1.0-preview.9g.1"
 
 permissions:
   contents: read
@@ -27,17 +31,14 @@ jobs:
     outputs:
       ready: ${{ steps.source.outputs.ready }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Check source availability
         id: source
         shell: bash
         run: |
-          if [[ ! -f npm/authgate/package.json ]]; then
-            echo 'ready=false' >> "$GITHUB_OUTPUT"
-            echo '::warning::Original Angular sources not yet integrated; publication disabled.'
-            exit 0
-          fi
-          test -f npm/authgate/package-lock.json
+          test -f npm/angular/package.json
+          test -f npm/angular/projects/authgate/package.json
+          test -f npm/angular/package-lock.json
           echo 'ready=true' >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v6
         if: steps.source.outputs.ready == 'true'
@@ -46,30 +47,42 @@ jobs:
           package-manager-cache: false
       - name: Restore, test and build library
         if: steps.source.outputs.ready == 'true'
-        working-directory: npm/authgate
+        working-directory: npm/angular
         run: |
           npm ci
+          node - <<'JS'
+          const fs = require('node:fs');
+          const semver = require('semver');
+          const version = process.env.PACKAGE_VERSION;
+          if (semver.valid(version) !== version || version.includes('+')) throw Error('Invalid release version: ' + version);
+          const path = './projects/authgate/package.json';
+          const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
+          pkg.version = version;
+          fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+          JS
           npm test
           npm run build
+          cp projects/authgate/README.md dist/authgate/README.md
       - name: Validate and pack compiled library
         if: steps.source.outputs.ready == 'true'
-        working-directory: npm/authgate
+        working-directory: npm/angular
         shell: bash
         run: |
           node - <<'JS'
           const p = require('./dist/authgate/package.json');
-          const root = require('./package.json');
+          const root = require('./projects/authgate/package.json');
           const repo = typeof p.repository === 'string' ? p.repository : p.repository?.url;
           const expected = `https://github.com/${process.env.GITHUB_REPOSITORY}`;
-          if (p.name !== '@itech-core/authgate' || p.version !== root.version || p.private === true) throw Error('Invalid public package identity/version');
-          if ((repo || '').replace(/^git\+/, '').replace(/\.git$/, '') !== expected) throw Error('repository.url must match GitHub repository');
+          if (p.name !== '@itech-core/authgate' || p.version !== root.version || p.version !== process.env.PACKAGE_VERSION || p.private === true) throw Error('Invalid public package identity/version');
+          if ((repo || '').replace(/^git\+/, '').replace(/\.git$/, '')  .toLowerCase() !== expected.toLowerCase()) throw Error('repository.url must match GitHub repository');
           if (p.publishConfig?.registry !== 'https://registry.npmjs.org/' || p.publishConfig?.access !== 'public') throw Error('Invalid publishConfig');
-          if (!p.exports || !p.types || !p.peerDependencies?.['@angular/core']) throw Error('Missing Angular package metadata');
+          if (!p.exports || !(p.types || p.typings) || !p.peerDependencies?.['@angular/core']) throw Error('Missing Angular package metadata');
           JS
+          test -s dist/authgate/README.md
           mkdir -p "$RUNNER_TEMP/authgate-package"
           npm pack ./dist/authgate --dry-run --json
           npm pack ./dist/authgate --pack-destination "$RUNNER_TEMP/authgate-package"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: steps.source.outputs.ready == 'true'
         with:
           name: authgate-npm-package
@@ -79,7 +92,7 @@ jobs:
 
   publish:
     needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.build.outputs.ready == 'true'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && needs.build.outputs.ready == 'true' && vars.NPM_PUBLISH_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -89,12 +102,13 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false
       - name: Verify npm version
         run: |
           npm --version
           node -e 'const [a,b,c]=require("child_process").execSync("npm --version").toString().trim().split(".").map(Number); if(a<11 || (a===11 && (b<5 || (b===5 && c<1)))) process.exit(1)'
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: authgate-npm-package
           path: package
@@ -109,4 +123,13 @@ jobs:
           version=$(node -e 'console.log(JSON.parse(process.argv[1]).version)' "$metadata")
           tag=latest
           [[ "$version" != *-* ]] || tag=preview
+          [[ "$version" == "$PACKAGE_VERSION" ]] || { echo "Artifact version mismatch"; exit 1; }
+          name=$(node -e 'console.log(JSON.parse(process.argv[1]).name)' "$metadata")
+          status=$(curl --silent --show-error --output "$RUNNER_TEMP/npm-version.json" --write-out '%{http_code}' "https://registry.npmjs.org/$(node -p 'encodeURIComponent(process.argv[1])' "$name")/$version")
+          if [[ "$status" == 200 ]]; then
+            echo "::error::Version $version already exists; increment PACKAGE_VERSION in publish-npm.yml to publish new changes."
+            exit 1
+          fi
+          [[ "$status" == 404 ]] || { echo "Registry returned HTTP $status"; exit 1; }
+          [[ "$name" == "@itech-core/authgate" ]] || exit 1
           npm publish "${files[0]}" --registry https://registry.npmjs.org/ --access public --tag "$tag" --ignore-scripts
