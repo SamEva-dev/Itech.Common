@@ -2,6 +2,7 @@ import { computed, createEnvironmentInjector, EnvironmentInjector, signal } from
 import { AuthGateConfig, validateAuthGateConfig, ValidatedAuthGateConfig } from './authgate-config';
 import { provideAuthGate } from './authgate-provider';
 import { AuthGateSession } from './authgate-session';
+import type { AuthGateStartOptions } from './authgate-oidc';
 import { AuthGateLogout } from './authgate-logout';
 
 interface Scope { injector: EnvironmentInjector; config: ValidatedAuthGateConfig; session: AuthGateSession; logout: AuthGateLogout; }
@@ -34,11 +35,11 @@ export class AuthGateBoundSession<T extends {subject: string}> {
     const scope = this.scope(); const profile = this.profile();
     return scope && profile ? scope.session.getAccessToken() : null;
   }
-  start(returnUrl: string): Promise<void> {
+  start(returnUrl: string, options?: AuthGateStartOptions): Promise<void> {
     const scope = this.requireScope();
     if (this.pending) return Promise.reject(new Error('AUTHGATE_SESSION_BUSY'));
     this.verified.set(null);
-    return scope.session.start(returnUrl);
+    return scope.session.start(returnUrl, options);
   }
   complete(load: (token: string, subject: string) => Promise<T>): Promise<{profile: T; returnUrl: string}> {
     if (this.pending) return this.pending;
