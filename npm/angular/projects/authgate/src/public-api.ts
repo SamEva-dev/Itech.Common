@@ -13,3 +13,6 @@ export * from './lib/authgate-logout';
 export type { AuthGateLogoutOptions, AuthGateLogoutResult } from './lib/authgate-logout-core';
 
 export * from './lib/authgate-bound-session';
+
+export * from './lib/authgate-ui-copy';
+export * from './lib/authgate-status.component';
