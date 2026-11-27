@@ -84,7 +84,24 @@ export class AuthGateOidcClient {
         if (options.maxAgeSeconds !== 1) return fail(AuthGateErrorCode.OidcTransactionInvalid);
         url.searchParams.set('max_age', '1');
       }
-      if (tx.logoutEpoch !== this.browser.logoutEpoch?.()) return fail(AuthGateErrorCode.SessionCancelled);
+      // Check availability before leaving the application. Never send credentials or login hints.
+      const probe = new AbortController();
+      const cancelProbe = () => probe.abort();
+      signal?.addEventListener('abort', cancelProbe, { once: true });
+      if (signal?.aborted) cancelProbe();
+      const probeTimer = setTimeout(cancelProbe, 5000);
+      try {
+        const discovery = await this.json(new URL('.well-known/openid-configuration', this.config.authority), probe.signal, 65536);
+        if (probe.signal.aborted || discovery.issuer !== this.config.authority ||
+            discovery.authorization_endpoint !== url.origin + url.pathname ||
+            discovery.token_endpoint !== new URL('connect/token', this.config.authority).href) return fail(AuthGateErrorCode.OidcUnavailable);
+      } catch {
+        return fail(signal?.aborted ? AuthGateErrorCode.SessionCancelled : AuthGateErrorCode.OidcUnavailable);
+      } finally {
+        clearTimeout(probeTimer);
+        signal?.removeEventListener('abort', cancelProbe);
+      }
+      if (signal?.aborted || tx.logoutEpoch !== this.browser.logoutEpoch?.()) return fail(AuthGateErrorCode.SessionCancelled);
       this.browser.storage.setItem(this.key, JSON.stringify(tx));
       try { this.browser.navigate(url.href); } catch { this.browser.storage.removeItem(this.key); return fail(AuthGateErrorCode.OidcUnavailable); }
     } catch (error) {
